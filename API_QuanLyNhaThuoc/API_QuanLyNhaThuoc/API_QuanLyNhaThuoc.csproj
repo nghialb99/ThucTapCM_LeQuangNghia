@@ -1,0 +1,714 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22AFF86F-45DA-4DAD-BE0D-5BBBA2CD9BF9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>API_QuanLyNhaThuoc</RootNamespace>
+    <AssemblyName>API_QuanLyNhaThuoc</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\..\Downloads\Bunifu-.NET-UI-Framework-1.5.3_ShareAppsCrack.com\Bunifu .NET UI Framework 1.5.3\Crack\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="IKVM.AWT.WinForms, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.AWT.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Beans, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Beans.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Cldrdata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Cldrdata.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Corba, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Localedata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Localedata.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Management, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Media, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Naming, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Naming.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Nashorn, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Nashorn.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Remoting, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Tools, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.JNI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api_QuanLyNhaThuocDataSet.cs">
+      <DependentUpon>Api_QuanLyNhaThuocDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Api_QuanLyNhaThuocDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Api_QuanLyNhaThuocDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\Account_DAO.cs" />
+    <Compile Include="DAO\Buyer_DAO.cs" />
+    <Compile Include="DAO\Category_DAO.cs" />
+    <Compile Include="DAO\Email_DAO.cs" />
+    <Compile Include="DAO\EnterpriseInfo_DAO.cs" />
+    <Compile Include="DAO\ImportGoods_DAO.cs" />
+    <Compile Include="DAO\Invoice_DAO.cs" />
+    <Compile Include="DAO\MD5Crypt.cs" />
+    <Compile Include="DAO\Product_DAO.cs" />
+    <Compile Include="DAO\RoleUserManager_DAO.cs" />
+    <Compile Include="DAO\Supplier_DAO.cs" />
+    <Compile Include="DataProvider.cs" />
+    <Compile Include="DTO\Buyer.cs" />
+    <Compile Include="DTO\ConfigurationEmail.cs" />
+    <Compile Include="DTO\EnterpriseInfo.cs" />
+    <Compile Include="DTO\ImportGoods.cs" />
+    <Compile Include="DTO\Invoice.cs" />
+    <Compile Include="DTO\MailDeliveryHistory.cs" />
+    <Compile Include="DTO\Product.cs" />
+    <Compile Include="DTO\RoleUserManager.cs" />
+    <Compile Include="DTO\Supplier.cs" />
+    <Compile Include="DTO\UnitNames.cs" />
+    <Compile Include="DTO\UnitPrices.cs" />
+    <Compile Include="DTO\UserAccount.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAccountManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAccountManager.Designer.cs">
+      <DependentUpon>FrmAccountManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategory.Designer.cs">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCategoryProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategoryProduct.Designer.cs">
+      <DependentUpon>FrmCategoryProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCategorySupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategorySupplier.Designer.cs">
+      <DependentUpon>FrmCategorySupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateInvoice.Designer.cs">
+      <DependentUpon>FrmCreateInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCustomer.Designer.cs">
+      <DependentUpon>FrmCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeleteInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeleteInvoice.Designer.cs">
+      <DependentUpon>FrmDeleteInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDetailImportBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetailImportBill.Designer.cs">
+      <DependentUpon>FrmDetailImportBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEnterpriseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEnterpriseInfo.Designer.cs">
+      <DependentUpon>FrmEnterpriseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmImportDetailProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmImportDetailProduct.Designer.cs">
+      <DependentUpon>FrmImportDetailProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmImportFromSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmImportFromSupplier.Designer.cs">
+      <DependentUpon>FrmImportFromSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventory.Designer.cs">
+      <DependentUpon>FrmInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInvoiceManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInvoiceManagement.Designer.cs">
+      <DependentUpon>FrmInvoiceManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmItems.Designer.cs">
+      <DependentUpon>FrmItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOverviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOverviews.Designer.cs">
+      <DependentUpon>FrmOverviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManager.Designer.cs">
+      <DependentUpon>FrmManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrintBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrintBill.Designer.cs">
+      <DependentUpon>FrmPrintBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProduct.Designer.cs">
+      <DependentUpon>FrmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReports.Designer.cs">
+      <DependentUpon>FrmReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSendInvoiceToMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSendInvoiceToMail.Designer.cs">
+      <DependentUpon>FrmSendInvoiceToMail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSupplier.Designer.cs">
+      <DependentUpon>FrmSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUnitName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUnitName.Designer.cs">
+      <DependentUpon>FrmUnitName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUnitPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUnitPrice.Designer.cs">
+      <DependentUpon>FrmUnitPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserChangePass.Designer.cs">
+      <DependentUpon>FrmUserChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserInfo.Designer.cs">
+      <DependentUpon>FrmUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserManager.Designer.cs">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWarehouseManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWarehouseManager.Designer.cs">
+      <DependentUpon>FrmWarehouseManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserCrtEmail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCrtEmail.Designer.cs">
+      <DependentUpon>UserCrtEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCrtEmailForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCrtEmailForm.Designer.cs">
+      <DependentUpon>UserCrtEmailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCrtReportBuy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCrtReportBuy.Designer.cs">
+      <DependentUpon>UserCrtReportBuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCrtReportMailDelivery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCrtReportMailDelivery.Designer.cs">
+      <DependentUpon>UserCrtReportMailDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCrtReportSell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCrtReportSell.Designer.cs">
+      <DependentUpon>UserCrtReportSell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCrtRoleUserManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCrtRoleUserManager.Designer.cs">
+      <DependentUpon>UserCrtRoleUserManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCrtUserManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCrtUserManager.Designer.cs">
+      <DependentUpon>UserCrtUserManager.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAccountManager.resx">
+      <DependentUpon>FrmAccountManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategory.resx">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategoryProduct.resx">
+      <DependentUpon>FrmCategoryProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategorySupplier.resx">
+      <DependentUpon>FrmCategorySupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateInvoice.resx">
+      <DependentUpon>FrmCreateInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCustomer.resx">
+      <DependentUpon>FrmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeleteInvoice.resx">
+      <DependentUpon>FrmDeleteInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetailImportBill.resx">
+      <DependentUpon>FrmDetailImportBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEnterpriseInfo.resx">
+      <DependentUpon>FrmEnterpriseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmImportDetailProduct.resx">
+      <DependentUpon>FrmImportDetailProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmImportFromSupplier.resx">
+      <DependentUpon>FrmImportFromSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventory.resx">
+      <DependentUpon>FrmInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInvoiceManagement.resx">
+      <DependentUpon>FrmInvoiceManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmItems.resx">
+      <DependentUpon>FrmItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOverviews.resx">
+      <DependentUpon>FrmOverviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmManager.resx">
+      <DependentUpon>FrmManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintBill.resx">
+      <DependentUpon>FrmPrintBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProduct.resx">
+      <DependentUpon>FrmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReports.resx">
+      <DependentUpon>FrmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSendInvoiceToMail.resx">
+      <DependentUpon>FrmSendInvoiceToMail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSupplier.resx">
+      <DependentUpon>FrmSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUnitName.resx">
+      <DependentUpon>FrmUnitName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUnitPrice.resx">
+      <DependentUpon>FrmUnitPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserChangePass.resx">
+      <DependentUpon>FrmUserChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserInfo.resx">
+      <DependentUpon>FrmUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserManager.resx">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWarehouseManager.resx">
+      <DependentUpon>FrmWarehouseManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPrintBill.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCrtEmail.resx">
+      <DependentUpon>UserCrtEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCrtEmailForm.resx">
+      <DependentUpon>UserCrtEmailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCrtReportBuy.resx">
+      <DependentUpon>UserCrtReportBuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCrtReportMailDelivery.resx">
+      <DependentUpon>UserCrtReportMailDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCrtReportSell.resx">
+      <DependentUpon>UserCrtReportSell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCrtRoleUserManager.resx">
+      <DependentUpon>UserCrtRoleUserManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCrtUserManager.resx">
+      <DependentUpon>UserCrtUserManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Api_QuanLyNhaThuocDataSet.xsc">
+      <DependentUpon>Api_QuanLyNhaThuocDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Api_QuanLyNhaThuocDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Api_QuanLyNhaThuocDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Api_QuanLyNhaThuocDataSet.xss">
+      <DependentUpon>Api_QuanLyNhaThuocDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\translate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-login-100.png" />
+    <None Include="Resources\icons8-create-document-100.png" />
+    <None Include="Resources\icons8-print-100.png" />
+    <None Include="Resources\icons8-email-send-100.png" />
+    <None Include="Resources\icons8-search-100.png" />
+    <None Include="Resources\icons8-clear-100.png" />
+    <None Include="Resources\icons8-email-100.png" />
+    <None Include="Resources\icons8-new-message-100.png" />
+    <None Include="Resources\icons8-password-100.png" />
+    <None Include="Resources\icons8-back-arrow-100.png" />
+    <None Include="Resources\icons8-next-page-100.png" />
+    <None Include="Resources\icons8-change-100.png" />
+    <None Include="Resources\icons8-bill-1001.png" />
+    <None Include="Resources\icons8-buy-100.png" />
+    <None Include="Resources\icons8-microsoft-excel-100.png" />
+    <None Include="Resources\icons8-conversion-100.png" />
+    <None Include="Resources\bg_img.jpg.jpg" />
+    <None Include="Resources\backgrOverView.png" />
+    <None Include="Resources\icons8-password-reset-100.png" />
+    <None Include="Resources\icons8-joyent-100.png" />
+    <None Include="Resources\icons8-add-image-100.png" />
+    <None Include="Resources\icons8-eye-100.png" />
+    <None Include="Resources\icons8-waste-100.png" />
+    <None Include="Resources\icons8-xml-100.png" />
+    <None Include="Resources\icons8-minus-100.png" />
+    <None Include="Resources\icons8-plus-1001.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gpp-login-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image_login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-male-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-update-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-system-task-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-settings-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-graph-report-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-myspace-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-microsoft-sharepoint-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-warehouse-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-invoice-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-credit-control-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-bill-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-plus-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-close-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-lock-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-padlock-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-available-updates-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-account-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-groups-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-shutdown-100.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

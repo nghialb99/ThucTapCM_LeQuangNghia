@@ -57,14 +57,14 @@ namespace API_QuanLyNhaThuoc
                 RoleUserManager Role = RoleUserManager_DAO.Instance.CheckRoleUserByUserName(user);
                 if(Role.Status == "Hoạt động")
                 {
-                    if (Role.CheckCreateInvoice == false) { btCreateInvoice.Visible = false; }
-                    if (Role.CheckInvoiceManager == false) { btInvoiceManagement.Visible = false; }
-                    if (Role.CheckWarehouseManager == false) { btWarehouseManager.Visible = false; }
-                    if (Role.CheckCategory == false) { btCategory.Visible = false; }
-                    if (Role.CheckEnterpriseInfo == false) { btEnterpriseInfo.Visible = false; }
-                    if (Role.CheckUserManager == false) { btUserManager.Visible = false; }
-                    if (Role.CheckReport == false) { btReport.Visible = false; }
-                    if (Role.CheckSettings == false) { btSettings.Visible = false; }
+                    if (!Role.CheckCreateInvoice) { btCreateInvoice.Visible = false; }
+                    if (!Role.CheckInvoiceManager) { btInvoiceManagement.Visible = false; }
+                    if (!Role.CheckWarehouseManager) { btWarehouseManager.Visible = false; }
+                    if (!Role.CheckCategory) { btCategory.Visible = false; }
+                    if (!Role.CheckEnterpriseInfo) { btEnterpriseInfo.Visible = false; }
+                    if (!Role.CheckUserManager) { btUserManager.Visible = false; }
+                    if (!Role.CheckReport) { btReport.Visible = false; }
+                    if (!Role.CheckSettings) { btSettings.Visible = false; }
                 }
                 else
                 {
@@ -83,7 +83,8 @@ namespace API_QuanLyNhaThuoc
         #region evenButonClick
         private void btExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            LogOut();
         }
 
         private void toolStripMenuItemLogOut_Click(object sender, EventArgs e)
@@ -94,9 +95,9 @@ namespace API_QuanLyNhaThuoc
         {
             if (PanelMenu.Width == 200)
             {
-                //PanelMenu.Width = 63;
-                //PanelRight.Width = 137;
-                timer1.Enabled = true;
+                PanelMenu.Width = 63;
+                PanelRight.Width = 137;
+                //timer1.Enabled = true;
             }
             else
             {
@@ -106,10 +107,10 @@ namespace API_QuanLyNhaThuoc
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (PanelMenu.Width <= 63) timer1.Enabled = false;
-            label1.Text = (PanelMenu.Width - 1).ToString();
-            PanelMenu.Width = PanelMenu.Width - 1;//63;
-            PanelRight.Width = 137;
+            //if (PanelMenu.Width <= 63) timer1.Enabled = false;
+            //label1.Text = (PanelMenu.Width - 1).ToString();
+            //PanelMenu.Width = PanelMenu.Width - 1;//63;
+            //PanelRight.Width = 137;
         }
         private void btOverviews_Click(object sender, EventArgs e)
         {
@@ -173,5 +174,9 @@ namespace API_QuanLyNhaThuoc
         }
         #endregion
 
+        private void FrmManager_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LogOut();
+        }
     }
 }

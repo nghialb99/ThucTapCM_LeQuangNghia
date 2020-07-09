@@ -96,5 +96,20 @@ namespace API_QuanLyNhaThuoc
             }
             catch {}
         }
+        private int k = 0;
+        void ComputeTotalAmountWhenUpdateItem()
+        {
+            k++;
+            textBox1.Text = k.ToString();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FrmItems f = new FrmItems(ComputeTotalAmountWhenUpdateItem, 1, "HH000012");
+            f.TopLevel = false;
+            panel1.Controls.Add(f);
+            f.Dock = DockStyle.Top;
+            //f.TopMost = true;
+            f.Show();
+        }
     }
 }

@@ -24,10 +24,26 @@ namespace API_QuanLyNhaThuoc
         }
         private void FrmCreateInvoice_Load(object sender, EventArgs e)
         {
-            LoadDataProduct();
+            LoadDataBuyer();
             LoadData(Account_DAO.Instance.CheckUsername());
+            ResetValues();
+            
             dgvSearchItem.Visible = false;
+            dgvCustomer.Visible = false;
             btAdd.Visible = false;
+            dgvSearchItem.AutoGenerateColumns = false;
+            dgvCustomer.AutoGenerateColumns = false;
+            rbtProduct.Checked = true;
+
+            dgvCustomer.AlternatingRowsDefaultCellStyle.BackColor = Color.LightCyan;
+            dgvCustomer.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCustomer.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvCustomer.DefaultCellStyle.SelectionForeColor = Color.OrangeRed;
+
+            dgvSearchItem.AlternatingRowsDefaultCellStyle.BackColor = Color.LightCyan;
+            dgvSearchItem.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvSearchItem.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvSearchItem.DefaultCellStyle.SelectionForeColor = Color.OrangeRed;
         }
         private void LoadData(string user)
         {
@@ -42,22 +58,14 @@ namespace API_QuanLyNhaThuoc
             lbIdBill.Text = DataProvider.Instance.ExcuteScalar("exec AutoKeyBill").ToString();
             lbNotification.Text = "";
         }
-        private int row = 0;
+
         private CultureInfo culture = new CultureInfo("vi-VN");
         
-        private void LoadDataProduct()
+        private void LoadDataBuyer()
         {
-            //cbNameSp.ValueMember = "Id";
-            //cbNameSp.DisplayMember = "Name";
-            //cbNameSp.DataSource = Product_DAO.Instance.GetListProductWhenCreateInvoice();
-            
             cbBuyerCode.ValueMember = "MaKH";
             cbBuyerCode.DisplayMember = "MaKH";
             cbBuyerCode.DataSource = DataProvider.Instance.ExcuteQuery("Select MaKH, TenKH from ThongTinKhachHang where Status = 1");
-
-            //dgvCbUnitName.ValueMember = "Id";
-            //dgvCbUnitName.DisplayMember = "UnitName";
-            //dgvCbUnitName.DataSource = Product_DAO.Instance.GetUnitPrice("HH000012", "");
         }
         private void ResetValues()
         {
@@ -66,40 +74,24 @@ namespace API_QuanLyNhaThuoc
             nbDisCount.Value = 0;
             lbTotalAmount.Text = "000000";
             lbTotalPayment.Text = "000000";
-            cbBuyerCode.Text = "";
-            tbBuyerName.Text = "";
-            tbBuyerAddress.Text = "";
-            tbBuyerPhone.Text = "";
-            tbBuyerEmail.Text = "";
+            cbBuyerCode.SelectedValue = "nguoi_mua_khong_lay_hoa_don";
+            lbBuyerName.Text = "";
+            lbBuyerTaxCode.Text = "";
+            lbBuyerAddress.Text = "";
+            lbBuyerPhone.Text = "";
+            lbBuyerEmail.Text = "";
             rtbAmountInWord.Text = "";
             rtbNote.Text = "";
+            PanelLoadItem.Controls.Clear();
+            Invoice_DAO.Instance.ResetTableItemInvoiceTemp();
+            Invoice_DAO.Instance.DropTableInvoiceTemp();
+            idItemTemp = 0;
             //while (dgvBillInfo.Rows.Count > 1)
             //{
             //    dgvBillInfo.Rows.Clear();
             //}
         }
-        private float ComputeTotalAmount()
-        {
-            float t = 0;
-            try
-            {
-                //for (int i = 0; i < dgvBillInfo.Rows.Count - 1; i++)
-                //{
-                //    t = t + (float)Convert.ToDouble(dgvBillInfo.Rows[i].Cells[5].Value.ToString());
-                //}
-            }
-            catch { }
-            return t;
-        }
-        private void dgvBillInfo_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            row = e.RowIndex;
-        }
-        private void dgvBillInfo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        
         private void SendMail(string toMail,int idBill,string invoiceNumber)
         {
             FrmPrintBill f = new FrmPrintBill(null);
@@ -124,154 +116,191 @@ namespace API_QuanLyNhaThuoc
         }
         private void btCreateInvoice_Click(object sender, EventArgs e)
         {
-            //if(dgvBillInfo.Rows.Count > 1)
-            //{
-            //    string id = lbIdBill.Text;
-            //    string creator = lbCreator.Text;
-            //    int discount = Convert.ToInt32(nbDisCount.Value.ToString());
-            //    float totalAmount = ComputeTotalAmount() - ComputeTotalAmount() * ((float)Convert.ToDouble(discount) / 100);
-            //    string note = rtbNote.Text;
-            //    string amountInWord = Invoice_DAO.Instance.NumberToTextVN((decimal)totalAmount);
-            //    string idBuyer = cbBuyerCode.Text;
-            //    if(idBuyer == null || idBuyer == "") { idBuyer = "nguoi_mua_khong_lay_hoa_don"; }
-            //    try 
-            //    {
-            //        if (Invoice_DAO.Instance.InsertBill(id, creator, discount, totalAmount, amountInWord, note, idBuyer))
-            //        {
-            //            int temp = 0;
-            //            for (int j = 0; j < dgvBillInfo.Rows.Count - 1; j++)
-            //            {
-            //                string idproduct = dgvBillInfo.Rows[j].Cells[1].Value.ToString();
-            //                string productName = Product_DAO.Instance.GetProductById(idproduct).Name;
-            //                string solo = Product_DAO.Instance.GetProductById(idproduct).BatchNo;
-            //                DateTime expDate = Product_DAO.Instance.GetProductById(idproduct).ExpDate;
-            //                float unitPrice = Product_DAO.Instance.GetProductById(idproduct).UnitPrice;
-            //                string unitName = Product_DAO.Instance.GetProductById(idproduct).UnitName;
-            //                int quantity = Convert.ToInt32(dgvBillInfo.Rows[j].Cells[3].Value);
+            List<ItemTemp> itemTemps = Invoice_DAO.Instance.GetListItemTemp();
+            if (itemTemps.Count == 0)
+            {
+                lbNotification.Text = "Bảng hàng hóa không được để trống!";
+                i = 5;
+                timerResetNtf.Enabled = true;
+            }
+            else
+            {
+                try
+                {
+                    if (TotalAmount >= 0)
+                    {
+                        int totalLineNumber = 0;
+                        for (int j = 0; j < itemTemps.Count; j++)
+                        {
+                            string idproduct = itemTemps[j].IdItemCode;
+                            float unitPrice = itemTemps[j].UnitPrice;
+                            string unitName = itemTemps[j].UnitName;
+                            float quantity = itemTemps[j].Quantity;
 
-            //                if (Invoice_DAO.Instance.InsertDetailBill(id, idproduct, productName, solo, expDate, unitName, quantity, unitPrice))
-            //                {
-            //                    temp += 1;
-            //                }
-            //            }
-            //            if (temp == dgvBillInfo.Rows.Count - 1)
-            //            {
-            //                invoiceId = id;
-            //                string mail = tbBuyerEmail.Text.Trim().ToLower().ToString();
-            //                ResetValues();
-            //                lbNotification.Text = "Lập HĐ " + id + " thành công!";
-            //                i = 5;
-            //                timerResetNtf.Enabled = true;
-            //                //if (mail != "")
-            //                //{
-            //                //    if (Email_DAO.Instance.isEmail(mail))
-            //                //    {
-            //                //        SendMail(mail, invoiceId);
-            //                //    }
-            //                //}
-            //            }
-            //            else
-            //            {
-            //                lbNotification.Text = "Lập HĐ " + id + " thất bại! Vui lòng thử lại sau.";
-            //                i = 5;
-            //                timerResetNtf.Enabled = true;
-            //                Invoice_DAO.Instance.DeleteBill(id);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            lbNotification.Text = "Có lỗi gì đó xãy ra vui lòng thử lại!";
-            //            i = 5;
-            //            timerResetNtf.Enabled = true;
-            //        }
-            //    } catch { }
-            //}
-            //else
-            //{
-            //    lbNotification.Text = "Bảng hàng hóa không được để trống!";
-            //    i = 5;
-            //    timerResetNtf.Enabled = true;
-            //}
+                            if (Invoice_DAO.Instance.InsertDetailBill(idproduct, unitName, quantity, unitPrice))
+                            {
+                                totalLineNumber += 1;
+                            }
+                        }
+                        if (totalLineNumber == itemTemps.Count)
+                        {
+                            string creator = lbCreator.Text;
+                            int discount = Convert.ToInt32(nbDisCount.Value);
+                            float totalAmount = TotalAmount;
+                            string note = rtbNote.Text;
+                            string amountInWord = rtbAmountInWord.Text;
+                            string buyerCode = cbBuyerCode.SelectedValue.ToString();
+                            if (buyerCode == null || buyerCode == "") { buyerCode = "nguoi_mua_khong_lay_hoa_don"; }
+
+                            if (Invoice_DAO.Instance.InsertBill(creator, lbSellerTaxCode.Text, buyerCode, totalAmount, discount, amountInWord, note))
+                            {
+                                string invoiceNumber = lbIdBill.Text;
+                                //string mail = lbBuyerEmail.Text.Trim().ToLower().ToString();
+                                FrmCreateInvoice_Load(sender, e);
+                                lbNotification.Text = "Lập HĐ " + invoiceNumber + " thành công!";
+                                i = 5;
+                                timerResetNtf.Enabled = true;
+                                //FrmPrintBill f = new FrmPrintBill();
+                                //f.GetReport(Convert.ToInt32(invoiceNumber));
+                                //f.ShowDialog();
+                                //if (mail != "")
+                                //{
+                                //    if (Email_DAO.Instance.isEmail(mail))
+                                //    {
+                                //        SendMail(mail, Convert.ToInt32(invoiceNumber), invoiceNumber);
+                                //    }
+                                //}
+                            }
+                            else
+                            {
+                                lbNotification.Text = "Có lỗi kết nối! Vui lòng thử lại!";
+                                i = 5;
+                                timerResetNtf.Enabled = true;
+                            }
+                        }
+                        else
+                        {
+                            lbNotification.Text = "Có lỗi kết nối! Vui lòng thử lại!";
+                            i = 5;
+                            timerResetNtf.Enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        lbNotification.Text = "Tổng tiền của hóa đơn phải lớn hơn hoặc bằng 0 !";
+                        i = 5;
+                        timerResetNtf.Enabled = true;
+                    }
+                }
+                catch /*(Exception ex)*/
+                {
+                    //lbNotification.Text = ex.Message;
+                    //i = 5;
+                    //timerResetNtf.Enabled = true;
+                }
+            }
         }
-        private static string invoiceId;
         private void btCreateAndPrintInvoice_Click(object sender, EventArgs e)
         {
-            //if (dgvBillInfo.Rows.Count > 1)
-            //{
-            //    string id = lbIdBill.Text;
-            //    string creator = lbCreator.Text;
-            //    int discount = Convert.ToInt32(nbDisCount.Value.ToString());
-            //    float totalAmount = ComputeTotalAmount() - ComputeTotalAmount() * ((float)Convert.ToDouble(discount) / 100);
-            //    string note = rtbNote.Text;
-            //    string amountInWord = Invoice_DAO.Instance.NumberToTextVN((decimal)totalAmount);
-            //    string idBuyer = cbBuyerCode.Text;
-            //    if (idBuyer == null || idBuyer == "") { idBuyer = "nguoi_mua_khong_lay_hoa_don"; }
-            //    try
-            //    {
-            //        if (Invoice_DAO.Instance.InsertBill(id, creator, discount, totalAmount, amountInWord, note, idBuyer))
-            //        {
-            //            int temp = 0;
-            //            for (int j = 0; j < dgvBillInfo.Rows.Count - 1; j++)
-            //            {
-            //                string idproduct = dgvBillInfo.Rows[j].Cells[1].Value.ToString();
-            //                string productName = Product_DAO.Instance.GetProductById(idproduct).Name;
-            //                string solo = Product_DAO.Instance.GetProductById(idproduct).BatchNo;
-            //                DateTime expDate = Product_DAO.Instance.GetProductById(idproduct).ExpDate;
-            //                float unitPrice = Product_DAO.Instance.GetProductById(idproduct).UnitPrice;
-            //                string unitName = Product_DAO.Instance.GetProductById(idproduct).UnitName;
-            //                int quantity = Convert.ToInt32(dgvBillInfo.Rows[j].Cells[3].Value);
-            //                if (Invoice_DAO.Instance.InsertDetailBill(id, idproduct, productName, solo, expDate, unitName, quantity, unitPrice))
-            //                {
-            //                    temp += 1;
-            //                }
-            //            }
-            //            if (temp == dgvBillInfo.Rows.Count - 1)
-            //            {
-            //                lbNotification.Text = "Lập HĐ " + id + " thành công!";
-            //                i = 5;
-            //                timerResetNtf.Enabled = true;
-            //                FrmPrintBill f = new FrmPrintBill();
-            //                //f.GetReport(id);
-            //                f.ShowDialog();
-            //                ResetValues();
-            //            }
-            //            else
-            //            {
-            //                lbNotification.Text = "Lập HĐ " + id + " thất bại! Vui lòng thử lại sau.";
-            //                i = 5;
-            //                timerResetNtf.Enabled = true;
-            //                Invoice_DAO.Instance.DeleteBill(id);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            lbNotification.Text = "Có lỗi gì đó xãy ra vui lòng thử lại!";
-            //            i = 5;
-            //            timerResetNtf.Enabled = true;
-            //        }
-            //    }
-            //    catch { /*MessageBox.Show("dmm");*/ }
-            //}
-            //else
-            //{
-            //    lbNotification.Text = "Bảng hàng hóa không được để trống!";
-            //    i = 5;
-            //    timerResetNtf.Enabled = true;
-            //}
+            List<ItemTemp> itemTemps = Invoice_DAO.Instance.GetListItemTemp();
+            if (itemTemps.Count == 0)
+            {
+                lbNotification.Text = "Bảng hàng hóa không được để trống!";
+                i = 5;
+                timerResetNtf.Enabled = true;
+            }
+            else
+            {
+                try
+                {
+                    if(TotalAmount >= 0)
+                    {
+                        int totalLineNumber = 0;
+                        for (int j = 0; j < itemTemps.Count; j++)
+                        {
+                            string idproduct = itemTemps[j].IdItemCode;
+                            float unitPrice = itemTemps[j].UnitPrice;
+                            string unitName = itemTemps[j].UnitName;
+                            float quantity = itemTemps[j].Quantity;
+
+                            if (Invoice_DAO.Instance.InsertDetailBill(idproduct, unitName, quantity, unitPrice))
+                            {
+                                totalLineNumber += 1;
+                            }
+                        }
+                        if (totalLineNumber == itemTemps.Count)
+                        {
+                            string creator = lbCreator.Text;
+                            int discount = Convert.ToInt32(nbDisCount.Value);
+                            float totalAmount = TotalAmount;
+                            string note = rtbNote.Text;
+                            string amountInWord = rtbAmountInWord.Text;
+                            string buyerCode = cbBuyerCode.SelectedValue.ToString();
+                            if (buyerCode == null || buyerCode == "") { buyerCode = "nguoi_mua_khong_lay_hoa_don"; }
+
+                            if (Invoice_DAO.Instance.InsertBill(creator, lbSellerTaxCode.Text, buyerCode, totalAmount, discount, amountInWord, note))
+                            {
+                                string invoiceNumber = lbIdBill.Text;
+                                //string mail = lbBuyerEmail.Text.Trim().ToLower().ToString();
+                                ResetValues();
+                                lbNotification.Text = "Lập HĐ " + invoiceNumber + " thành công!";
+                                i = 5;
+                                timerResetNtf.Enabled = true;
+                                FrmPrintBill f = new FrmPrintBill();
+                                f.GetReport(Convert.ToInt32(invoiceNumber));
+                                f.ShowDialog();
+                                //if (mail != "")
+                                //{
+                                //    if (Email_DAO.Instance.isEmail(mail))
+                                //    {
+                                //        SendMail(mail, Convert.ToInt32(invoiceNumber), invoiceNumber);
+                                //    }
+                                //}
+                            }
+                            else
+                            {
+                                lbNotification.Text = "Có lỗi kết nối! Vui lòng thử lại!";
+                                i = 5;
+                                timerResetNtf.Enabled = true;
+                            }
+                        }
+                        else
+                        {
+                            lbNotification.Text = "Có lỗi kết nối! Vui lòng thử lại!";
+                            i = 5;
+                            timerResetNtf.Enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        lbNotification.Text = "Tổng tiền của hóa đơn phải lớn hơn hoặc bằng 0 !";
+                        i = 5;
+                        timerResetNtf.Enabled = true;
+                    }
+                }
+                catch /*(Exception ex)*/
+                {
+                    //lbNotification.Text = ex.Message;
+                    //i = 5;
+                    //timerResetNtf.Enabled = true;
+                }
+            }
         }
 
         private void cbBuyerCode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Buyer buyer = Buyer_DAO.Instance.GetListBuyerById(cbBuyerCode.SelectedValue.ToString());
             try
             {
-                tbBuyerName.Text = Buyer_DAO.Instance.GetListBuyerById(cbBuyerCode.SelectedValue.ToString()).BuyerName;
-                tbBuyerAddress.Text = Buyer_DAO.Instance.GetListBuyerById(cbBuyerCode.SelectedValue.ToString()).BuyerAddress;
-                tbBuyerPhone.Text = Buyer_DAO.Instance.GetListBuyerById(cbBuyerCode.SelectedValue.ToString()).BuyerPhone;
-                tbBuyerEmail.Text = Buyer_DAO.Instance.GetListBuyerById(cbBuyerCode.SelectedValue.ToString()).BuyerEmail;
+                lbBuyerName.Text = buyer.BuyerName;
+                lbBuyerTaxCode.Text = buyer.BuyerTaxCode;
+                lbBuyerAddress.Text = buyer.BuyerAddress;
+                lbBuyerPhone.Text = buyer.BuyerPhone;
+                lbBuyerEmail.Text = buyer.BuyerEmail;
             }
             catch { }
         }
-        int i = 5;
+        private int i = 5;
         private void timerResetNtf_Tick(object sender, EventArgs e)
         {
             i--;
@@ -282,48 +311,99 @@ namespace API_QuanLyNhaThuoc
         {
             try 
             { 
-                lbTotalPayment.Text = (ComputeTotalAmount() - (ComputeTotalAmount() * ((float)Convert.ToDouble(nbDisCount.Value) / 100))).ToString("c", culture);
+                lbTotalPayment.Text = (ComputeTotalAmount() - (ComputeTotalAmount() * ((float)Convert.ToDouble(nbDisCount.Value) / 100))).ToString("c0", culture);
                 rtbAmountInWord.Text = Invoice_DAO.Instance.NumberToTextVN((decimal)(ComputeTotalAmount() - ComputeTotalAmount() * ((float)Convert.ToDouble(nbDisCount.Value)/100)));
             } catch { }
         }
 
         private void btNewBuyer_Click(object sender, EventArgs e)
         {
-            FrmCustomer f = new FrmCustomer(LoadDataProduct);
+            FrmCustomer f = new FrmCustomer(LoadDataBuyer);
             f.ShowDialog();
         }
 
         private void tbSearch_OnTextChange(object sender, EventArgs e)
         {
-            if(tbSearch.text == "")
+            if (rbtProduct.Checked)
             {
-                dgvSearchItem.Visible = false;
-                btAdd.Visible = false;
+                if (tbSearch.text == "")
+                {
+                    dgvSearchItem.Visible = false;
+                    btAdd.Visible = false;
+                }
+                else
+                {
+                    dgvSearchItem.Visible = true;
+                    btAdd.Visible = true;
+                    if (idProduct == "") btAdd.Enabled = false;
+                    dgvSearchItem.DataSource = Product_DAO.Instance.GetListProductWhenCreateInvoice(tbSearch.text);
+                }
             }
             else
             {
-                dgvSearchItem.Visible = true;
-                btAdd.Visible = true;
-                dgvSearchItem.DataSource = Product_DAO.Instance.GetListProduct(tbSearch.text);
+                if (tbSearch.text == "")
+                {
+                    dgvCustomer.Visible = false;
+                    btAdd.Visible = false;
+                }
+                else
+                {
+                    dgvCustomer.Visible = true;
+                    //btAdd.Visible = true;
+                    dgvCustomer.DataSource = Buyer_DAO.Instance.GetListBuyerWhenCreateInvoice(tbSearch.text);
+                }
             }
-            
         }
-
-        private void btAdd_Click(object sender, EventArgs e)
+        private float ComputeTotalAmount()
         {
-            //dgvSearchItem.Visible = false;
-            //btAdd.Visible = false;
-            //tbSearch.text = "";
-            FrmItems f = new FrmItems();
+            float t = 0;
+            List<ItemTemp> listItem = Invoice_DAO.Instance.GetListItemTemp();
+            
+            for(int i = 0;i < listItem.Count; i++)
+            {
+                t += listItem[i].Quantity*listItem[i].UnitPrice;
+            }
+            return t;
+        }
+        private void ComputeTotalAmountWhenUpdateItem()
+        {
+            lbTotalAmount.Text = ComputeTotalAmount().ToString("C0",culture);
+            lbTotalPayment.Text = (ComputeTotalAmount() - ComputeTotalAmount() * ((float)Convert.ToDouble(nbDisCount.Value)/100)).ToString("C0",culture);
+            rtbAmountInWord.Text = Invoice_DAO.Instance.NumberToTextVN((decimal)(ComputeTotalAmount() - ComputeTotalAmount() * ((float)Convert.ToDouble(nbDisCount.Value) / 100)));
+            TotalAmount = ComputeTotalAmount();
+        }
+        private float TotalAmount = -1;
+        private int idItemTemp = 0;
+        private void LoadItemInfo()
+        {
+            idItemTemp += 1;
+            FrmItems f = new FrmItems(ComputeTotalAmountWhenUpdateItem, idItemTemp, idProduct);
             f.TopLevel = false;
             PanelLoadItem.Controls.Add(f);
             f.Dock = DockStyle.Top;
+            //f.TopMost = true;
             f.Show();
         }
+        private void btAdd_Click(object sender, EventArgs e)
+        {
+            if (Invoice_DAO.Instance.InsertItemInvoiceTemp(idProduct))
+            {
+                dgvSearchItem.Visible = false;
+                btAdd.Visible = false;
+                tbSearch.text = "";
+                LoadItemInfo();
+            }
+        }
 
+        private string idProduct ="";
         private void dgvSearchItem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int d = e.RowIndex;
+            try
+            {
+                idProduct = dgvSearchItem.Rows[e.RowIndex].Cells[1].Value.ToString();
+                btAdd.Enabled = true;
+            }
+            catch { btAdd.Enabled = false; }
         }
 
         private void dgvSearchItem_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -332,6 +412,43 @@ namespace API_QuanLyNhaThuoc
             {
                 dgvSearchItem.Rows[i].Cells[0].Value = i + 1;
             }
+        }
+
+        private void dgvCustomer_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < dgvCustomer.Rows.Count; i++)
+            {
+                dgvCustomer.Rows[i].Cells[0].Value = i + 1;
+            }
+        }
+
+        private void rbtProduct_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtProduct.Checked)
+            {
+                rbtBuyer.Checked = false;
+                dgvCustomer.Visible = false;
+            }
+        }
+
+        private void rbtBuyer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtBuyer.Checked)
+            {
+                rbtProduct.Checked = false;
+                dgvSearchItem.Visible = false;
+            }
+        }
+        private string BuyerCode;
+        private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                BuyerCode = dgvCustomer.Rows[e.RowIndex].Cells[1].Value.ToString();
+                cbBuyerCode.SelectedValue = BuyerCode;
+                tbSearch.text = "";
+            }
+            catch {}
         }
     }
 }

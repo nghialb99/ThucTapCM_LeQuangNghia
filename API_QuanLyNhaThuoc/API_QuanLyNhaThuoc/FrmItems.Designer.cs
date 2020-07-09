@@ -30,16 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmItems));
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.tbQuantity = new System.Windows.Forms.TextBox();
             this.btPlus = new Bunifu.Framework.UI.BunifuImageButton();
             this.btMinus = new Bunifu.Framework.UI.BunifuImageButton();
             this.btDelete = new Bunifu.Framework.UI.BunifuImageButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbNumber = new System.Windows.Forms.Label();
+            this.lbTotalAmount = new System.Windows.Forms.Label();
+            this.lbUnitPrice = new System.Windows.Forms.Label();
             this.cbUnitName = new System.Windows.Forms.ComboBox();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbItemName = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tbQuantity = new System.Windows.Forms.TextBox();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btPlus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btMinus)).BeginInit();
@@ -56,11 +55,10 @@
             this.bunifuGradientPanel1.Controls.Add(this.btPlus);
             this.bunifuGradientPanel1.Controls.Add(this.btMinus);
             this.bunifuGradientPanel1.Controls.Add(this.btDelete);
-            this.bunifuGradientPanel1.Controls.Add(this.label2);
-            this.bunifuGradientPanel1.Controls.Add(this.label1);
-            this.bunifuGradientPanel1.Controls.Add(this.lbNumber);
+            this.bunifuGradientPanel1.Controls.Add(this.lbTotalAmount);
+            this.bunifuGradientPanel1.Controls.Add(this.lbUnitPrice);
             this.bunifuGradientPanel1.Controls.Add(this.cbUnitName);
-            this.bunifuGradientPanel1.Controls.Add(this.bunifuCustomLabel1);
+            this.bunifuGradientPanel1.Controls.Add(this.lbItemName);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox1);
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.White;
@@ -70,41 +68,56 @@
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(745, 54);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(735, 54);
             this.bunifuGradientPanel1.TabIndex = 0;
+            // 
+            // tbQuantity
+            // 
+            this.tbQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbQuantity.Location = new System.Drawing.Point(488, 15);
+            this.tbQuantity.Name = "tbQuantity";
+            this.tbQuantity.Size = new System.Drawing.Size(69, 21);
+            this.tbQuantity.TabIndex = 10;
+            this.tbQuantity.Text = "0";
+            this.tbQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbQuantity.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
+            this.tbQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbQuantity_KeyPress);
+            this.tbQuantity.Leave += new System.EventHandler(this.tbQuantity_Leave);
             // 
             // btPlus
             // 
-            this.btPlus.BackColor = System.Drawing.Color.White;
+            this.btPlus.BackColor = System.Drawing.Color.Transparent;
             this.btPlus.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_plus_100;
             this.btPlus.ImageActive = null;
-            this.btPlus.Location = new System.Drawing.Point(569, 15);
+            this.btPlus.Location = new System.Drawing.Point(557, 15);
             this.btPlus.Name = "btPlus";
             this.btPlus.Size = new System.Drawing.Size(21, 21);
             this.btPlus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btPlus.TabIndex = 9;
             this.btPlus.TabStop = false;
             this.btPlus.Zoom = 10;
+            this.btPlus.Click += new System.EventHandler(this.btPlus_Click);
             // 
             // btMinus
             // 
-            this.btMinus.BackColor = System.Drawing.Color.White;
+            this.btMinus.BackColor = System.Drawing.Color.Transparent;
             this.btMinus.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_minus_100;
             this.btMinus.ImageActive = null;
-            this.btMinus.Location = new System.Drawing.Point(501, 15);
+            this.btMinus.Location = new System.Drawing.Point(468, 15);
             this.btMinus.Name = "btMinus";
             this.btMinus.Size = new System.Drawing.Size(21, 21);
             this.btMinus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btMinus.TabIndex = 8;
             this.btMinus.TabStop = false;
             this.btMinus.Zoom = 10;
+            this.btMinus.Click += new System.EventHandler(this.btMinus_Click);
             // 
             // btDelete
             // 
             this.btDelete.BackColor = System.Drawing.Color.Transparent;
             this.btDelete.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_waste_100;
             this.btDelete.ImageActive = null;
-            this.btDelete.Location = new System.Drawing.Point(711, 16);
+            this.btDelete.Location = new System.Drawing.Point(699, 16);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(21, 21);
             this.btDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -113,87 +126,65 @@
             this.btDelete.Zoom = 10;
             this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
-            // label2
+            // lbTotalAmount
             // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(606, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 23);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "0000000";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbTotalAmount.BackColor = System.Drawing.Color.Transparent;
+            this.lbTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalAmount.ForeColor = System.Drawing.Color.Red;
+            this.lbTotalAmount.Location = new System.Drawing.Point(584, 14);
+            this.lbTotalAmount.Name = "lbTotalAmount";
+            this.lbTotalAmount.Size = new System.Drawing.Size(109, 23);
+            this.lbTotalAmount.TabIndex = 5;
+            this.lbTotalAmount.Text = "0000000";
+            this.lbTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label1
+            // lbUnitPrice
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(401, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 23);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "0000000";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lbNumber
-            // 
-            this.lbNumber.BackColor = System.Drawing.Color.Transparent;
-            this.lbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNumber.Location = new System.Drawing.Point(9, 14);
-            this.lbNumber.Name = "lbNumber";
-            this.lbNumber.Size = new System.Drawing.Size(26, 23);
-            this.lbNumber.TabIndex = 3;
-            this.lbNumber.Text = "0";
-            this.lbNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbUnitPrice.BackColor = System.Drawing.Color.Transparent;
+            this.lbUnitPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUnitPrice.Location = new System.Drawing.Point(368, 14);
+            this.lbUnitPrice.Name = "lbUnitPrice";
+            this.lbUnitPrice.Size = new System.Drawing.Size(94, 23);
+            this.lbUnitPrice.TabIndex = 4;
+            this.lbUnitPrice.Text = "0000000";
+            this.lbUnitPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cbUnitName
             // 
             this.cbUnitName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbUnitName.FormattingEnabled = true;
-            this.cbUnitName.Location = new System.Drawing.Point(307, 16);
+            this.cbUnitName.Location = new System.Drawing.Point(290, 16);
             this.cbUnitName.Name = "cbUnitName";
             this.cbUnitName.Size = new System.Drawing.Size(73, 23);
             this.cbUnitName.TabIndex = 2;
             this.cbUnitName.SelectedIndexChanged += new System.EventHandler(this.cbUnitName_SelectedIndexChanged);
             // 
-            // bunifuCustomLabel1
+            // lbItemName
             // 
-            this.bunifuCustomLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCustomLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(103, 7);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(184, 40);
-            this.bunifuCustomLabel1.TabIndex = 1;
-            this.bunifuCustomLabel1.Text = "Tên sản phẩm\\nloaij";
+            this.lbItemName.BackColor = System.Drawing.Color.Transparent;
+            this.lbItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbItemName.Location = new System.Drawing.Point(58, -1);
+            this.lbItemName.Name = "lbItemName";
+            this.lbItemName.Size = new System.Drawing.Size(219, 54);
+            this.lbItemName.TabIndex = 1;
+            this.lbItemName.Text = "Tên sản phẩm";
+            this.lbItemName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(46, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 7);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // tbQuantity
-            // 
-            this.tbQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbQuantity.Location = new System.Drawing.Point(522, 15);
-            this.tbQuantity.Name = "tbQuantity";
-            this.tbQuantity.Size = new System.Drawing.Size(47, 21);
-            this.tbQuantity.TabIndex = 10;
-            this.tbQuantity.Text = "0";
-            this.tbQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbQuantity.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
-            this.tbQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbQuantity_KeyPress);
             // 
             // FrmItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(745, 54);
+            this.ClientSize = new System.Drawing.Size(735, 54);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmItems";
@@ -213,11 +204,10 @@
         #endregion
 
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbNumber;
+        private System.Windows.Forms.Label lbTotalAmount;
+        private System.Windows.Forms.Label lbUnitPrice;
         private System.Windows.Forms.ComboBox cbUnitName;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbItemName;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuImageButton btDelete;
         private Bunifu.Framework.UI.BunifuImageButton btPlus;

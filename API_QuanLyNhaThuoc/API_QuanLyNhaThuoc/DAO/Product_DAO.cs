@@ -44,10 +44,10 @@ namespace API_QuanLyNhaThuoc.DAO
             }
             return listproduct;
         }
-        public List<Product> GetListProductWhenCreateInvoice()
+        public List<Product> GetListProductWhenCreateInvoice(string text)
         {
             List<Product> listproduct = new List<Product>();
-            DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetListProductWhenCreateInvoice");
+            DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetListProductWhenCreateInvoice @text ", new object[]{text});
             foreach (DataRow item in data.Rows)
             {
                 Product list = new Product(item);
@@ -58,6 +58,15 @@ namespace API_QuanLyNhaThuoc.DAO
         public Product GetProductById(string id)
         {
             DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetProductById @id ", new object[] { id });
+            foreach (DataRow item in data.Rows)
+            {
+                return new Product(item);
+            }
+            return null;
+        }
+        public Product GetProductWhenCreateInvoice(string id)
+        {
+            DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetProductWhenCreateInvoice @id ", new object[] { id });
             foreach (DataRow item in data.Rows)
             {
                 return new Product(item);
@@ -83,6 +92,15 @@ namespace API_QuanLyNhaThuoc.DAO
                 listproduct.Add(list);
             }
             return listproduct;
+        }
+        public UnitPrices GetUnitPriceWhenCreateInvoice(int id)
+        {
+            DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetUnitPriceWhenCreateInvoice @id", new object[] { id });
+            foreach (DataRow item in data.Rows)
+            {
+                return new UnitPrices(item);
+            }
+            return null;
         }
         public List<UnitNames> GetUnitName( string text)
         {
@@ -120,6 +138,10 @@ namespace API_QuanLyNhaThuoc.DAO
             ms.Write(imgBytes, 0, imgBytes.Length);
             Image image = Image.FromStream(ms, true);
             return image;
+        }
+        public bool AutoUpdateStatusProduct()
+        {
+            return DataProvider.Instance.ExcuteNunQuery("autoUpdateStatusProduct") > 0;
         }
     }
 }

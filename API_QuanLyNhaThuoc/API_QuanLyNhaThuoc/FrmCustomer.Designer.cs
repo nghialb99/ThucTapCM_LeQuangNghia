@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.tbTaxCode = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btExit = new Bunifu.Framework.UI.BunifuImageButton();
             this.tbEmail = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,7 +55,6 @@
             this.tbCode = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
-            this.label15 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +63,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label15 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
@@ -71,6 +73,8 @@
             // 
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.tbTaxCode);
+            this.bunifuGradientPanel1.Controls.Add(this.label6);
             this.bunifuGradientPanel1.Controls.Add(this.btExit);
             this.bunifuGradientPanel1.Controls.Add(this.tbEmail);
             this.bunifuGradientPanel1.Controls.Add(this.label8);
@@ -104,6 +108,37 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1080, 660);
             this.bunifuGradientPanel1.TabIndex = 2;
             // 
+            // tbTaxCode
+            // 
+            this.tbTaxCode.BackColor = System.Drawing.Color.White;
+            this.tbTaxCode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbTaxCode.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTaxCode.ForeColor = System.Drawing.Color.Blue;
+            this.tbTaxCode.HintForeColor = System.Drawing.Color.Empty;
+            this.tbTaxCode.HintText = "";
+            this.tbTaxCode.isPassword = false;
+            this.tbTaxCode.LineFocusedColor = System.Drawing.Color.Blue;
+            this.tbTaxCode.LineIdleColor = System.Drawing.Color.Gray;
+            this.tbTaxCode.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.tbTaxCode.LineThickness = 3;
+            this.tbTaxCode.Location = new System.Drawing.Point(265, 147);
+            this.tbTaxCode.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTaxCode.Name = "tbTaxCode";
+            this.tbTaxCode.Size = new System.Drawing.Size(248, 33);
+            this.tbTaxCode.TabIndex = 145;
+            this.tbTaxCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(92, 161);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 19);
+            this.label6.TabIndex = 144;
+            this.label6.Text = "Mã số thuế";
+            // 
             // btExit
             // 
             this.btExit.BackColor = System.Drawing.Color.Transparent;
@@ -131,7 +166,7 @@
             this.tbEmail.LineIdleColor = System.Drawing.Color.Gray;
             this.tbEmail.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.tbEmail.LineThickness = 3;
-            this.tbEmail.Location = new System.Drawing.Point(732, 101);
+            this.tbEmail.Location = new System.Drawing.Point(732, 98);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(248, 33);
@@ -232,7 +267,7 @@
             this.tbAddress.LineIdleColor = System.Drawing.Color.Gray;
             this.tbAddress.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.tbAddress.LineThickness = 3;
-            this.tbAddress.Location = new System.Drawing.Point(265, 161);
+            this.tbAddress.Location = new System.Drawing.Point(265, 196);
             this.tbAddress.Margin = new System.Windows.Forms.Padding(4);
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(715, 33);
@@ -459,7 +494,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(92, 169);
+            this.label1.Location = new System.Drawing.Point(92, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 128;
@@ -478,7 +513,7 @@
             this.tbName.LineIdleColor = System.Drawing.Color.Gray;
             this.tbName.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.tbName.LineThickness = 3;
-            this.tbName.Location = new System.Drawing.Point(265, 105);
+            this.tbName.Location = new System.Drawing.Point(265, 98);
             this.tbName.Margin = new System.Windows.Forms.Padding(4);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(248, 33);
@@ -490,7 +525,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(92, 116);
+            this.label2.Location = new System.Drawing.Point(92, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 19);
             this.label2.TabIndex = 126;
@@ -509,7 +544,7 @@
             this.tbCode.LineIdleColor = System.Drawing.Color.Gray;
             this.tbCode.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.tbCode.LineThickness = 3;
-            this.tbCode.Location = new System.Drawing.Point(265, 53);
+            this.tbCode.Location = new System.Drawing.Point(265, 49);
             this.tbCode.Margin = new System.Windows.Forms.Padding(4);
             this.tbCode.Name = "tbCode";
             this.tbCode.Size = new System.Drawing.Size(248, 33);
@@ -532,7 +567,7 @@
             this.dgvCustomer.AllowUserToDeleteRows = false;
             this.dgvCustomer.AllowUserToResizeColumns = false;
             this.dgvCustomer.AllowUserToResizeRows = false;
-            this.dgvCustomer.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCustomer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCustomer.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -564,18 +599,6 @@
             this.dgvCustomer.TabIndex = 123;
             this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoleUser_CellClick);
             this.dgvCustomer.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvRoleUser_RowsAdded);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Teal;
-            this.label15.Location = new System.Drawing.Point(7, 17);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(102, 19);
-            this.label15.TabIndex = 96;
-            this.label15.Text = "Khách hàng";
             // 
             // username
             // 
@@ -641,6 +664,18 @@
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column1.Width = 60;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Teal;
+            this.label15.Location = new System.Drawing.Point(7, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(102, 19);
+            this.label15.TabIndex = 96;
+            this.label15.Text = "Khách hàng";
+            // 
             // FrmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -693,5 +728,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox tbTaxCode;
+        private System.Windows.Forms.Label label6;
     }
 }

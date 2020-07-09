@@ -31,14 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInventory));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -56,7 +55,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bunifuGradientPanel1.SuspendLayout();
@@ -158,6 +156,7 @@
             this.btSearch.TabIndex = 97;
             this.btSearch.text = "";
             this.btSearch.OnTextChange += new System.EventHandler(this.btSearch_OnTextChange);
+            this.btSearch.Enter += new System.EventHandler(this.btSearch_Enter);
             // 
             // label15
             // 
@@ -250,25 +249,24 @@
             this.Column6,
             this.Column1,
             this.Column2,
-            this.Column3,
             this.Column4,
             this.Column5});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListProduct.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListProduct.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvListProduct.EnableHeadersVisualStyles = false;
             this.dgvListProduct.Location = new System.Drawing.Point(32, 164);
             this.dgvListProduct.Name = "dgvListProduct";
             this.dgvListProduct.ReadOnly = true;
             this.dgvListProduct.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListProduct.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListProduct.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvListProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListProduct.Size = new System.Drawing.Size(1018, 438);
             this.dgvListProduct.TabIndex = 5;
@@ -289,7 +287,7 @@
             this.gg.HeaderText = "Thông tin sản phẩm";
             this.gg.Name = "gg";
             this.gg.ReadOnly = true;
-            this.gg.Width = 300;
+            this.gg.Width = 420;
             // 
             // Column6
             // 
@@ -320,25 +318,13 @@
             this.Column2.ReadOnly = true;
             this.Column2.Width = 120;
             // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Column3.HeaderText = "Đơn giá bán";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 120;
-            // 
             // Column4
             // 
             this.Column4.DataPropertyName = "InventoryNumber";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N0";
-            dataGridViewCellStyle7.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column4.HeaderText = "Số lượng tồn";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -347,9 +333,9 @@
             // Column5
             // 
             this.Column5.DataPropertyName = "Status";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Green;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Green;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column5.HeaderText = "Trạng thái";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -395,7 +381,6 @@
         private System.Windows.Forms.DataGridViewImageColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }

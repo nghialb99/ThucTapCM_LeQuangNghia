@@ -78,6 +78,8 @@ namespace API_QuanLyNhaThuoc
             btCancle.Enabled = false;
             btSave.Enabled = false;
             btEdit.Enabled = false;
+            btLock.Enabled = false;
+            btRestore.Enabled = false;
         }
         private void EnableItem()
         {

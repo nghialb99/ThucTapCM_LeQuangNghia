@@ -637,6 +637,7 @@
             this.Name = "FrmManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý nhà thuốc";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmManager_FormClosed);
             this.Load += new System.EventHandler(this.FrmManager_Load);
             this.bunifuGradientPanel3.ResumeLayout(false);
             this.bunifuGradientPanel3.PerformLayout();

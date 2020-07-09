@@ -46,6 +46,7 @@ namespace API_QuanLyNhaThuoc
         {
             tbCode.Text = "";
             tbName.Text = "";
+            tbTaxCode.Text = "";
             tbAddress.Text = "";
             tbPhone.Text = "";
             tbEmail.Text = "";
@@ -61,17 +62,21 @@ namespace API_QuanLyNhaThuoc
         {
             tbCode.Enabled = false;
             tbName.Enabled = false;
+            tbTaxCode.Enabled = false;
             tbAddress.Enabled = false;
             tbEmail.Enabled = false;
             tbPhone.Enabled = false;
             btCancle.Enabled = false;
             btSave.Enabled = false;
             btEdit.Enabled = false;
+            btLock.Enabled = false;
+            btRestore.Enabled = false;
         }
         private void EnableItem()
         {
             tbCode.Enabled = true;
             tbName.Enabled = true;
+            tbTaxCode.Enabled = true;
             tbAddress.Enabled = true;
             tbEmail.Enabled = true;
             tbPhone.Enabled = true;
@@ -82,7 +87,7 @@ namespace API_QuanLyNhaThuoc
         {
             for (int i = 0; i < dgvCustomer.Rows.Count; i++)
             {
-                if (dgvCustomer.Rows[i].Cells[6].Value.ToString() == "Khóa")
+                if (dgvCustomer.Rows[i].Cells[7].Value.ToString() == "Khóa")
                 {
                     dgvCustomer.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
                 }
@@ -95,20 +100,21 @@ namespace API_QuanLyNhaThuoc
             {
                 tbCode.Text = dgvCustomer.Rows[i].Cells[1].Value.ToString();
                 tbName.Text = dgvCustomer.Rows[i].Cells[2].Value.ToString();
-                tbPhone.Text = dgvCustomer.Rows[i].Cells[3].Value.ToString();
-                tbEmail.Text = dgvCustomer.Rows[i].Cells[4].Value.ToString();
-                tbAddress.Text = dgvCustomer.Rows[i].Cells[5].Value.ToString();
+                tbTaxCode.Text = dgvCustomer.Rows[i].Cells[3].Value.ToString();
+                tbPhone.Text = dgvCustomer.Rows[i].Cells[4].Value.ToString();
+                tbEmail.Text = dgvCustomer.Rows[i].Cells[5].Value.ToString();
+                tbAddress.Text = dgvCustomer.Rows[i].Cells[6].Value.ToString();
 
                 string id = dgvCustomer.Rows[i].Cells[1].Value.ToString();
                 if (tbCode.Text != "" || tbCode.Text != null)
                     btEdit.Enabled = true;
                 else btEdit.Enabled = false;
-                if (dgvCustomer.Rows[i].Cells[6].Value.ToString() == "Hoạt động")
+                if (dgvCustomer.Rows[i].Cells[7].Value.ToString() == "Hoạt động")
                 {
                     btRestore.Enabled = false;
                     btLock.Enabled = true;
                 }
-                else if (dgvCustomer.Rows[i].Cells[6].Value.ToString() == "Khóa")
+                else if (dgvCustomer.Rows[i].Cells[7].Value.ToString() == "Khóa")
                 {
                     btRestore.Enabled = true;
                     btLock.Enabled = false;
@@ -161,7 +167,7 @@ namespace API_QuanLyNhaThuoc
                 {
                     if (Email_DAO.Instance.isEmail(tbEmail.Text))
                     {
-                        if (Buyer_DAO.Instance.InsertBuyer(roleName, tbName.Text,"", tbPhone.Text, tbEmail.Text, tbAddress.Text))
+                        if (Buyer_DAO.Instance.InsertBuyer(roleName, tbName.Text,tbTaxCode.Text, tbPhone.Text, tbEmail.Text, tbAddress.Text))
                         {
                             LoadData();
                             btNew.Enabled = true;
@@ -178,7 +184,7 @@ namespace API_QuanLyNhaThuoc
             {
                 if (Email_DAO.Instance.isEmail(tbEmail.Text))
                 {
-                    if (Buyer_DAO.Instance.UpdateBuyer(roleName, tbName.Text,"", tbPhone.Text, tbEmail.Text, tbAddress.Text))
+                    if (Buyer_DAO.Instance.UpdateBuyer(roleName, tbName.Text, tbTaxCode.Text, tbPhone.Text, tbEmail.Text, tbAddress.Text))
                     {
                         LoadData();
                         btEdit.Enabled = true;
@@ -216,19 +222,16 @@ namespace API_QuanLyNhaThuoc
                 MessageBox.Show("Khôi phục " + tbCode.Text + " thành công!", "Thông báo!");
             LoadData();
         }
-
         private void tbSearch_OnTextChange(object sender, EventArgs e)
         {
             dgvCustomer.DataSource = Buyer_DAO.Instance.GetListBuyer(tbSearch.text);
             SetColorRowWhenBillStatusIsDelete();
         }
-
         private void btExit_Click(object sender, EventArgs e)
         {
             Exit();
             this.Close();
         }
-
         private void tbSearch_Enter(object sender, EventArgs e)
         {
             dgvCustomer.DataSource = Buyer_DAO.Instance.GetListBuyer(tbSearch.text);

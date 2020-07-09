@@ -48,6 +48,8 @@
             this.dateTimeTo = new Bunifu.Framework.UI.BunifuDatepicker();
             this.btFilter = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dgvListInvoice = new System.Windows.Forms.DataGridView();
+            this.btExportToExcel = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,8 +60,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvButtonView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btExportToExcel = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.label2 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel2.SuspendLayout();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListInvoice)).BeginInit();
@@ -295,108 +295,6 @@
             this.dgvListInvoice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListInvoice_CellClick);
             this.dgvListInvoice.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvListInvoice_RowsAdded);
             // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "STT";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 30;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.FillWeight = 60.9137F;
-            this.Column1.HeaderText = "Mã phiếu nhập";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
-            // 
-            // NL
-            // 
-            this.NL.DataPropertyName = "DateCreate";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle2.NullValue = null;
-            this.NL.DefaultCellStyle = dataGridViewCellStyle2;
-            this.NL.FillWeight = 113.0288F;
-            this.NL.HeaderText = "Ngày lập";
-            this.NL.Name = "NL";
-            this.NL.ReadOnly = true;
-            this.NL.Width = 85;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Creator";
-            this.Column3.FillWeight = 113.0288F;
-            this.Column3.HeaderText = "Người lập";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "Supplier";
-            this.Column8.HeaderText = "Tên nhà cung cấp";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 170;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "VatRate";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column6.HeaderText = "VAT %";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "TotalAmountWithVat";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column2.HeaderText = "Tông tiền";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Status";
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column5.HeaderText = "Trạng thái";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 80;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Note";
-            this.Column4.FillWeight = 113.0288F;
-            this.Column4.HeaderText = "Ghi chú";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 245;
-            // 
-            // dgvButtonView
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.dgvButtonView.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvButtonView.HeaderText = "Xem";
-            this.dgvButtonView.Name = "dgvButtonView";
-            this.dgvButtonView.ReadOnly = true;
-            this.dgvButtonView.Text = "Xem";
-            this.dgvButtonView.UseColumnTextForButtonValue = true;
-            this.dgvButtonView.Width = 35;
-            // 
             // btExportToExcel
             // 
             this.btExportToExcel.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
@@ -445,6 +343,108 @@
             this.label2.TabIndex = 93;
             this.label2.Text = "Báo cáo nhập hàng";
             // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "STT";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 30;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Id";
+            this.Column1.FillWeight = 60.9137F;
+            this.Column1.HeaderText = "Mã phiếu nhập";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 85;
+            // 
+            // NL
+            // 
+            this.NL.DataPropertyName = "DateCreate";
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle2.NullValue = null;
+            this.NL.DefaultCellStyle = dataGridViewCellStyle2;
+            this.NL.FillWeight = 113.0288F;
+            this.NL.HeaderText = "Ngày lập";
+            this.NL.Name = "NL";
+            this.NL.ReadOnly = true;
+            this.NL.Width = 85;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Creator";
+            this.Column3.FillWeight = 113.0288F;
+            this.Column3.HeaderText = "Người lập";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "Supplier";
+            this.Column8.HeaderText = "Tên nhà cung cấp";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 190;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "VatRate";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column6.HeaderText = "VAT %";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TotalAmountWithVat";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column2.HeaderText = "Tông tiền";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Status";
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column5.HeaderText = "Trạng thái";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 80;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Note";
+            this.Column4.FillWeight = 113.0288F;
+            this.Column4.HeaderText = "Ghi chú";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 230;
+            // 
+            // dgvButtonView
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.dgvButtonView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvButtonView.HeaderText = "Xem";
+            this.dgvButtonView.Name = "dgvButtonView";
+            this.dgvButtonView.ReadOnly = true;
+            this.dgvButtonView.Text = "Xem";
+            this.dgvButtonView.UseColumnTextForButtonValue = true;
+            this.dgvButtonView.Width = 35;
+            // 
             // UserCrtReportBuy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,6 +487,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton btFilter;
         private System.Windows.Forms.DataGridView dgvListInvoice;
         private Bunifu.Framework.UI.BunifuFlatButton btExportToExcel;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NL;
@@ -497,6 +498,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn dgvButtonView;
-        private System.Windows.Forms.Label label2;
     }
 }

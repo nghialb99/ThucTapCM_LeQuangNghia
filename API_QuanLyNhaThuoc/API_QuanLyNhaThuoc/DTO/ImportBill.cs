@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace API_QuanLyNhaThuoc.DTO
 {
-    public class ImportGoods
+    public class ImportBill
     {
         private string id;
         private DateTime dateCreate;
@@ -18,7 +18,7 @@ namespace API_QuanLyNhaThuoc.DTO
         private string note;
         private string status;
 
-        public ImportGoods(string id, DateTime dateCreate, string creator, string supplier, int vatRate, float totalAmountWithVat, string note, string status)
+        public ImportBill(string id, DateTime dateCreate, string creator, string supplier, int vatRate, float totalAmountWithVat, string note, string status)
         {
             this.Id = id;
             this.DateCreate = dateCreate;
@@ -29,7 +29,7 @@ namespace API_QuanLyNhaThuoc.DTO
             this.Note = note;
             this.Status = status;
         }
-        public ImportGoods(DataRow row)
+        public ImportBill(DataRow row)
         {
             this.Id = row["SO_PN"].ToString();
             this.DateCreate = Convert.ToDateTime(row["NGAYLAP"]);
@@ -38,7 +38,11 @@ namespace API_QuanLyNhaThuoc.DTO
             this.VatRate = Convert.ToInt32(row["VAT"]);
             this.TotalAmountWithVat = (float)Convert.ToDouble(row["TONGTIEN"]);
             this.Note = row["ghichu"].ToString();
-            this.Status = row["TrangThai"].ToString();
+            if (Convert.ToInt32(row["status"]) == 0)
+                this.Status = "Xóa bỏ";
+            else if (Convert.ToInt32(row["status"]) == 1)
+                this.Status = "Dự thảo";
+            else this.Status = "Hoàn thành";
         }
 
         public string Id { get => id; set => id = value; }

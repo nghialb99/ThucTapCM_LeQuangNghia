@@ -22,7 +22,7 @@ namespace API_QuanLyNhaThuoc
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             LoadForm();
-
+            Product_DAO.Instance.AutoUpdateStatusProduct();
             lbNotification.Text = "";
             lbNotification1.Text = "";
             lbNotification2.Text = "";

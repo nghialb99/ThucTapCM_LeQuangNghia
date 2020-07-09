@@ -33,10 +33,20 @@ namespace API_QuanLyNhaThuoc
             dgvListInvoice.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
             dgvListInvoice.DefaultCellStyle.SelectionForeColor = Color.Black;
 
-            dgvListInvoice.DataSource = ImportGoods_DAO.Instance.GetFullListImportGoods();
-            SetColorRowWhenBillStatusIsDelete();
+            dgvListInvoice.DataSource = ImportBill_DAO.Instance.GetFullListImportGoods("//SetColorRowWhenBillStatusIsDelete();");
+            
             LoadSupplierinfo();
             LoadSellerInfo(Account_DAO.Instance.CheckUsername());
+
+            rbtSupplier.Checked = true;
+            dgvSupplier.Visible = false;
+            dgvSupplier.AutoGenerateColumns = false;
+            dgvSupplier.AlternatingRowsDefaultCellStyle.BackColor = Color.LightCyan;
+            dgvSupplier.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvSupplier.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvSupplier.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            dateTimeCreate.Value = DateTime.Now;
         }
         private void SetColorRowWhenBillStatusIsDelete()
         {
@@ -45,8 +55,20 @@ namespace API_QuanLyNhaThuoc
                 if (dgvListInvoice.Rows[i].Cells[9].Value.ToString() == "Xóa bỏ")
                 {
                     dgvListInvoice.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
+                }else if (dgvListInvoice.Rows[i].Cells[9].Value.ToString() == "Dự thảo")
+                {
+                    dgvListInvoice.Rows[i].DefaultCellStyle.ForeColor = Color.FromArgb(248, 207, 1);
                 }
             }
+        }
+        private void LoadData()
+        {
+            lbIdImportBill.Text = DataProvider.Instance.ExcuteScalar("exec AutoKeyPN").ToString();
+            dgvListInvoice.DataSource = ImportBill_DAO.Instance.GetFullListImportGoods("");
+            SetColorRowWhenBillStatusIsDelete();
+            rtbNote.Text = "";
+            nbVatRate.Value = 0;
+            dateTimeCreate.Value = DateTime.Now;
         }
         private void LoadSellerInfo(string user)
         {
@@ -59,7 +81,7 @@ namespace API_QuanLyNhaThuoc
             //lbCreator.Text = DataProvider.Instance.ExcuteScalar("select HoTen from nhanvien where username ='" +FrmLogin.username+"'").ToString();
             lbCreator.Text = Account_DAO.Instance.GetUserAccount(FrmLogin.username).UserDisplayName;
             lbTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            lbIdBill.Text = DataProvider.Instance.ExcuteScalar("exec AutoKeyPN").ToString();
+            lbIdImportBill.Text = DataProvider.Instance.ExcuteScalar("exec AutoKeyPN").ToString();
             lbNotification.Text = "";
         }
         private void LoadSupplierinfo()
@@ -75,7 +97,7 @@ namespace API_QuanLyNhaThuoc
                 dgvListInvoice.Rows[i].Cells[0].Value = i + 1;
             }
         }
-        public static string idBill = "";
+        private static string idBill = "";
         private void dgvListInvoice_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = e.RowIndex;
@@ -90,21 +112,138 @@ namespace API_QuanLyNhaThuoc
                 {
                     if(e.ColumnIndex == dgvListInvoice.Columns["dgvButtonImport"].Index && row >= 0 && Supplier_DAO.Instance.CheckIsImportBillDone(idBill)==false)
                     {
-                        FrmImportDetailProduct f = new FrmImportDetailProduct(idBill);
+                        FrmImportDetailProduct f = new FrmImportDetailProduct(LoadData,idBill);
                         f.ShowDialog();
+                    }
+                    else
+                    {
+                        if(e.ColumnIndex == dgvListInvoice.Columns["gdvButtonDelete"].Index && row >= 0)
+                        {
+                            if (MessageBox.Show("Bạn có chắc muốn xóa phiếu nhập: " + idBill + " ?","Thông báo",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                if (ImportBill_DAO.Instance.DeleteImprortBill(idBill))
+                                {
+                                    MessageBox.Show("Xóa phiếu nhập: "+idBill+" thành công !");
+                                    LoadData();
+                                }
+                                else
+                                {
+                                    lbNotification.Text = "Lỗi kết nối. Vui lòng thử lại sau !";
+                                    i = 5;
+                                    timer1.Enabled = true;
+                                }
+                            }
+                        }
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cbSupplierTaxCode_SelectedIndexChanged(object sender, EventArgs e)
         {
             Supplier data = Supplier_DAO.Instance.GetSupplierById(cbSupplierTaxCode.SelectedValue.ToString());
-            tbSupplierTaxCode.Text = data.TaxCode;
-            tbBuyerAddress.Text = data.Addr;
-            tbBuyerEmail.Text = data.Email;
-            tbBuyerPhone.Text = data.Phone;
+            lbSupplierTaxCode.Text = data.TaxCode;
+            lbBuyerAddress.Text = data.Addr;
+            lbBuyerEmail.Text = data.Email;
+            lbBuyerPhone.Text = data.Phone;
+        }
+
+        private void tbSearch_OnTextChange(object sender, EventArgs e)
+        {
+            if (rbtSupplier.Checked)
+            {
+                if(tbSearch.text == "")
+                {
+                    dgvSupplier.Visible = false;
+                }
+                else
+                {
+                    dgvSupplier.Visible = true;
+                    dgvSupplier.DataSource = Supplier_DAO.Instance.GetSupplierWhenImportProduct(tbSearch.text);
+                }
+            }
+            else
+            {
+                dgvListInvoice.DataSource = ImportBill_DAO.Instance.GetFullListImportGoods(tbSearch.text);
+                SetColorRowWhenBillStatusIsDelete();
+            }
+        }
+
+        private void tbSearch_Enter(object sender, EventArgs e)
+        {
+            dgvListInvoice.DataSource = ImportBill_DAO.Instance.GetFullListImportGoods(tbSearch.text);
+            SetColorRowWhenBillStatusIsDelete();
+        }
+
+        private void rbtSupplier_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtSupplier.Checked)
+            {
+                rbtImportBill.Checked = false;
+            }
+        }
+
+        private void rbtImportBill_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtImportBill.Checked)
+            {
+                rbtSupplier.Checked = false;
+                dgvSupplier.Visible = false;
+            }
+        }
+        private string SuppliertaxCode;
+        private void dgvSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                SuppliertaxCode = dgvSupplier.Rows[e.RowIndex].Cells[1].Value.ToString();
+                cbSupplierTaxCode.SelectedValue = SuppliertaxCode;
+                tbSearch.text = "";
+            }
+            catch { }
+        }
+
+        private void btCreateInvoice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime date = dateTimeCreate.Value;
+                string userName = FrmLogin.username;
+                string SupplierTaxCode = cbSupplierTaxCode.SelectedValue.ToString();
+                int vat = (int)nbVatRate.Value;
+                float totalAmount = 0;
+                string note = rtbNote.Text;
+                if (DateTime.Compare(date,DateTime.Now)==1)
+                {
+                    lbNotification.Text = "Ngày nhập không được lớn hơn ngày hiện tại !";
+                    i = 5;
+                    timer1.Enabled = true;
+                }
+                else
+                {
+                    if (ImportBill_DAO.Instance.InsertImprortBill(date, userName, SupplierTaxCode, vat, totalAmount, note))
+                    {
+                        lbNotification.Text = "Thêm phiếu nhập dự thảo thành công !";
+                        i = 5;
+                        timer1.Enabled = true;
+                        LoadData();
+                    }
+                }
+            }
+            catch //(Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+        private int i = 5;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            i--;
+            if (i == 0) { lbNotification.Text = ""; timer1.Enabled = false; }
         }
     }
 }

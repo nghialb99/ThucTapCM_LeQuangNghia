@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserCrtEmail));
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.label11 = new System.Windows.Forms.Label();
+            this.btUpdate = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,8 +54,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.btUpdate = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.bunifuGradientPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -88,11 +88,84 @@
             this.label11.TabIndex = 97;
             this.label11.Text = "Thiết lập";
             // 
+            // btUpdate
+            // 
+            this.btUpdate.Activecolor = System.Drawing.Color.Gray;
+            this.btUpdate.BackColor = System.Drawing.Color.Silver;
+            this.btUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btUpdate.BorderRadius = 7;
+            this.btUpdate.ButtonText = "Cập nhật";
+            this.btUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btUpdate.DisabledColor = System.Drawing.Color.Gray;
+            this.btUpdate.Iconcolor = System.Drawing.Color.Transparent;
+            this.btUpdate.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_update_100;
+            this.btUpdate.Iconimage_right = null;
+            this.btUpdate.Iconimage_right_Selected = null;
+            this.btUpdate.Iconimage_Selected = null;
+            this.btUpdate.IconMarginLeft = 0;
+            this.btUpdate.IconMarginRight = 0;
+            this.btUpdate.IconRightVisible = true;
+            this.btUpdate.IconRightZoom = 0D;
+            this.btUpdate.IconVisible = true;
+            this.btUpdate.IconZoom = 90D;
+            this.btUpdate.IsTab = false;
+            this.btUpdate.Location = new System.Drawing.Point(488, 444);
+            this.btUpdate.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Normalcolor = System.Drawing.Color.Silver;
+            this.btUpdate.OnHovercolor = System.Drawing.SystemColors.Control;
+            this.btUpdate.OnHoverTextColor = System.Drawing.Color.Lime;
+            this.btUpdate.selected = false;
+            this.btUpdate.Size = new System.Drawing.Size(135, 55);
+            this.btUpdate.TabIndex = 96;
+            this.btUpdate.Text = "Cập nhật";
+            this.btUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btUpdate.Textcolor = System.Drawing.Color.Black;
+            this.btUpdate.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.BackgroundImage = global::API_QuanLyNhaThuoc.Properties.Resources.translate;
+            this.groupBox2.Controls.Add(this.cbStatus);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.tbPort);
+            this.groupBox2.Controls.Add(this.tbReEnterPass);
+            this.groupBox2.Controls.Add(this.tbEmail);
+            this.groupBox2.Controls.Add(this.tbConfigurationName);
+            this.groupBox2.Controls.Add(this.tbPassEmail);
+            this.groupBox2.Controls.Add(this.tbSeverAddress);
+            this.groupBox2.Controls.Add(this.cbConfigurationName);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.groupBox2.Location = new System.Drawing.Point(18, 190);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1056, 228);
+            this.groupBox2.TabIndex = 95;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cấu hình Email";
+            // 
             // cbStatus
             // 
-            this.cbStatus.DisplayMember = "1";
+            this.cbStatus.BackColor = System.Drawing.Color.White;
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbStatus.ForeColor = System.Drawing.Color.Black;
             this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cbStatus.Items.AddRange(new object[] {
             "Hoạt động",
             "Không hoạt động"});
@@ -219,9 +292,12 @@
             // 
             // cbConfigurationName
             // 
-            this.cbConfigurationName.DisplayMember = "1";
+            this.cbConfigurationName.BackColor = System.Drawing.Color.White;
+            this.cbConfigurationName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbConfigurationName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbConfigurationName.ForeColor = System.Drawing.Color.Black;
             this.cbConfigurationName.FormattingEnabled = true;
+            this.cbConfigurationName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cbConfigurationName.Items.AddRange(new object[] {
             "Gmail"});
             this.cbConfigurationName.Location = new System.Drawing.Point(672, 42);
@@ -333,76 +409,6 @@
             this.label18.TabIndex = 26;
             this.label18.Text = "Cổng";
             this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btUpdate
-            // 
-            this.btUpdate.Activecolor = System.Drawing.Color.Gray;
-            this.btUpdate.BackColor = System.Drawing.Color.Silver;
-            this.btUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btUpdate.BorderRadius = 7;
-            this.btUpdate.ButtonText = "Cập nhật";
-            this.btUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btUpdate.DisabledColor = System.Drawing.Color.Gray;
-            this.btUpdate.Iconcolor = System.Drawing.Color.Transparent;
-            this.btUpdate.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_update_100;
-            this.btUpdate.Iconimage_right = null;
-            this.btUpdate.Iconimage_right_Selected = null;
-            this.btUpdate.Iconimage_Selected = null;
-            this.btUpdate.IconMarginLeft = 0;
-            this.btUpdate.IconMarginRight = 0;
-            this.btUpdate.IconRightVisible = true;
-            this.btUpdate.IconRightZoom = 0D;
-            this.btUpdate.IconVisible = true;
-            this.btUpdate.IconZoom = 90D;
-            this.btUpdate.IsTab = false;
-            this.btUpdate.Location = new System.Drawing.Point(488, 444);
-            this.btUpdate.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
-            this.btUpdate.Name = "btUpdate";
-            this.btUpdate.Normalcolor = System.Drawing.Color.Silver;
-            this.btUpdate.OnHovercolor = System.Drawing.SystemColors.Control;
-            this.btUpdate.OnHoverTextColor = System.Drawing.Color.Lime;
-            this.btUpdate.selected = false;
-            this.btUpdate.Size = new System.Drawing.Size(135, 55);
-            this.btUpdate.TabIndex = 96;
-            this.btUpdate.Text = "Cập nhật";
-            this.btUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btUpdate.Textcolor = System.Drawing.Color.Black;
-            this.btUpdate.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.BackgroundImage = global::API_QuanLyNhaThuoc.Properties.Resources.translate;
-            this.groupBox2.Controls.Add(this.cbStatus);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.tbPort);
-            this.groupBox2.Controls.Add(this.tbReEnterPass);
-            this.groupBox2.Controls.Add(this.tbEmail);
-            this.groupBox2.Controls.Add(this.tbConfigurationName);
-            this.groupBox2.Controls.Add(this.tbPassEmail);
-            this.groupBox2.Controls.Add(this.tbSeverAddress);
-            this.groupBox2.Controls.Add(this.cbConfigurationName);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.groupBox2.Location = new System.Drawing.Point(18, 190);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1056, 228);
-            this.groupBox2.TabIndex = 95;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cấu hình Email";
             // 
             // UserCrtEmail
             // 

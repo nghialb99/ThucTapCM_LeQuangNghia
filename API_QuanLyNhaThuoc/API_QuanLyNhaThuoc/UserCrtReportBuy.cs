@@ -32,15 +32,15 @@ namespace API_QuanLyNhaThuoc
             dgvListInvoice.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             CultureInfo culture = new CultureInfo("vi-VN");
-            lbPNThangNay.Text = "Tháng này: " + ImportGoods_DAO.Instance.GetTotalImprtBillThisMonth().ToString();
-            lbPNThangTruoc.Text = "Tháng trước: " + ImportGoods_DAO.Instance.GetTotalImprtBillLastMonth().ToString();
-            lbTCThangNay.Text = "Tháng này: " + ImportGoods_DAO.Instance.GetTotalSpendThisMonth().ToString("c", culture);
-            lbTCThangTruoc.Text = "Tháng trước: " + ImportGoods_DAO.Instance.GetTotalSpendLastMonth().ToString("c", culture);
+            lbPNThangNay.Text = "Tháng này: " + ImportBill_DAO.Instance.GetTotalImprtBillThisMonth().ToString();
+            lbPNThangTruoc.Text = "Tháng trước: " + ImportBill_DAO.Instance.GetTotalImprtBillLastMonth().ToString();
+            lbTCThangNay.Text = "Tháng này: " + ImportBill_DAO.Instance.GetTotalSpendThisMonth().ToString("c", culture);
+            lbTCThangTruoc.Text = "Tháng trước: " + ImportBill_DAO.Instance.GetTotalSpendLastMonth().ToString("c", culture);
         }
 
         private void btFilter_Click(object sender, EventArgs e)
         {
-            dgvListInvoice.DataSource = ImportGoods_DAO.Instance.GetListImportGoods(dateTimeFrom.Value, dateTimeTo.Value);
+            dgvListInvoice.DataSource = ImportBill_DAO.Instance.GetListImportGoods(dateTimeFrom.Value, dateTimeTo.Value);
             SetColorRowWhenBillStatusIsDelete();
         }
         private void btExportToExcel_Click(object sender, EventArgs e)

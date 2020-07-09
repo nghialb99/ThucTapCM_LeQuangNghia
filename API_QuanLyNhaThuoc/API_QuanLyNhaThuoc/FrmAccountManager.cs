@@ -133,7 +133,7 @@ namespace API_QuanLyNhaThuoc
                 }
                 SetColorRowWhenAccStatusIsDelete();
             }
-            catch { }
+            catch {  }
         }
         private void dgvAccount_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -282,6 +282,7 @@ namespace API_QuanLyNhaThuoc
         {
             btSave.Enabled = true;
             btCancle.Enabled = true;
+            dgvAccount.Enabled = false;
         }
     }
 }

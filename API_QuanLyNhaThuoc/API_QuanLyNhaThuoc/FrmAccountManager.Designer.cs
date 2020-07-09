@@ -296,6 +296,7 @@
             // 
             // cbRoleUser
             // 
+            this.cbRoleUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRoleUser.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRoleUser.FormattingEnabled = true;
             this.cbRoleUser.Location = new System.Drawing.Point(185, 150);

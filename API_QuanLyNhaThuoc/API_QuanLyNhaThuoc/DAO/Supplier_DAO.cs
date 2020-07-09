@@ -31,6 +31,17 @@ namespace API_QuanLyNhaThuoc.DAO
             }
             return listSupplier;
         }
+        public List<Supplier> GetSupplierWhenImportProduct(string text)
+        {
+            List<Supplier> listSupplier = new List<Supplier>();
+            DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetSupplierWhenImportProduct @text ", new object[] { text });
+            foreach (DataRow item in data.Rows)
+            {
+                Supplier list = new Supplier(item);
+                listSupplier.Add(list);
+            }
+            return listSupplier;
+        }
         public Supplier GetSupplierById(string id)
         {
             DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetSupplierById @text ", new object[] { id });

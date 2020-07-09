@@ -39,7 +39,7 @@ namespace API_QuanLyNhaThuoc
             dateTimeFrom.Value = new DateTime(date.Year, date.Month, 1);
             dateTimeTo.Value = dateTimeFrom.Value.AddMonths(1).AddDays(-1);
             tbSellerTaxcode.Text = Account_DAO.Instance.CheckUsername();
-            dgvListInvoice.DataSource = Invoice_DAO.Instance.GetListAllInvoice();
+            dgvListInvoice.DataSource = Invoice_DAO.Instance.GetListInvoice(tbBuyerEmail.Text, tbBuyerPhone.Text, Convert.ToBoolean(cbInvoiceStatus.SelectedValue), tbInvoiceId.Text, tbCreator.Text, tbBuyerCode.Text, tbBuyerName.Text, dateTimeFrom.Value, dateTimeTo.Value);
             cbInvoiceStatus.ValueMember = "ID";
             cbInvoiceStatus.DisplayMember = "MOTA";
             cbInvoiceStatus.DataSource = DataProvider.Instance.ExcuteQuery("select * from trangthai order by ID desc");

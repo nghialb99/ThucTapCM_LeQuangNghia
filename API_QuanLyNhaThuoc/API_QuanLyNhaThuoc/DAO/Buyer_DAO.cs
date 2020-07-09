@@ -31,6 +31,17 @@ namespace API_QuanLyNhaThuoc.DAO
             }
             return listBuyer;
         }
+        public List<Buyer> GetListBuyerWhenCreateInvoice(string text)
+        {
+            List<Buyer> listBuyer = new List<Buyer>();
+            DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetListBuyerWhenCreateInvoice @text ", new object[] { text });
+            foreach (DataRow item in data.Rows)
+            {
+                Buyer list = new Buyer(item);
+                listBuyer.Add(list);
+            }
+            return listBuyer;
+        }
         public Buyer GetListBuyerById(string id)
         {
             DataTable data = DataProvider.Instance.ExcuteQuery("select * from ThongTinKhachHang where MaKH = '" + id + "'");

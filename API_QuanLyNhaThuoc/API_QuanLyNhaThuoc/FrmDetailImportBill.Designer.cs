@@ -68,7 +68,7 @@
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(800, 450);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(880, 450);
             this.bunifuGradientPanel1.TabIndex = 1;
             // 
             // btCancel
@@ -92,7 +92,7 @@
             this.btCancel.IconVisible = true;
             this.btCancel.IconZoom = 90D;
             this.btCancel.IsTab = false;
-            this.btCancel.Location = new System.Drawing.Point(20, 12);
+            this.btCancel.Location = new System.Drawing.Point(21, 12);
             this.btCancel.Name = "btCancel";
             this.btCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btCancel.OnHovercolor = System.Drawing.SystemColors.Control;
@@ -134,12 +134,12 @@
             this.Column6,
             this.Column8});
             this.dgvListInvoice.EnableHeadersVisualStyles = false;
-            this.dgvListInvoice.Location = new System.Drawing.Point(20, 105);
+            this.dgvListInvoice.Location = new System.Drawing.Point(21, 105);
             this.dgvListInvoice.Name = "dgvListInvoice";
             this.dgvListInvoice.ReadOnly = true;
             this.dgvListInvoice.RowHeadersVisible = false;
             this.dgvListInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListInvoice.Size = new System.Drawing.Size(759, 322);
+            this.dgvListInvoice.Size = new System.Drawing.Size(838, 322);
             this.dgvListInvoice.TabIndex = 90;
             this.dgvListInvoice.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvListInvoice_RowsAdded);
             // 
@@ -148,7 +148,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(216, 33);
+            this.label2.Location = new System.Drawing.Point(265, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(346, 24);
             this.label2.TabIndex = 20;
@@ -160,7 +160,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(332, 9);
+            this.label1.Location = new System.Drawing.Point(381, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 24);
             this.label1.TabIndex = 1;
@@ -185,7 +185,7 @@
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "TENTHUOC";
+            this.Column2.DataPropertyName = "TEN";
             this.Column2.FillWeight = 141.7919F;
             this.Column2.HeaderText = "Tên Thuốc";
             this.Column2.Name = "Column2";
@@ -244,7 +244,7 @@
             this.Column6.HeaderText = "Đơn giá";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
-            this.Column6.Width = 90;
+            this.Column6.Width = 110;
             // 
             // Column8
             // 
@@ -257,14 +257,14 @@
             this.Column8.HeaderText = "Thành tiền";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
-            this.Column8.Width = 90;
+            this.Column8.Width = 150;
             // 
             // FrmDetailImportBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(880, 450);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmDetailImportBill";

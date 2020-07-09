@@ -12,6 +12,7 @@ namespace API_QuanLyNhaThuoc.DTO
     public class Product
     {
         private string syntheticName;//Tên tổng hợp
+        private string shortName;
         private string id;
         private string name;
         private string idCategory;
@@ -30,9 +31,10 @@ namespace API_QuanLyNhaThuoc.DTO
         private string status;
         private Image image;
 
-        public Product(string syntheticName, string id, string name, string idCategory, string batchNo, string dosage, string from, string packagingSpecifications, string unitName, DateTime manDate, DateTime expDate, int inventoryNumber, string unitInput, int exchangeValue, float unitPrice, string status,Image image)
+        public Product(string syntheticName, string shortName, string id, string name, string idCategory, string batchNo, string dosage, string from, string packagingSpecifications, string unitName, DateTime manDate, DateTime expDate, int inventoryNumber, string unitInput, int exchangeValue, float unitPrice, string status,Image image)
         {
             this.SyntheticName = syntheticName;
+            this.ShortName = shortName;
             this.Id = id;
             this.Name = name;
             this.IdCategory = idCategory;
@@ -54,6 +56,7 @@ namespace API_QuanLyNhaThuoc.DTO
         public Product(DataRow row)
         {
             this.SyntheticName = "Mã sản phẩm: " + row["mathuoc"].ToString() + "  Loại: " + row["maloai"].ToString() + "\nTên sản phẩm: " + row["ten"].ToString() + "  " + row["Hamluong"] + "\nĐóng gói: " + row["quycachdonggoi"].ToString() + "\nSố lô: " + row["solo"].ToString() + "\nXuất sứ: " + row["xuatsu"];
+            this.ShortName = row["ten"].ToString() + "  "+ row["hamLuong"].ToString() + "\nSố lượng trong kho: " + ((int)row["soLuongton"]).ToString("N0") + "\nHạn dùng: " + ((DateTime)row["hSD"]).ToString("dd/MM/yyyy");
             this.Id = row["mathuoc"].ToString();
             this.Name = row["ten"].ToString();
             this.IdCategory = row["maloai"].ToString();
@@ -65,10 +68,10 @@ namespace API_QuanLyNhaThuoc.DTO
             this.ManDate = (DateTime)row["nSX"];
             this.ExpDate = (DateTime)row["hSD"];
             this.InventoryNumber = (int)row["soLuongton"];
-            this.UnitInput = row["donVi_N"].ToString();
+            //this.UnitInput = row["donVi_N"].ToString();
             this.ExchangeValue = (int)row["GIATRIQUYDOI"];
-            this.UnitPrice = (float)Convert.ToDouble(row["DONGIA_B"].ToString());
-            this.QuantityInput = (int)row["SOLUONG_N"];
+            //this.UnitPrice = (float)Convert.ToDouble(row["DONGIA_B"].ToString());
+            //this.QuantityInput = (int)row["SOLUONG_N"];
             int a = (int)row["status"];
             if (a == 1) this.Status = "Sử dụng tốt";
             else if (a == 0) this.Status = "Đã hết hạn";
@@ -96,5 +99,6 @@ namespace API_QuanLyNhaThuoc.DTO
         public int QuantityInput { get => quantityInput; set => quantityInput = value; }
         public string Status { get => status; set => status = value; }
         public Image Image { get => image; set => image = value; }
+        public string ShortName { get => shortName; set => shortName = value; }
     }
 }

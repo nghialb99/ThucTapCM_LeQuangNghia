@@ -34,6 +34,7 @@ namespace API_QuanLyNhaThuoc
             btCancle.Enabled = false;
             btSave.Enabled = false;
             btChooseImage.Enabled = false;
+            btUnitPrice.Enabled = false;
         }
         private void dgvListProduct_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -46,11 +47,11 @@ namespace API_QuanLyNhaThuoc
         {
             for (int i = 0; i < dgvListProduct.Rows.Count; i++)
             {
-                if (dgvListProduct.Rows[i].Cells[8].Value.ToString() == "Đã hết hạn")
+                if (dgvListProduct.Rows[i].Cells[7].Value.ToString() == "Đã hết hạn")
                 {
                     dgvListProduct.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
                 }
-                else if (dgvListProduct.Rows[i].Cells[8].Value.ToString() == "Sắp hết hạn")
+                else if (dgvListProduct.Rows[i].Cells[7].Value.ToString() == "Sắp hết hạn")
                 {
                     dgvListProduct.Rows[i].DefaultCellStyle.ForeColor = Color.Orange;
                 }

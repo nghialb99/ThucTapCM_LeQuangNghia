@@ -30,6 +30,9 @@ namespace API_QuanLyNhaThuoc
             dgvListProduct.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             radioButton1.Checked = true;
+            dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct("ggggggggggggggggggggggggggggggg", status);
+
+            
         }
 
         private void dgvListProduct_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -51,11 +54,11 @@ namespace API_QuanLyNhaThuoc
             {
                 //DataGridViewRow row = dgvListProduct.Rows[i];
 
-                if (dgvListProduct.Rows[i].Cells[7].Value.ToString() == "Đã hết hạn")
+                if (dgvListProduct.Rows[i].Cells[6].Value.ToString() == "Đã hết hạn")
                 {
                     dgvListProduct.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
                 }
-                else if(dgvListProduct.Rows[i].Cells[7].Value.ToString() == "Sắp hết hạn")
+                else if(dgvListProduct.Rows[i].Cells[6].Value.ToString() == "Sắp hết hạn")
                 {
                     dgvListProduct.Rows[i].DefaultCellStyle.ForeColor = Color.Orange;
                 }
@@ -96,6 +99,12 @@ namespace API_QuanLyNhaThuoc
                 dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(btSearch.text, status);
                 SetColorRowWhenBillStatusIsDelete();
             }
+        }
+
+        private void btSearch_Enter(object sender, EventArgs e)
+        {
+            dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(btSearch.text, status);
+            SetColorRowWhenBillStatusIsDelete();
         }
     }
 }

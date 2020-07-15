@@ -43,43 +43,51 @@ namespace API_QuanLyNhaThuoc
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            DataProvider.Instance.ExcuteNunQuery("exec DeleteItemInvoiceTemp @id ",new object[] { id });
+            Invoice_DAO.Instance.DeleteItemInvoiceTemp(id, FrmLogin.username.Replace(".", ""));
             UpdateTotalAmount();
             this.Close();
         }
         private void UpdateItemWhenEdit()
         {
             lbTotalAmount.Text = (Convert.ToDouble(tbQuantity.Text) * unitPrice).ToString("C0", culture);
-            Invoice_DAO.Instance.UpdateItemInvoiceTemp(id, cbUnitName.Text, (float)Convert.ToDouble(tbQuantity.Text), unitPrice);
+            Invoice_DAO.Instance.UpdateItemInvoiceTemp(id, cbUnitName.Text, (float)Convert.ToDouble(tbQuantity.Text), unitPrice, exchangeValue, FrmLogin.username.Replace(".", ""));
         }
 
         private float unitPrice;
+        private int exchangeValue;
         private void cbUnitName_SelectedIndexChanged(object sender, EventArgs e)
         {
             UnitPrices unit = Product_DAO.Instance.GetUnitPriceWhenCreateInvoice(Convert.ToInt32(cbUnitName.SelectedValue));
             lbUnitPrice.Text = unit.Unitprice.ToString("C0",culture);
             unitPrice = unit.Unitprice;
+            exchangeValue = unit.ExchangeValue;
+
+            tbQuantity.Text = "1";
 
             UpdateItemWhenEdit();
             UpdateTotalAmount();
         }
         private void tbQuantity_TextChanged(object sender, EventArgs e)
         {
-            if (tbQuantity.Text != "")
+            try
             {
-                if (Convert.ToInt32(tbQuantity.Text) >= 1 && Convert.ToInt32(tbQuantity.Text) <= InventoryNumber)
+                if (tbQuantity.Text != "")
                 {
-                    tbQuantity.Text = (Convert.ToDouble(tbQuantity.Text)).ToString();
-                    UpdateItemWhenEdit();
-                    UpdateTotalAmount();
-                }
-                else
-                {
-                    tbQuantity.Text = InventoryNumber.ToString();
-                    UpdateItemWhenEdit();
-                    UpdateTotalAmount();
+                    if (Convert.ToInt32(tbQuantity.Text) >= 1 && Convert.ToInt32(tbQuantity.Text) * exchangeValue <= InventoryNumber)
+                    {
+                        tbQuantity.Text = (Convert.ToDouble(tbQuantity.Text)).ToString();
+                        UpdateItemWhenEdit();
+                        UpdateTotalAmount();
+                    }
+                    else
+                    {
+                        tbQuantity.Text = (InventoryNumber/exchangeValue).ToString();
+                        UpdateItemWhenEdit();
+                        UpdateTotalAmount();
+                    }
                 }
             }
+            catch { tbQuantity.Text = "1"; }
         }
         private void btMinus_Click(object sender, EventArgs e)
         {

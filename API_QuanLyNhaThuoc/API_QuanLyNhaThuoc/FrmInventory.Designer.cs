@@ -43,7 +43,7 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.btSearch = new Bunifu.Framework.UI.BunifuTextbox();
+            this.tbSearch = new Bunifu.Framework.UI.BunifuTextbox();
             this.label15 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel4 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lbSPHetHanThangToi = new System.Windows.Forms.Label();
@@ -57,18 +57,34 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbPageNum = new System.Windows.Forms.ComboBox();
+            this.lbPageNum = new System.Windows.Forms.Label();
+            this.btPrivousPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btNextPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btLastPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btFirstPage = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuGradientPanel1.SuspendLayout();
             this.bunifuGradientPanel2.SuspendLayout();
             this.bunifuGradientPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btPrivousPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btNextPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btLastPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btFirstPage)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuGradientPanel1
             // 
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.cbPageNum);
+            this.bunifuGradientPanel1.Controls.Add(this.lbPageNum);
+            this.bunifuGradientPanel1.Controls.Add(this.btPrivousPage);
+            this.bunifuGradientPanel1.Controls.Add(this.btNextPage);
+            this.bunifuGradientPanel1.Controls.Add(this.btLastPage);
+            this.bunifuGradientPanel1.Controls.Add(this.btFirstPage);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuGradientPanel2);
-            this.bunifuGradientPanel1.Controls.Add(this.btSearch);
+            this.bunifuGradientPanel1.Controls.Add(this.tbSearch);
             this.bunifuGradientPanel1.Controls.Add(this.label15);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuGradientPanel4);
             this.bunifuGradientPanel1.Controls.Add(this.dgvListProduct);
@@ -80,7 +96,7 @@
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1080, 614);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1080, 660);
             this.bunifuGradientPanel1.TabIndex = 0;
             // 
             // bunifuGradientPanel2
@@ -143,20 +159,19 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // btSearch
+            // tbSearch
             // 
-            this.btSearch.BackColor = System.Drawing.Color.White;
-            this.btSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btSearch.BackgroundImage")));
-            this.btSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btSearch.ForeColor = System.Drawing.Color.Blue;
-            this.btSearch.Icon = ((System.Drawing.Image)(resources.GetObject("btSearch.Icon")));
-            this.btSearch.Location = new System.Drawing.Point(192, 85);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(252, 46);
-            this.btSearch.TabIndex = 97;
-            this.btSearch.text = "";
-            this.btSearch.OnTextChange += new System.EventHandler(this.btSearch_OnTextChange);
-            this.btSearch.Enter += new System.EventHandler(this.btSearch_Enter);
+            this.tbSearch.BackColor = System.Drawing.Color.White;
+            this.tbSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbSearch.BackgroundImage")));
+            this.tbSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tbSearch.ForeColor = System.Drawing.Color.Blue;
+            this.tbSearch.Icon = ((System.Drawing.Image)(resources.GetObject("tbSearch.Icon")));
+            this.tbSearch.Location = new System.Drawing.Point(192, 85);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(252, 46);
+            this.tbSearch.TabIndex = 97;
+            this.tbSearch.text = "";
+            this.tbSearch.OnTextChange += new System.EventHandler(this.btSearch_OnTextChange);
             // 
             // label15
             // 
@@ -268,7 +283,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListProduct.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvListProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListProduct.Size = new System.Drawing.Size(1018, 438);
+            this.dgvListProduct.Size = new System.Drawing.Size(1018, 464);
             this.dgvListProduct.TabIndex = 5;
             this.dgvListProduct.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvListProduct_RowsAdded);
             // 
@@ -340,11 +355,97 @@
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
+            // cbPageNum
+            // 
+            this.cbPageNum.DisplayMember = "1";
+            this.cbPageNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPageNum.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPageNum.FormattingEnabled = true;
+            this.cbPageNum.Items.AddRange(new object[] {
+            "10",
+            "15",
+            "20",
+            "30",
+            "Tất cả"});
+            this.cbPageNum.Location = new System.Drawing.Point(980, 633);
+            this.cbPageNum.Name = "cbPageNum";
+            this.cbPageNum.Size = new System.Drawing.Size(70, 23);
+            this.cbPageNum.TabIndex = 188;
+            this.cbPageNum.SelectedIndexChanged += new System.EventHandler(this.cbPageNum_SelectedIndexChanged);
+            // 
+            // lbPageNum
+            // 
+            this.lbPageNum.BackColor = System.Drawing.Color.Transparent;
+            this.lbPageNum.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPageNum.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbPageNum.Location = new System.Drawing.Point(434, 633);
+            this.lbPageNum.Name = "lbPageNum";
+            this.lbPageNum.Size = new System.Drawing.Size(220, 23);
+            this.lbPageNum.TabIndex = 187;
+            this.lbPageNum.Text = "0/0";
+            this.lbPageNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btPrivousPage
+            // 
+            this.btPrivousPage.BackColor = System.Drawing.Color.Transparent;
+            this.btPrivousPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_chevron_left_100;
+            this.btPrivousPage.ImageActive = null;
+            this.btPrivousPage.Location = new System.Drawing.Point(398, 633);
+            this.btPrivousPage.Name = "btPrivousPage";
+            this.btPrivousPage.Size = new System.Drawing.Size(30, 23);
+            this.btPrivousPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btPrivousPage.TabIndex = 186;
+            this.btPrivousPage.TabStop = false;
+            this.btPrivousPage.Zoom = 10;
+            this.btPrivousPage.Click += new System.EventHandler(this.btPrivousPage_Click);
+            // 
+            // btNextPage
+            // 
+            this.btNextPage.BackColor = System.Drawing.Color.Transparent;
+            this.btNextPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_chevron_right_100;
+            this.btNextPage.ImageActive = null;
+            this.btNextPage.Location = new System.Drawing.Point(660, 633);
+            this.btNextPage.Name = "btNextPage";
+            this.btNextPage.Size = new System.Drawing.Size(30, 23);
+            this.btNextPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btNextPage.TabIndex = 185;
+            this.btNextPage.TabStop = false;
+            this.btNextPage.Zoom = 10;
+            this.btNextPage.Click += new System.EventHandler(this.btNextPage_Click);
+            // 
+            // btLastPage
+            // 
+            this.btLastPage.BackColor = System.Drawing.Color.Transparent;
+            this.btLastPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_fast_forward_100;
+            this.btLastPage.ImageActive = null;
+            this.btLastPage.Location = new System.Drawing.Point(706, 633);
+            this.btLastPage.Name = "btLastPage";
+            this.btLastPage.Size = new System.Drawing.Size(30, 23);
+            this.btLastPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btLastPage.TabIndex = 184;
+            this.btLastPage.TabStop = false;
+            this.btLastPage.Zoom = 10;
+            this.btLastPage.Click += new System.EventHandler(this.btLastPage_Click);
+            // 
+            // btFirstPage
+            // 
+            this.btFirstPage.BackColor = System.Drawing.Color.Transparent;
+            this.btFirstPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_rewind_100;
+            this.btFirstPage.ImageActive = null;
+            this.btFirstPage.Location = new System.Drawing.Point(352, 633);
+            this.btFirstPage.Name = "btFirstPage";
+            this.btFirstPage.Size = new System.Drawing.Size(30, 23);
+            this.btFirstPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btFirstPage.TabIndex = 183;
+            this.btFirstPage.TabStop = false;
+            this.btFirstPage.Zoom = 10;
+            this.btFirstPage.Click += new System.EventHandler(this.btFirstPage_Click);
+            // 
             // FrmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 614);
+            this.ClientSize = new System.Drawing.Size(1080, 660);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInventory";
@@ -358,6 +459,10 @@
             this.bunifuGradientPanel4.ResumeLayout(false);
             this.bunifuGradientPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btPrivousPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btNextPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btLastPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btFirstPage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -371,7 +476,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbSPHetHanThangNay;
         private System.Windows.Forms.Label label15;
-        private Bunifu.Framework.UI.BunifuTextbox btSearch;
+        private Bunifu.Framework.UI.BunifuTextbox tbSearch;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel2;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -383,5 +488,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.ComboBox cbPageNum;
+        private System.Windows.Forms.Label lbPageNum;
+        private Bunifu.Framework.UI.BunifuImageButton btPrivousPage;
+        private Bunifu.Framework.UI.BunifuImageButton btNextPage;
+        private Bunifu.Framework.UI.BunifuImageButton btLastPage;
+        private Bunifu.Framework.UI.BunifuImageButton btFirstPage;
     }
 }

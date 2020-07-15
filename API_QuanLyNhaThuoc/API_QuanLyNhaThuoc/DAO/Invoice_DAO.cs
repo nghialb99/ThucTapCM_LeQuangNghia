@@ -63,10 +63,10 @@ namespace API_QuanLyNhaThuoc.DAO
             return null;
         }
 
-        public List<ItemTemp> GetListItemTemp()
+        public List<ItemTemp> GetListItemTemp(string user)
         {
             List<ItemTemp> listItem = new List<ItemTemp>();
-            DataTable data = DataProvider.Instance.ExcuteQuery("exec GetItemInvoiceTemp");
+            DataTable data = DataProvider.Instance.ExcuteQuery("select * from ItemInvoiceTemp" + user);
             foreach(DataRow item in data.Rows)
             {
                 ItemTemp list = new ItemTemp(item);
@@ -75,23 +75,23 @@ namespace API_QuanLyNhaThuoc.DAO
             return listItem;
         }
 
-        public bool InsertItemInvoiceTemp(string idItemCode)
+        public bool InsertItemInvoiceTemp(string idItemCode,string user)
         {
-            return DataProvider.Instance.ExcuteNunQuery("exec InsertItemInvoiceTemp @IdItemCode ",
-                new object[] { idItemCode }) > 0;
+            return DataProvider.Instance.ExcuteNunQuery("insert into dbo.ItemInvoiceTemp"+user+"(IdItemCode,UnitName,exchangeValue,quantity,unitPrice) values(N'"+ idItemCode + "',N'',1,1,0)") > 0;
         }
-        public bool UpdateItemInvoiceTemp(int id, string unitName, float quantyti, float unitPrice)
+        public bool UpdateItemInvoiceTemp(int id, string unitName, float quantyti, float unitPrice, int exchangeValue, string user)
         {
-            return DataProvider.Instance.ExcuteNunQuery("exec UpdateItemInvoiceTemp @id , @UnitName , @quantity , @unitPrice  ",
-                new object[] { id, unitName, quantyti, unitPrice }) > 0;
+            string query = "Update dbo.ItemInvoiceTemp" + user + " set UnitName=N'" + unitName + "',quantity=" + quantyti + ",unitPrice="+unitPrice+" ,exchangeValue ="+exchangeValue+" where id ="+ id;
+            return DataProvider.Instance.ExcuteNunQuery(query) > 0;
         }
-        public bool DeleteItemInvoiceTemp(int id)
+        public bool DeleteItemInvoiceTemp(int id, string user)
         {
-            return DataProvider.Instance.ExcuteNunQuery("exec DeleteItemInvoiceTemp @id ",new object[] { id }) > 0;
+            return DataProvider.Instance.ExcuteNunQuery("delete ItemInvoiceTemp"+user+" where id =" + id) > 0;
         }
-        public bool ResetTableItemInvoiceTemp()
+        public bool ResetTableItemInvoiceTemp(string user)
         {
-            return DataProvider.Instance.ExcuteNunQuery("exec ProcItemInvoiceTemp ") > 0;
+            string query = "DROP TABLE if EXISTS ItemInvoiceTemp"+ user + " CREATE table ItemInvoiceTemp" + user + "(id int identity,IdItemCode nvarchar(8),UnitName nvarchar(200),exchangeValue int,quantity float,unitPrice float)";
+            return DataProvider.Instance.ExcuteNunQuery(query) > 0;
         }
         public bool DropTableInvoiceTemp()
         {
@@ -102,10 +102,10 @@ namespace API_QuanLyNhaThuoc.DAO
             string query = "exec CreateInvoice @userName , @sellerTaxCode , @buyerCode , @totalAmount , @discount , @totalAmountInWords , @invoiceNote";
             return DataProvider.Instance.ExcuteNunQuery(query, new object[] { creator, sellerTaxCode, buyerCode, totalAmount, discount, amountInWord, note }) > 0;
         }
-        public bool InsertDetailBill(string idproduct, string unitName, float Quantity, float unitPrice)
+        public bool InsertDetailBill(string idproduct, string unitName, int exchangeValue, float Quantity, float unitPrice)
         {
-            string query = "exec InsertItem @itemCode , @unitName , @quantity , @unitPrice ";
-            return DataProvider.Instance.ExcuteNunQuery(query,new object[] { idproduct, unitName, Quantity, unitPrice }) > 0;
+            string query = "exec InsertItem @itemCode , @unitName , @exchangeValue , @quantity , @unitPrice ";
+            return DataProvider.Instance.ExcuteNunQuery(query,new object[] { idproduct, unitName, exchangeValue, Quantity, unitPrice }) > 0;
         }
         public bool DeleteBill(string id)
         {

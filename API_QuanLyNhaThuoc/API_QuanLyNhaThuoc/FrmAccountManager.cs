@@ -47,6 +47,7 @@ namespace API_QuanLyNhaThuoc
             btCancle.Enabled = false;
             btLock.Enabled = false;
             btRestore.Enabled = false;
+            btResetPass.Enabled = false;
             tbUserName.Enabled = false;
             tbDisplayName.Enabled = false;
             tbIdCard.Enabled = false;
@@ -181,7 +182,9 @@ namespace API_QuanLyNhaThuoc
                             ResetValue();
                             btNew.Enabled = true;
                             dgvAccount.Enabled = true;
-                            btResetPass.Enabled = true;
+                            btResetPass.Enabled = false;
+                            btLock.Enabled = false;
+                            btRestore.Enabled = false;
                             MessageBox.Show("Thêm mới tài khoản " + Account_DAO.Instance.CheckUsername() + "_" + user + " thành công !", "Thông báo!");
                         }
                         else
@@ -205,6 +208,10 @@ namespace API_QuanLyNhaThuoc
                         {
                             btCancle.Enabled = false;
                             btSave.Enabled = false;
+                            dgvAccount.Enabled = true;
+                            btResetPass.Enabled = false;
+                            btLock.Enabled = false;
+                            btRestore.Enabled = false;
                             MessageBox.Show("Cập nhật quyền thành công!", "Thông báo!");
                             ResetValue();
                         }
@@ -220,7 +227,7 @@ namespace API_QuanLyNhaThuoc
             ResetValue();
             btNew.Enabled = true;
             dgvAccount.Enabled = true;
-            btResetPass.Enabled = true;
+            btResetPass.Enabled = false;
         }
         private void tbSearch_OnTextChange(object sender, EventArgs e)
         {

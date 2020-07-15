@@ -65,6 +65,8 @@ namespace API_QuanLyNhaThuoc
             btCancle.Enabled = false;
             btSave.Enabled = false;
             btEdit.Enabled = false;
+            btLock.Enabled = false;
+            btRestore.Enabled = false;
         }
         private void EnableItem()
         {
@@ -94,6 +96,7 @@ namespace API_QuanLyNhaThuoc
         private byte status = 0;
         private void dgvRoleUser_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            UserAccount acc = Account_DAO.Instance.GetUserAccount(FrmLogin.username);
             int i = e.RowIndex;
             try
             {
@@ -119,7 +122,25 @@ namespace API_QuanLyNhaThuoc
                 if (Role.CheckSettings) checkBoxSettings.Checked = true;
                 else checkBoxSettings.Checked = false;
 
-                if (id == "ADMIN" || id == "DEFAULT") { btRestore.Enabled = false; btLock.Enabled = false; }
+                checkBoxImportFromSupplier.Checked = Role.CheckImportFromSupplier;
+                checkBoxInventory.Checked = Role.CheckInventory;
+                checkBoxImportInventory.Checked = Role.CheckImportInventory;
+
+                checkBoxCategoryProduct.Checked = Role.CheckCategoryProduct;
+                checkBoxCategorySupplier.Checked = Role.CheckCategorySupplier;
+                checkBoxCustomer.Checked = Role.CheckCustomer;
+                checkBoxSupplier.Checked = Role.CheckSupplier;
+                checkBoxProduct.Checked = Role.CheckProduct;
+
+                checkBoxUsers.Checked = Role.CheckUsers;
+                checkBoxRoleUser.Checked = Role.CheckRoleUser;
+
+                checkBoxReportSell.Checked = Role.CheckReportSell;
+                checkBoxReportBuy.Checked = Role.CheckReportBuy;
+                checkBoxReportImportInventory.Checked = Role.CheckReportImportInventory;
+                checkBoxReportSendMail.Checked = Role.CheckReportSendMail;
+
+                if (id == "ADMIN" || id == "DEFAULT" || id == acc.RoleUser) { btRestore.Enabled = false; btLock.Enabled = false; }
                 else
                 {
                     if (Role.Status == "Hoạt động") { btRestore.Enabled = false; btLock.Enabled = true; status = 1; }
@@ -156,31 +177,30 @@ namespace API_QuanLyNhaThuoc
         }
         private void btSave_Click(object sender, EventArgs e)
         {
-            string roleName = tbRoleName.Text.Trim().ToUpper();
-            byte checkCreateInvoice;
-            byte checkInvoiceManager;
-            byte checkWarehouseManager;
-            byte checkCategory;
-            byte checkEnterpriseInfo;
-            byte checkUserManager;
-            byte checkReport;
-            byte checkSettings;
-            if (checkBoxCreateInvoice.Checked == false) checkCreateInvoice = 0;
-            else checkCreateInvoice = 1;
-            if (checkBoxInvoiceManager.Checked == false) checkInvoiceManager = 0;
-            else checkInvoiceManager = 1;
-            if (checkBoxWarehouseManager.Checked == false) checkWarehouseManager = 0;
-            else checkWarehouseManager = 1;
-            if (checkBoxCategory.Checked == false) checkCategory = 0;
-            else checkCategory = 1;
-            if (checkBoxEnterpriseInfo.Checked == false) checkEnterpriseInfo = 0;
-            else checkEnterpriseInfo = 1;
-            if (checkBoxUserManager.Checked == false) checkUserManager = 0;
-            else checkUserManager = 1;
-            if (checkBoxReport.Checked == false) checkReport = 0;
-            else checkReport = 1;
-            if (checkBoxSettings.Checked == false) checkSettings = 0;
-            else checkSettings = 1;
+            string roleName = tbRoleName.Text.Trim().ToUpper().Replace(" ","");
+            bool checkCreateInvoice = checkBoxCreateInvoice.Checked;
+            bool checkInvoiceManager = checkBoxInvoiceManager.Checked;
+            bool checkWarehouseManager = checkBoxWarehouseManager.Checked;
+            bool checkCategory = checkBoxCategory.Checked;
+            bool checkEnterpriseInfo = checkBoxEnterpriseInfo.Checked;
+            bool checkUserManager = checkBoxUserManager.Checked;
+            bool checkReport = checkBoxReport.Checked;
+            bool checkSettings = checkBoxSettings.Checked;
+            bool checkImportFromSupplier = checkBoxImportFromSupplier.Checked;
+            bool checkInventory = checkBoxInventory.Checked;
+            bool checkImportInventory = checkBoxImportInventory.Checked;
+            bool checkCategoryProduct = checkBoxCategoryProduct.Checked;
+            bool checkCategorySupplier = checkBoxCategorySupplier.Checked;
+            bool checkCustomer = checkBoxCustomer.Checked;
+            bool checkSupplier = checkBoxSupplier.Checked;
+            bool checkProduct = checkBoxProduct.Checked;
+            bool checkUsers = checkBoxUsers.Checked;
+            bool checkRoleUser = checkBoxRoleUser.Checked;
+            bool checkReportSell = checkBoxReportSell.Checked;
+            bool checkReportBuy = checkBoxReportBuy.Checked;
+            bool checkReportImportInventory = checkBoxReportImportInventory.Checked;
+            bool checkReportSendMail = checkBoxReportSendMail.Checked;
+
             if (tbRoleName.Enabled == true)
             {
                 if (roleName == null || roleName == "")
@@ -189,9 +209,11 @@ namespace API_QuanLyNhaThuoc
                 }
                 else
                 {
-                    if (RoleUserManager_DAO.Instance.InsertRoleUser(roleName, tbDescription.Text, checkCreateInvoice, checkInvoiceManager, checkWarehouseManager, checkCategory, checkEnterpriseInfo, checkUserManager, checkReport, checkSettings))
+                    if (RoleUserManager_DAO.Instance.InsertRoleUser(roleName, tbDescription.Text, checkCreateInvoice, checkInvoiceManager, checkWarehouseManager, checkCategory, checkEnterpriseInfo, checkUserManager, checkReport, checkSettings, checkImportFromSupplier, checkInventory, checkImportInventory, checkCategoryProduct, checkCategorySupplier, checkCustomer, checkSupplier, checkProduct, checkUsers, checkRoleUser, checkReportSell, checkReportBuy, checkReportImportInventory, checkReportSendMail))
                     {
                         LoadData();
+                        dgvRoleUser.DataSource = RoleUserManager_DAO.Instance.LoadListRoleUserManager(tbSearch.text);
+                        SetColorRowWhenAccStatusIsDelete();
                         btNew.Enabled = true;
                         dgvRoleUser.Enabled = true;
 
@@ -202,9 +224,11 @@ namespace API_QuanLyNhaThuoc
             }
             else
             {
-                if (RoleUserManager_DAO.Instance.UpdateRoleUser(roleName, tbDescription.Text, checkCreateInvoice, checkInvoiceManager, checkWarehouseManager, checkCategory, checkEnterpriseInfo, checkUserManager, checkReport, checkSettings))
+                if (RoleUserManager_DAO.Instance.UpdateRoleUser(roleName, tbDescription.Text, checkCreateInvoice, checkInvoiceManager, checkWarehouseManager, checkCategory, checkEnterpriseInfo, checkUserManager, checkReport, checkSettings, checkImportFromSupplier, checkInventory, checkImportInventory, checkCategoryProduct, checkCategorySupplier, checkCustomer, checkSupplier, checkProduct, checkUsers, checkRoleUser, checkReportSell, checkReportBuy, checkReportImportInventory, checkReportSendMail))
                 {
                     LoadData();
+                    dgvRoleUser.DataSource = RoleUserManager_DAO.Instance.LoadListRoleUserManager(tbSearch.text);
+                    SetColorRowWhenAccStatusIsDelete();
                     btEdit.Enabled = true;
                     btNew.Enabled = true;
                     dgvRoleUser.Enabled = true;
@@ -218,14 +242,14 @@ namespace API_QuanLyNhaThuoc
             ClearData();
             DisableItem();
             btNew.Enabled = true;
-            btEdit.Enabled = true;
-            btLock.Enabled = true;
-            btRestore.Enabled = true;
+            btEdit.Enabled = false;
+            btLock.Enabled = false;
+            btRestore.Enabled = false;
             dgvRoleUser.Enabled = true;
         }
         private bool CheckRoleByUsername(string user,string rolename)
         {
-            return DataProvider.Instance.ExcuteScalar("select NhomNguoiDung from NHANVIEN where USERNAME=" + user).ToString() == rolename;
+            return DataProvider.Instance.ExcuteScalar("select NhomNguoiDung from NHANVIEN where USERNAME=N'" + user+"'").ToString() == rolename;
         }
         private void btLock_Click(object sender, EventArgs e)
         {
@@ -240,6 +264,8 @@ namespace API_QuanLyNhaThuoc
                     if (RoleUserManager_DAO.Instance.LockRoleUser(tbRoleName.Text, status))
                         MessageBox.Show("Khóa nhóm " + tbRoleName.Text + " thành công!", "Thông báo!");
                     LoadData();
+                    dgvRoleUser.DataSource = RoleUserManager_DAO.Instance.LoadListRoleUserManager(tbSearch.text);
+                    SetColorRowWhenAccStatusIsDelete();
                 }
             }
         }
@@ -248,6 +274,8 @@ namespace API_QuanLyNhaThuoc
             if (RoleUserManager_DAO.Instance.UnLockRoleUser(tbRoleName.Text, status))
                 MessageBox.Show("Khôi phục nhóm " + tbRoleName.Text + " thành công!", "Thông báo!");
             LoadData();
+            dgvRoleUser.DataSource = RoleUserManager_DAO.Instance.LoadListRoleUserManager(tbSearch.text);
+            SetColorRowWhenAccStatusIsDelete();
         }
         private void tbRoleName_OnValueChanged(object sender, EventArgs e)
         {
@@ -266,6 +294,74 @@ namespace API_QuanLyNhaThuoc
         {
             dgvRoleUser.DataSource = RoleUserManager_DAO.Instance.LoadListRoleUserManager(tbSearch.text);
             SetColorRowWhenAccStatusIsDelete();
+        }
+
+        private void checkBoxReport_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxReport.Checked)
+            {
+                checkBoxReportSell.Checked = true;
+                checkBoxReportBuy.Checked = true;
+                checkBoxReportImportInventory.Checked = true;
+                checkBoxReportSendMail.Checked = true;
+            }
+            else
+            {
+                checkBoxReportSell.Checked = false;
+                checkBoxReportBuy.Checked = false;
+                checkBoxReportImportInventory.Checked = false;
+                checkBoxReportSendMail.Checked = false;
+            }
+        }
+
+        private void checkBoxUserManager_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUserManager.Checked)
+            {
+                checkBoxUsers.Checked = true;
+                checkBoxRoleUser.Checked = true;
+            }
+            else
+            {
+                checkBoxUsers.Checked = false;
+                checkBoxRoleUser.Checked = false;
+            }
+        }
+
+        private void checkBoxCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxCategory.Checked)
+            {
+                checkBoxCategoryProduct.Checked = true;
+                checkBoxCategorySupplier.Checked = true;
+                checkBoxCustomer.Checked = true;
+                checkBoxSupplier.Checked = true;
+                checkBoxProduct.Checked = true;
+            }
+            else
+            {
+                checkBoxCategoryProduct.Checked = false;
+                checkBoxCategorySupplier.Checked = false;
+                checkBoxCustomer.Checked = false;
+                checkBoxSupplier.Checked = false;
+                checkBoxProduct.Checked = false;
+            }
+        }
+
+        private void checkBoxWarehouseManager_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxWarehouseManager.Checked)
+            {
+                checkBoxImportFromSupplier.Checked = true;
+                checkBoxInventory.Checked = true;
+                checkBoxImportInventory.Checked = true;
+            }
+            else
+            {
+                checkBoxImportFromSupplier.Checked = false;
+                checkBoxInventory.Checked = false;
+                checkBoxImportInventory.Checked = false;
+            }
         }
     }
 }

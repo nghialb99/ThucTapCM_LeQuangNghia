@@ -42,7 +42,10 @@ namespace API_QuanLyNhaThuoc.DAO
             }
             return listImp;
         }
-
+        public bool CheckUserCreateImportBill(string id,string user)
+        {
+            return DataProvider.Instance.ExcuteScalar("exec CheckUserCreateImportBill @id ",new object[] {id}).ToString() == user;
+        }
         public bool InsertImprortBill( DateTime date ,  string userName ,  string SupplierTaxCode ,  int vat ,  float totalAmount ,  string note)
         {
             return DataProvider.Instance.ExcuteNunQuery("exec CreateImportBill @date , @userName , @SupplierTaxCode , @vat , @totalAmount , @note",

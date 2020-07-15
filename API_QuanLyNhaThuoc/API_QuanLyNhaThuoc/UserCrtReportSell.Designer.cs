@@ -28,17 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserCrtReportSell));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListInvoice = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvButtonView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimeFrom = new Bunifu.Framework.UI.BunifuDatepicker();
             this.dateTimeTo = new Bunifu.Framework.UI.BunifuDatepicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.btExportToPDF = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btExportToXml = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuGradientPanel4 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lbSPHetHanThangToi = new System.Windows.Forms.Label();
@@ -58,17 +70,6 @@
             this.lbDSThangTruoc = new System.Windows.Forms.Label();
             this.btFilter = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btExportToExcel = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvButtonView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListInvoice)).BeginInit();
             this.bunifuGradientPanel4.SuspendLayout();
             this.bunifuGradientPanel3.SuspendLayout();
@@ -84,14 +85,14 @@
             this.dgvListInvoice.BackgroundColor = System.Drawing.Color.White;
             this.dgvListInvoice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvListInvoice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -111,10 +112,120 @@
             this.dgvListInvoice.ReadOnly = true;
             this.dgvListInvoice.RowHeadersVisible = false;
             this.dgvListInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListInvoice.Size = new System.Drawing.Size(1057, 322);
+            this.dgvListInvoice.Size = new System.Drawing.Size(1057, 362);
             this.dgvListInvoice.TabIndex = 79;
             this.dgvListInvoice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListInvoice_CellClick);
             this.dgvListInvoice.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvListInvoice_RowsAdded);
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "STT";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 30;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "InvoiceNumber";
+            this.Column1.FillWeight = 60.9137F;
+            this.Column1.HeaderText = "Số hóa đơn";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 90;
+            // 
+            // NL
+            // 
+            this.NL.DataPropertyName = "InvoiceIssuedDate";
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle2.NullValue = null;
+            this.NL.DefaultCellStyle = dataGridViewCellStyle2;
+            this.NL.FillWeight = 113.0288F;
+            this.NL.HeaderText = "Ngày lập";
+            this.NL.Name = "NL";
+            this.NL.ReadOnly = true;
+            this.NL.Width = 85;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "UserName";
+            this.Column3.FillWeight = 113.0288F;
+            this.Column3.HeaderText = "Người lập";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "BuyerLegalName";
+            this.Column8.HeaderText = "Tên người mua";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 170;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Discount";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column6.HeaderText = "Giảm giá (%)";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TotalAmountAfterDiscount";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column2.HeaderText = "Tông tiền";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Status";
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column5.HeaderText = "Trạng thái";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 80;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "InvoiceNote";
+            this.Column4.FillWeight = 113.0288F;
+            this.Column4.HeaderText = "Ghi chú";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 245;
+            // 
+            // dgvButtonView
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.dgvButtonView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvButtonView.HeaderText = "Xem";
+            this.dgvButtonView.Name = "dgvButtonView";
+            this.dgvButtonView.ReadOnly = true;
+            this.dgvButtonView.Text = "Xem";
+            this.dgvButtonView.UseColumnTextForButtonValue = true;
+            this.dgvButtonView.Width = 35;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "Id";
+            this.Column9.HeaderText = "Id";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
             // 
             // dateTimeFrom
             // 
@@ -158,6 +269,42 @@
             this.label1.TabIndex = 94;
             this.label1.Text = "Báo cáo bán hàng";
             // 
+            // btExportToPDF
+            // 
+            this.btExportToPDF.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btExportToPDF.BackColor = System.Drawing.SystemColors.Control;
+            this.btExportToPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btExportToPDF.BorderRadius = 7;
+            this.btExportToPDF.ButtonText = "Xuất PDF";
+            this.btExportToPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btExportToPDF.DisabledColor = System.Drawing.Color.Gray;
+            this.btExportToPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExportToPDF.Iconcolor = System.Drawing.Color.Transparent;
+            this.btExportToPDF.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_export_pdf_100;
+            this.btExportToPDF.Iconimage_right = null;
+            this.btExportToPDF.Iconimage_right_Selected = null;
+            this.btExportToPDF.Iconimage_Selected = null;
+            this.btExportToPDF.IconMarginLeft = 0;
+            this.btExportToPDF.IconMarginRight = 0;
+            this.btExportToPDF.IconRightVisible = true;
+            this.btExportToPDF.IconRightZoom = 0D;
+            this.btExportToPDF.IconVisible = true;
+            this.btExportToPDF.IconZoom = 90D;
+            this.btExportToPDF.IsTab = false;
+            this.btExportToPDF.Location = new System.Drawing.Point(764, 220);
+            this.btExportToPDF.Name = "btExportToPDF";
+            this.btExportToPDF.Normalcolor = System.Drawing.SystemColors.Control;
+            this.btExportToPDF.OnHovercolor = System.Drawing.Color.Gray;
+            this.btExportToPDF.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btExportToPDF.selected = false;
+            this.btExportToPDF.Size = new System.Drawing.Size(144, 46);
+            this.btExportToPDF.TabIndex = 96;
+            this.btExportToPDF.Text = "Xuất PDF";
+            this.btExportToPDF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btExportToPDF.Textcolor = System.Drawing.Color.Black;
+            this.btExportToPDF.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExportToPDF.Click += new System.EventHandler(this.btExportToPDF_Click);
+            // 
             // btExportToXml
             // 
             this.btExportToXml.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
@@ -180,7 +327,7 @@
             this.btExportToXml.IconVisible = true;
             this.btExportToXml.IconZoom = 90D;
             this.btExportToXml.IsTab = false;
-            this.btExportToXml.Location = new System.Drawing.Point(653, 223);
+            this.btExportToXml.Location = new System.Drawing.Point(553, 220);
             this.btExportToXml.Name = "btExportToXml";
             this.btExportToXml.Normalcolor = System.Drawing.SystemColors.Control;
             this.btExportToXml.OnHovercolor = System.Drawing.Color.Gray;
@@ -440,7 +587,7 @@
             this.btFilter.IconVisible = true;
             this.btFilter.IconZoom = 90D;
             this.btFilter.IsTab = false;
-            this.btFilter.Location = new System.Drawing.Point(282, 223);
+            this.btFilter.Location = new System.Drawing.Point(173, 220);
             this.btFilter.Name = "btFilter";
             this.btFilter.Normalcolor = System.Drawing.SystemColors.Control;
             this.btFilter.OnHovercolor = System.Drawing.Color.Gray;
@@ -476,7 +623,7 @@
             this.btExportToExcel.IconVisible = true;
             this.btExportToExcel.IconZoom = 90D;
             this.btExportToExcel.IsTab = false;
-            this.btExportToExcel.Location = new System.Drawing.Point(467, 223);
+            this.btExportToExcel.Location = new System.Drawing.Point(382, 220);
             this.btExportToExcel.Name = "btExportToExcel";
             this.btExportToExcel.Normalcolor = System.Drawing.SystemColors.Control;
             this.btExportToExcel.OnHovercolor = System.Drawing.Color.Gray;
@@ -490,121 +637,12 @@
             this.btExportToExcel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btExportToExcel.Click += new System.EventHandler(this.btExportToExcel_Click);
             // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "STT";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 30;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "InvoiceNumber";
-            this.Column1.FillWeight = 60.9137F;
-            this.Column1.HeaderText = "Số hóa đơn";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
-            // 
-            // NL
-            // 
-            this.NL.DataPropertyName = "InvoiceIssuedDate";
-            dataGridViewCellStyle14.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle14.NullValue = null;
-            this.NL.DefaultCellStyle = dataGridViewCellStyle14;
-            this.NL.FillWeight = 113.0288F;
-            this.NL.HeaderText = "Ngày lập";
-            this.NL.Name = "NL";
-            this.NL.ReadOnly = true;
-            this.NL.Width = 85;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "UserName";
-            this.Column3.FillWeight = 113.0288F;
-            this.Column3.HeaderText = "Người lập";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "BuyerLegalName";
-            this.Column8.HeaderText = "Tên người mua";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 170;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Discount";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Format = "N0";
-            dataGridViewCellStyle15.NullValue = "0";
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle15;
-            this.Column6.HeaderText = "Giảm giá (%)";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "TotalAmountAfterDiscount";
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.Format = "N0";
-            dataGridViewCellStyle16.NullValue = "0";
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle16;
-            this.Column2.HeaderText = "Tông tiền";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Status";
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle17;
-            this.Column5.HeaderText = "Trạng thái";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 80;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "InvoiceNote";
-            this.Column4.FillWeight = 113.0288F;
-            this.Column4.HeaderText = "Ghi chú";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 245;
-            // 
-            // dgvButtonView
-            // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.dgvButtonView.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dgvButtonView.HeaderText = "Xem";
-            this.dgvButtonView.Name = "dgvButtonView";
-            this.dgvButtonView.ReadOnly = true;
-            this.dgvButtonView.Text = "Xem";
-            this.dgvButtonView.UseColumnTextForButtonValue = true;
-            this.dgvButtonView.Width = 35;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "Id";
-            this.Column9.HeaderText = "Id";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            // 
             // UserCrtReportSell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btExportToPDF);
             this.Controls.Add(this.btExportToXml);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bunifuGradientPanel4);
@@ -617,7 +655,7 @@
             this.Controls.Add(this.dgvListInvoice);
             this.Controls.Add(this.btExportToExcel);
             this.Name = "UserCrtReportSell";
-            this.Size = new System.Drawing.Size(1080, 600);
+            this.Size = new System.Drawing.Size(1080, 660);
             this.Load += new System.EventHandler(this.UserCrtReportSell_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListInvoice)).EndInit();
             this.bunifuGradientPanel4.ResumeLayout(false);
@@ -668,5 +706,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn dgvButtonView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private Bunifu.Framework.UI.BunifuFlatButton btExportToPDF;
     }
 }

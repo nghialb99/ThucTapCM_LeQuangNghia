@@ -27,18 +27,14 @@ namespace API_QuanLyNhaThuoc
             dgvListInvoice.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             label1.Text = getIdBill;
-            dgvListInvoice.DataSource = DataProvider.Instance.ExcuteQuery("EXEC GetDetailImportBill @IdBill ", new object[] { getIdBill });
+            if (getIdBill.IndexOf("NT") == -1)
+                dgvListInvoice.DataSource = DataProvider.Instance.ExcuteQuery("EXEC GetDetailImportBill @IdBill ", new object[] { getIdBill });
+            else
+                dgvListInvoice.DataSource = DataProvider.Instance.ExcuteQuery("EXEC GetDetailImportInventory @IdBill ", new object[] { getIdBill });
         }
         private void FrmDetailImportBill_Load(object sender, EventArgs e)
         {
-            dgvListInvoice.AutoGenerateColumns = false;
-            dgvListInvoice.AlternatingRowsDefaultCellStyle.BackColor = Color.LightCyan;
-            dgvListInvoice.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvListInvoice.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            dgvListInvoice.DefaultCellStyle.SelectionForeColor = Color.Black;
-
-            //label1.Text = UserCrtReportBuy.idBill;
-            //dgvListInvoice.DataSource = DataProvider.Instance.ExcuteQuery("EXEC GetDetailImportBill @IdBill ", new object[] { UserCrtReportBuy.idBill });
+            
         }
         private void dgvListInvoice_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {

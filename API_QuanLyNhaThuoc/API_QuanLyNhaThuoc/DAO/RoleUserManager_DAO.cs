@@ -32,7 +32,7 @@ namespace API_QuanLyNhaThuoc.DAO
         }
         public List<RoleUserManager> CheckRoleUserManager(string username)
         {
-            List<RoleUserManager> ListRole = new List<RoleUserManager>(0);
+            List<RoleUserManager> ListRole = new List<RoleUserManager>();
             DataTable data = DataProvider.Instance.ExcuteQuery("exec CheckRoleUser @Username ", new object[] { username });
             foreach (DataRow item in data.Rows)
             {
@@ -70,22 +70,22 @@ namespace API_QuanLyNhaThuoc.DAO
             }
             return ListRole;
         }
-        public bool InsertRoleUser(string roleName, string description, byte checkCreateInvoice, byte checkInvoiceManager, byte checkWarehouseManager, byte checkCategory, byte checkEnterpriseInfo, byte checkUserManager, byte checkReport, byte checkSettings)
+        public bool InsertRoleUser(string roleName, string description, bool checkCreateInvoice, bool checkInvoiceManager, bool checkWarehouseManager, bool checkCategory, bool checkEnterpriseInfo, bool checkUserManager, bool checkReport, bool checkSettings, bool checkImportFromSupplier, bool checkInventory, bool checkImportInventory, bool checkCategoryProduct, bool checkCategorySupplier, bool checkCustomer, bool checkSupplier, bool checkProduct, bool checkUsers, bool checkRoleUser, bool checkReportSell, bool checkReportBuy, bool checkReportImportInventory, bool checkReportSendMail)
         {
-            string query = "exec InsertRoleUser @TenNhom , @MoTa , @LapHoaDon , @QuanLyHoaDon , @QuanLyKho , @DanhMuc , @ThongTinDoanhNghiep , @QuanLyNguoiDung , @BaoCao , @ThietLap ";
+            string query = "exec InsertRoleUser @TenNhom , @MoTa , @LapHoaDon , @QuanLyHoaDon , @QuanLyKho , @DanhMuc , @ThongTinDoanhNghiep , @QuanLyNguoiDung , @BaoCao , @ThietLap , @NhapTuNhaCungCap , @TonKho , @NhapTon , @NhomSanPham , @NhomNhaCungCap , @KhachHang , @NhaCungCap , @SanPham , @NguoiDung , @NhomNguoiDung , @BCBanHang , @BCNhapHang , @BCNhapTon , @BCGuiMail ";
             try
             {
                 int a = DataProvider.Instance.ExcuteNunQuery(query, new object[]
-                    { roleName, description, checkCreateInvoice, checkInvoiceManager, checkWarehouseManager, checkCategory, checkEnterpriseInfo, checkUserManager, checkReport, checkSettings});
+                    { roleName, description, checkCreateInvoice, checkInvoiceManager, checkWarehouseManager, checkCategory, checkEnterpriseInfo, checkUserManager, checkReport, checkSettings, checkImportFromSupplier, checkInventory, checkImportInventory, checkCategoryProduct, checkCategorySupplier, checkCustomer, checkSupplier, checkProduct, checkUsers, checkRoleUser, checkReportSell, checkReportBuy, checkReportImportInventory, checkReportSendMail});
                 return a > 0;
             }
             catch { return false; }
         }
-        public bool UpdateRoleUser(string roleName, string description, byte checkCreateInvoice, byte checkInvoiceManager, byte checkWarehouseManager, byte checkCatagory, byte checkEnterpriseInfo, byte checkUsermanager, byte checkReport, byte checkSettings)
+        public bool UpdateRoleUser(string roleName, string description, bool checkCreateInvoice, bool checkInvoiceManager, bool checkWarehouseManager, bool checkCatagory, bool checkEnterpriseInfo, bool checkUsermanager, bool checkReport, bool checkSettings, bool checkImportFromSupplier, bool checkInventory, bool checkImportInventory, bool checkCategoryProduct, bool checkCategorySupplier, bool checkCustomer, bool checkSupplier, bool checkProduct, bool checkUsers, bool checkRoleUser, bool checkReportSell, bool checkReportBuy, bool checkReportImportInventory, bool checkReportSendMail)
         {
-            string query = "exec UpdateRoleUser @TenNhom , @MoTa , @LapHoaDon , @QuanLyHoaDon , @QuanLyKho , @DanhMuc , @ThongTinDoanhNghiep , @QuanLyNguoiDung , @BaoCao , @ThietLap ";
+            string query = "exec UpdateRoleUser @TenNhom , @MoTa , @LapHoaDon , @QuanLyHoaDon , @QuanLyKho , @DanhMuc , @ThongTinDoanhNghiep , @QuanLyNguoiDung , @BaoCao , @ThietLap , @NhapTuNhaCungCap , @TonKho , @NhapTon , @NhomSanPham , @NhomNhaCungCap , @KhachHang , @NhaCungCap , @SanPham , @NguoiDung , @NhomNguoiDung , @BCBanHang , @BCNhapHang , @BCNhapTon , @BCGuiMail ";
             int a = DataProvider.Instance.ExcuteNunQuery(query, new object[]
-            { roleName, description, checkCreateInvoice, checkInvoiceManager, checkWarehouseManager, checkCatagory, checkEnterpriseInfo, checkUsermanager, checkReport, checkSettings});
+            { roleName, description, checkCreateInvoice, checkInvoiceManager, checkWarehouseManager, checkCatagory, checkEnterpriseInfo, checkUsermanager, checkReport, checkSettings, checkImportFromSupplier, checkInventory, checkImportInventory, checkCategoryProduct, checkCategorySupplier, checkCustomer, checkSupplier, checkProduct, checkUsers, checkRoleUser, checkReportSell, checkReportBuy, checkReportImportInventory, checkReportSendMail});
             return a > 0;
         }
         public bool LockRoleUser(string roleName, byte status)

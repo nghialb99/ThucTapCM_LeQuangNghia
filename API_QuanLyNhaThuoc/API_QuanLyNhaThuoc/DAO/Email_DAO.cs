@@ -77,7 +77,7 @@ namespace API_QuanLyNhaThuoc.DAO
                              "\n\n - Mã số hóa đơn: " + bill.InvoiceNumber +
                              "\n\n - Ngày lập: " + bill.InvoiceIssuedDate.ToString("dd/MM/yyyy") +
                              "\n\n - Tên người mua: " + bill.BuyerLegalName +
-                             "\n\n - Tông tiền thanh toán: " + bill.TotalAmount.ToString("c0",culture) +
+                             "\n\n - Tông tiền thanh toán: " + bill.TotalAmountAfterDiscount.ToString("c0",culture) +
                              "\n\n - Tiền bằng chữ: " + bill.TotalAmountInWords + 
                              "\n\n" + seller.EnterpriseName+ " xin trân trọng cảm ơn Quý khách đã sử dụng sản phẩm/dịch vụ của chúng tôi!";
             try

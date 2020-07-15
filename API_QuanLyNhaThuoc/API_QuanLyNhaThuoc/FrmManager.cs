@@ -33,9 +33,13 @@ namespace API_QuanLyNhaThuoc
         private void FrmManager_Load(object sender, EventArgs e)
         {
             PanelRight.Width = 0;
+            panelCategory.Height = 0;
+            panelReports.Height = 0;
+            panelUserManager.Height = 0;
+            panelInventory.Height = 0;
             string UserName = FrmLogin.username;
             toolStripStatusLabelUserName.Text = UserName;
-            DataProvider.Instance.ExcuteNunQuery("exec DropTable");
+            //DataProvider.Instance.ExcuteNunQuery("exec DropTable");
             AddForm(new FrmOverviews());
             CheckRoleUser(UserName);
         }
@@ -49,6 +53,20 @@ namespace API_QuanLyNhaThuoc
             btUserManager.Visible = false;
             btReport.Visible = false;
             btSettings.Visible = false;
+            btImportFromSupplier.Visible = false; 
+            btInventory.Visible = false; 
+            btImportInventory.Visible = false; 
+            btCategoryProduct.Visible = false; 
+            btCategorySupplier.Visible = false; 
+            btCustomerManager.Visible = false; 
+            btSupplierManager.Visible = false; 
+            btProductManager.Visible = false; 
+            btUserManagerment.Visible = false; 
+            btRoleUserManager.Visible = false; 
+            btReportSell.Visible = false; 
+            btReportBuy.Visible = false; 
+            btReportImportInventory.Visible = false; 
+            btReportSendMail.Visible = false; 
         }
         private void CheckRoleUser(string user)
         {
@@ -65,6 +83,20 @@ namespace API_QuanLyNhaThuoc
                     if (!Role.CheckUserManager) { btUserManager.Visible = false; }
                     if (!Role.CheckReport) { btReport.Visible = false; }
                     if (!Role.CheckSettings) { btSettings.Visible = false; }
+                    if (!Role.CheckImportFromSupplier) { btImportFromSupplier.Visible = false;}
+                    if (!Role.CheckInventory) { btInventory.Visible = false;}
+                    if (!Role.CheckImportInventory) { btImportInventory.Visible = false;}
+                    if (!Role.CheckCategoryProduct) { btCategoryProduct.Visible = false;}
+                    if (!Role.CheckCategorySupplier) { btCategorySupplier.Visible = false;}
+                    if (!Role.CheckCustomer) { btCustomerManager.Visible = false;}
+                    if (!Role.CheckSupplier) { btSupplierManager.Visible = false;}
+                    if (!Role.CheckProduct) { btProductManager.Visible = false;}
+                    if (!Role.CheckUsers) { btUserManagerment.Visible = false;}
+                    if (!Role.CheckRoleUser) { btRoleUserManager.Visible = false;}
+                    if (!Role.CheckReportSell) { btReportSell.Visible = false;}
+                    if (!Role.CheckReportBuy) { btReportBuy.Visible = false;}
+                    if (!Role.CheckReportImportInventory) { btReportImportInventory.Visible = false;}
+                    if (!Role.CheckReportSendMail) { btReportSendMail.Visible = false;}
                 }
                 else
                 {
@@ -79,6 +111,11 @@ namespace API_QuanLyNhaThuoc
             f.TopLevel = false;
             this.pannelLoad.Controls.Add(f);
             f.Show();
+        }
+        private void LoadUserCtr(UserControl f)
+        {
+            this.pannelLoad.Controls.Clear();
+            this.pannelLoad.Controls.Add(f);
         }
         #region evenButonClick
         private void btExit_Click(object sender, EventArgs e)
@@ -97,12 +134,20 @@ namespace API_QuanLyNhaThuoc
             {
                 PanelMenu.Width = 63;
                 PanelRight.Width = 137;
-                //timer1.Enabled = true;
+                //timer1.Enabled = true; 1 6 7 9
+                panel1.Width = 15;
+                panel6.Width = 15;
+                panel7.Width = 15;
+                panel9.Width = 15;
             }
             else
             {
                 PanelMenu.Width = 200;
                 PanelRight.Width = 0;
+                panel1.Width = 46;
+                panel6.Width = 46;
+                panel7.Width = 46;
+                panel9.Width = 46;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -114,7 +159,7 @@ namespace API_QuanLyNhaThuoc
         }
         private void btOverviews_Click(object sender, EventArgs e)
         {
-            DataProvider.Instance.ExcuteNunQuery("exec DropTable");
+            //DataProvider.Instance.ExcuteNunQuery("exec DropTable");
             AddForm(new FrmOverviews());
         }
 
@@ -130,15 +175,39 @@ namespace API_QuanLyNhaThuoc
 
         private void btWarehouseManager_Click(object sender, EventArgs e)
         {
-            AddForm(new FrmWarehouseManager());
+            //AddForm(new FrmWarehouseManager());
+            panelCategory.Height = 0;
+            panelReports.Height = 0;
+            panelUserManager.Height = 0;
+            //panelInventory.Height = 0;
+            if (panelInventory.Height == 0)
+            {
+                panelInventory.Height = 141;
+            }
+            else
+            {
+                panelInventory.Height = 0;
+            }
         }
         private void GetFrmWarehouseManager()
         {
-            AddForm(new FrmWarehouseManager());
+            AddForm(new FrmImportFromSupplier());
         }
         private void btCategory_Click(object sender, EventArgs e)
         {
-            AddForm(new FrmCategory(GetFrmWarehouseManager));
+            //AddForm(new FrmCategory(GetFrmWarehouseManager));
+            //panelCategory.Height = 0;
+            panelReports.Height = 0;
+            panelUserManager.Height = 0;
+            panelInventory.Height = 0;
+            if (panelCategory.Height == 0)
+            {
+                panelCategory.Height = 205;
+            }
+            else
+            {
+                panelCategory.Height = 0;
+            }
         }
 
         private void btEnterpriseInfo_Click(object sender, EventArgs e)
@@ -148,12 +217,36 @@ namespace API_QuanLyNhaThuoc
 
         private void btUserManager_Click(object sender, EventArgs e)
         {
-            AddForm(new FrmUserManager());
+            //AddForm(new FrmUserManager());
+            panelCategory.Height = 0;
+            panelReports.Height = 0;
+            //panelUserManager.Height = 0;
+            panelInventory.Height = 0;
+            if (panelUserManager.Height == 0)
+            {
+                panelUserManager.Height = 82;
+            }
+            else
+            {
+                panelUserManager.Height = 0;
+            }
         }
 
         private void btReport_Click(object sender, EventArgs e)
         {
-            AddForm(new FrmReports());
+            //AddForm(new FrmReports());
+            panelCategory.Height = 0;
+            //panelReports.Height = 0;
+            panelUserManager.Height = 0;
+            panelInventory.Height = 0;
+            if (panelReports.Height == 0)
+            {
+                panelReports.Height = 164;
+            }
+            else
+            {
+                panelReports.Height = 0;
+            }
         }
 
         private void btSettings_Click(object sender, EventArgs e)
@@ -177,6 +270,76 @@ namespace API_QuanLyNhaThuoc
         private void FrmManager_FormClosed(object sender, FormClosedEventArgs e)
         {
             LogOut();
+        }
+
+        private void btImportFromSupplier_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmImportFromSupplier());
+        }
+
+        private void btInventory_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmInventory());
+        }
+
+        private void btCategoryProduct_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmCategoryProduct());
+        }
+
+        private void btCategorySupplier_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmCategorySupplier());
+        }
+
+        private void btCustomerManager_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmCustomer());
+        }
+
+        private void btSupplierManager_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmSupplier());
+        }
+
+        private void btProductManager_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmProduct(GetFrmWarehouseManager));
+        }
+
+        private void btUserManagerment_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmAccountManager());
+        }
+
+        private void btRoleUserManager_Click(object sender, EventArgs e)
+        {
+            LoadUserCtr(new UserCrtRoleUserManager());
+        }
+
+        private void btReportSell_Click(object sender, EventArgs e)
+        {
+            LoadUserCtr(new UserCrtReportSell());
+        }
+
+        private void btReportBuy_Click(object sender, EventArgs e)
+        {
+            LoadUserCtr(new UserCrtReportBuy());
+        }
+
+        private void btReportImportInventory_Click(object sender, EventArgs e)
+        {
+            LoadUserCtr(new UserCrtReportImportInventory());
+        }
+
+        private void btReportSendMail_Click(object sender, EventArgs e)
+        {
+            LoadUserCtr(new UserCrtReportMailDelivery());
+        }
+
+        private void btImportInventory_Click(object sender, EventArgs e)
+        {
+            AddForm(new FrmImportInventory());
         }
     }
 }

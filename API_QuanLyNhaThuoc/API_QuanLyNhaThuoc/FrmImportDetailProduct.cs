@@ -66,6 +66,11 @@ namespace API_QuanLyNhaThuoc
             tbUnitPriceImport.Text = "0";
             tbQuantityImport.Text = "0";
         }
+
+        private bool IsImportFromSupplier()
+        {
+            return label1.Text.IndexOf("NT") == -1;
+        }
         private void dgvListInvoice_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             for (int i = 0; i < dgvListInvoice.Rows.Count - 1; i++)
@@ -135,37 +140,74 @@ namespace API_QuanLyNhaThuoc
             }
             else
             {
-                int t = 0;
-                try
+                if (IsImportFromSupplier())
                 {
-                    for (int i = 0; i < dgvListInvoice.Rows.Count - 1; i++)
+                    int t = 0;
+                    try
                     {
-                        string ISName = dgvListInvoice.Rows[i].Cells[1].Value.ToString();
-                        string ISCategoryProduct = dgvListInvoice.Rows[i].Cells[2].Value.ToString();
-                        string ISDosage = dgvListInvoice.Rows[i].Cells[3].Value.ToString();
-                        string ISFrom = dgvListInvoice.Rows[i].Cells[4].Value.ToString();
-                        string ISPackagingSpecifications = dgvListInvoice.Rows[i].Cells[5].Value.ToString();
-                        int ISExchangeValue = Convert.ToInt32(dgvListInvoice.Rows[i].Cells[6].Value);
-                        string ISUnitName = dgvListInvoice.Rows[i].Cells[7].Value.ToString();
-                        string ISBatchNo = dgvListInvoice.Rows[i].Cells[8].Value.ToString();
-                        DateTime ISManDate = Convert.ToDateTime(dgvListInvoice.Rows[i].Cells[9].Value);
-                        DateTime ISExpDate = Convert.ToDateTime(dgvListInvoice.Rows[i].Cells[10].Value);
-                        string ISUnitNameImport = dgvListInvoice.Rows[i].Cells[11].Value.ToString();
-                        int ISQuantityImport = Convert.ToInt32(dgvListInvoice.Rows[i].Cells[12].Value);
-                        float ISUnitPriceImport = (float)Convert.ToDouble(dgvListInvoice.Rows[i].Cells[13].Value);
-                        string ISImportBillId = label1.Text;
+                        for (int i = 0; i < dgvListInvoice.Rows.Count - 1; i++)
+                        {
+                            string ISName = dgvListInvoice.Rows[i].Cells[1].Value.ToString();
+                            string ISCategoryProduct = dgvListInvoice.Rows[i].Cells[2].Value.ToString();
+                            string ISDosage = dgvListInvoice.Rows[i].Cells[3].Value.ToString();
+                            string ISFrom = dgvListInvoice.Rows[i].Cells[4].Value.ToString();
+                            string ISPackagingSpecifications = dgvListInvoice.Rows[i].Cells[5].Value.ToString();
+                            int ISExchangeValue = Convert.ToInt32(dgvListInvoice.Rows[i].Cells[6].Value);
+                            string ISUnitName = dgvListInvoice.Rows[i].Cells[7].Value.ToString();
+                            string ISBatchNo = dgvListInvoice.Rows[i].Cells[8].Value.ToString();
+                            DateTime ISManDate = Convert.ToDateTime(dgvListInvoice.Rows[i].Cells[9].Value);
+                            DateTime ISExpDate = Convert.ToDateTime(dgvListInvoice.Rows[i].Cells[10].Value);
+                            string ISUnitNameImport = dgvListInvoice.Rows[i].Cells[11].Value.ToString();
+                            int ISQuantityImport = Convert.ToInt32(dgvListInvoice.Rows[i].Cells[12].Value);
+                            float ISUnitPriceImport = (float)Convert.ToDouble(dgvListInvoice.Rows[i].Cells[13].Value);
+                            string ISImportBillId = label1.Text;
 
-                        t += ImportBill_DAO.Instance.InsertImprortDetailBill(ISName, ISCategoryProduct, ISDosage, ISFrom, ISPackagingSpecifications, ISExchangeValue, ISUnitName, ISBatchNo, ISManDate, ISExpDate, ISUnitNameImport, ISUnitPriceImport, ISQuantityImport, ISImportBillId);
+                            t += ImportBill_DAO.Instance.InsertImprortDetailBill(ISName, ISCategoryProduct, ISDosage, ISFrom, ISPackagingSpecifications, ISExchangeValue, ISUnitName, ISBatchNo, ISManDate, ISExpDate, ISUnitNameImport, ISUnitPriceImport, ISQuantityImport, ISImportBillId);
+                        }
+                        if (t > 0)
+                        {
+                            MessageBox.Show("Lưu thành công! ", "Thông báo", MessageBoxButtons.OK);
+                            LoadDataWhenExit();
+                            this.Close();
+                        }
+                        else { MessageBox.Show("Lỗi kết nối! Vui lòng kiểm tra lại kết nối trước khi thao tác!", "Thông báo"); }
                     }
-                    if (t>0)
-                    {
-                        MessageBox.Show("Lưu thành công! ", "Thông báo", MessageBoxButtons.OK);
-                        LoadDataWhenExit();
-                        this.Close();
-                    }
-                    else { MessageBox.Show("Lỗi kết nối! Vui lòng kiểm tra lại kết nối trước khi thao tác!", "Thông báo"); }
+                    catch { MessageBox.Show("Lỗi kết nối! Vui lòng kiểm tra lại kết nối trước khi thao tác!", "Thông báo"); }
                 }
-                catch { MessageBox.Show("Lỗi kết nối! Vui lòng kiểm tra lại kết nối trước khi thao tác!", "Thông báo"); }
+                else
+                {
+                    int t = 0;
+                    try
+                    {
+                        for (int i = 0; i < dgvListInvoice.Rows.Count - 1; i++)
+                        {
+                            string ISName = dgvListInvoice.Rows[i].Cells[1].Value.ToString();
+                            string ISCategoryProduct = dgvListInvoice.Rows[i].Cells[2].Value.ToString();
+                            string ISDosage = dgvListInvoice.Rows[i].Cells[3].Value.ToString();
+                            string ISFrom = dgvListInvoice.Rows[i].Cells[4].Value.ToString();
+                            string ISPackagingSpecifications = dgvListInvoice.Rows[i].Cells[5].Value.ToString();
+                            int ISExchangeValue = Convert.ToInt32(dgvListInvoice.Rows[i].Cells[6].Value);
+                            string ISUnitName = dgvListInvoice.Rows[i].Cells[7].Value.ToString();
+                            string ISBatchNo = dgvListInvoice.Rows[i].Cells[8].Value.ToString();
+                            DateTime ISManDate = Convert.ToDateTime(dgvListInvoice.Rows[i].Cells[9].Value);
+                            DateTime ISExpDate = Convert.ToDateTime(dgvListInvoice.Rows[i].Cells[10].Value);
+                            string ISUnitNameImport = dgvListInvoice.Rows[i].Cells[11].Value.ToString();
+                            int ISQuantityImport = Convert.ToInt32(dgvListInvoice.Rows[i].Cells[12].Value);
+                            float ISUnitPriceImport = (float)Convert.ToDouble(dgvListInvoice.Rows[i].Cells[13].Value);
+                            string ISImportBillId = label1.Text;
+
+                            t += ImportInventory_DAO.Instance.InsertImprortDetailBill(ISName, ISCategoryProduct, ISDosage, ISFrom, ISPackagingSpecifications, ISExchangeValue, ISUnitName, ISBatchNo, ISManDate, ISExpDate, ISUnitNameImport, ISUnitPriceImport, ISQuantityImport, ISImportBillId);
+                        }
+                        if (t > 0)
+                        {
+                            MessageBox.Show("Lưu thành công! ", "Thông báo", MessageBoxButtons.OK);
+                            LoadDataWhenExit();
+                            this.Close();
+                        }
+                        else { MessageBox.Show("Lỗi kết nối! Vui lòng kiểm tra lại kết nối trước khi thao tác!", "Thông báo"); }
+                    }
+                    catch { MessageBox.Show("Lỗi kết nối! Vui lòng kiểm tra lại kết nối trước khi thao tác!", "Thông báo"); }
+                }
             }
         }
 

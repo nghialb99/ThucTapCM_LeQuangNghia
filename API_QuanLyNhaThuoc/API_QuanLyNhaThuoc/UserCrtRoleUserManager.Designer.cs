@@ -61,9 +61,35 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colum3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxImportInventory = new System.Windows.Forms.CheckBox();
+            this.checkBoxInventory = new System.Windows.Forms.CheckBox();
+            this.checkBoxImportFromSupplier = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBoxProduct = new System.Windows.Forms.CheckBox();
+            this.checkBoxSupplier = new System.Windows.Forms.CheckBox();
+            this.checkBoxCustomer = new System.Windows.Forms.CheckBox();
+            this.checkBoxCategorySupplier = new System.Windows.Forms.CheckBox();
+            this.checkBoxCategoryProduct = new System.Windows.Forms.CheckBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.checkBoxReportSendMail = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportImportInventory = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportBuy = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportSell = new System.Windows.Forms.CheckBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.checkBoxRoleUser = new System.Windows.Forms.CheckBox();
+            this.checkBoxUsers = new System.Windows.Forms.CheckBox();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panelCheckBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoleUser)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -267,7 +293,7 @@
             this.btRestore.IconVisible = true;
             this.btRestore.IconZoom = 90D;
             this.btRestore.IsTab = false;
-            this.btRestore.Location = new System.Drawing.Point(930, 253);
+            this.btRestore.Location = new System.Drawing.Point(929, 253);
             this.btRestore.Name = "btRestore";
             this.btRestore.Normalcolor = System.Drawing.Color.Silver;
             this.btRestore.OnHovercolor = System.Drawing.SystemColors.Control;
@@ -339,7 +365,7 @@
             this.btLock.IconVisible = true;
             this.btLock.IconZoom = 90D;
             this.btLock.IsTab = false;
-            this.btLock.Location = new System.Drawing.Point(799, 253);
+            this.btLock.Location = new System.Drawing.Point(798, 253);
             this.btLock.Name = "btLock";
             this.btLock.Normalcolor = System.Drawing.Color.Silver;
             this.btLock.OnHovercolor = System.Drawing.SystemColors.Control;
@@ -436,18 +462,24 @@
             // 
             // panelCheckBox
             // 
+            this.panelCheckBox.AllowDrop = true;
+            this.panelCheckBox.AutoScroll = true;
             this.panelCheckBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCheckBox.Controls.Add(this.checkBoxSettings);
+            this.panelCheckBox.Controls.Add(this.panel6);
             this.panelCheckBox.Controls.Add(this.checkBoxReport);
+            this.panelCheckBox.Controls.Add(this.panel8);
             this.panelCheckBox.Controls.Add(this.checkBoxUserManager);
             this.panelCheckBox.Controls.Add(this.checkBoxEnterpriseInfo);
+            this.panelCheckBox.Controls.Add(this.panel2);
             this.panelCheckBox.Controls.Add(this.checkBoxCategory);
+            this.panelCheckBox.Controls.Add(this.panel4);
             this.panelCheckBox.Controls.Add(this.checkBoxWarehouseManager);
             this.panelCheckBox.Controls.Add(this.checkBoxInvoiceManager);
             this.panelCheckBox.Controls.Add(this.checkBoxCreateInvoice);
-            this.panelCheckBox.Location = new System.Drawing.Point(760, 73);
+            this.panelCheckBox.Location = new System.Drawing.Point(741, 27);
             this.panelCheckBox.Name = "panelCheckBox";
-            this.panelCheckBox.Size = new System.Drawing.Size(209, 162);
+            this.panelCheckBox.Size = new System.Drawing.Size(234, 197);
             this.panelCheckBox.TabIndex = 91;
             // 
             // checkBoxSettings
@@ -455,9 +487,9 @@
             this.checkBoxSettings.AutoSize = true;
             this.checkBoxSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkBoxSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxSettings.Location = new System.Drawing.Point(0, 140);
+            this.checkBoxSettings.Location = new System.Drawing.Point(0, 420);
             this.checkBoxSettings.Name = "checkBoxSettings";
-            this.checkBoxSettings.Size = new System.Drawing.Size(207, 20);
+            this.checkBoxSettings.Size = new System.Drawing.Size(215, 20);
             this.checkBoxSettings.TabIndex = 8;
             this.checkBoxSettings.Text = "Thiết lập";
             this.checkBoxSettings.UseVisualStyleBackColor = true;
@@ -467,33 +499,35 @@
             this.checkBoxReport.AutoSize = true;
             this.checkBoxReport.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkBoxReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxReport.Location = new System.Drawing.Point(0, 120);
+            this.checkBoxReport.Location = new System.Drawing.Point(0, 320);
             this.checkBoxReport.Name = "checkBoxReport";
-            this.checkBoxReport.Size = new System.Drawing.Size(207, 20);
+            this.checkBoxReport.Size = new System.Drawing.Size(215, 20);
             this.checkBoxReport.TabIndex = 7;
             this.checkBoxReport.Text = "Báo cáo";
             this.checkBoxReport.UseVisualStyleBackColor = true;
+            this.checkBoxReport.CheckedChanged += new System.EventHandler(this.checkBoxReport_CheckedChanged);
             // 
             // checkBoxUserManager
             // 
             this.checkBoxUserManager.AutoSize = true;
             this.checkBoxUserManager.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkBoxUserManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxUserManager.Location = new System.Drawing.Point(0, 100);
+            this.checkBoxUserManager.Location = new System.Drawing.Point(0, 260);
             this.checkBoxUserManager.Name = "checkBoxUserManager";
-            this.checkBoxUserManager.Size = new System.Drawing.Size(207, 20);
+            this.checkBoxUserManager.Size = new System.Drawing.Size(215, 20);
             this.checkBoxUserManager.TabIndex = 6;
             this.checkBoxUserManager.Text = "Quản lý người dùng";
             this.checkBoxUserManager.UseVisualStyleBackColor = true;
+            this.checkBoxUserManager.CheckedChanged += new System.EventHandler(this.checkBoxUserManager_CheckedChanged);
             // 
             // checkBoxEnterpriseInfo
             // 
             this.checkBoxEnterpriseInfo.AutoSize = true;
             this.checkBoxEnterpriseInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkBoxEnterpriseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxEnterpriseInfo.Location = new System.Drawing.Point(0, 80);
+            this.checkBoxEnterpriseInfo.Location = new System.Drawing.Point(0, 240);
             this.checkBoxEnterpriseInfo.Name = "checkBoxEnterpriseInfo";
-            this.checkBoxEnterpriseInfo.Size = new System.Drawing.Size(207, 20);
+            this.checkBoxEnterpriseInfo.Size = new System.Drawing.Size(215, 20);
             this.checkBoxEnterpriseInfo.TabIndex = 5;
             this.checkBoxEnterpriseInfo.Text = "Thông tin doanh nghiệp";
             this.checkBoxEnterpriseInfo.UseVisualStyleBackColor = true;
@@ -503,12 +537,13 @@
             this.checkBoxCategory.AutoSize = true;
             this.checkBoxCategory.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxCategory.Location = new System.Drawing.Point(0, 60);
+            this.checkBoxCategory.Location = new System.Drawing.Point(0, 117);
             this.checkBoxCategory.Name = "checkBoxCategory";
-            this.checkBoxCategory.Size = new System.Drawing.Size(207, 20);
+            this.checkBoxCategory.Size = new System.Drawing.Size(215, 20);
             this.checkBoxCategory.TabIndex = 4;
             this.checkBoxCategory.Text = "Danh mục";
             this.checkBoxCategory.UseVisualStyleBackColor = true;
+            this.checkBoxCategory.CheckedChanged += new System.EventHandler(this.checkBoxCategory_CheckedChanged);
             // 
             // checkBoxWarehouseManager
             // 
@@ -517,10 +552,11 @@
             this.checkBoxWarehouseManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxWarehouseManager.Location = new System.Drawing.Point(0, 40);
             this.checkBoxWarehouseManager.Name = "checkBoxWarehouseManager";
-            this.checkBoxWarehouseManager.Size = new System.Drawing.Size(207, 20);
+            this.checkBoxWarehouseManager.Size = new System.Drawing.Size(215, 20);
             this.checkBoxWarehouseManager.TabIndex = 3;
             this.checkBoxWarehouseManager.Text = "Quản lý kho";
             this.checkBoxWarehouseManager.UseVisualStyleBackColor = true;
+            this.checkBoxWarehouseManager.CheckedChanged += new System.EventHandler(this.checkBoxWarehouseManager_CheckedChanged);
             // 
             // checkBoxInvoiceManager
             // 
@@ -529,7 +565,7 @@
             this.checkBoxInvoiceManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxInvoiceManager.Location = new System.Drawing.Point(0, 20);
             this.checkBoxInvoiceManager.Name = "checkBoxInvoiceManager";
-            this.checkBoxInvoiceManager.Size = new System.Drawing.Size(207, 20);
+            this.checkBoxInvoiceManager.Size = new System.Drawing.Size(215, 20);
             this.checkBoxInvoiceManager.TabIndex = 2;
             this.checkBoxInvoiceManager.Text = "Quản lý hóa đơn";
             this.checkBoxInvoiceManager.UseVisualStyleBackColor = true;
@@ -541,7 +577,7 @@
             this.checkBoxCreateInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxCreateInvoice.Location = new System.Drawing.Point(0, 0);
             this.checkBoxCreateInvoice.Name = "checkBoxCreateInvoice";
-            this.checkBoxCreateInvoice.Size = new System.Drawing.Size(207, 20);
+            this.checkBoxCreateInvoice.Size = new System.Drawing.Size(215, 20);
             this.checkBoxCreateInvoice.TabIndex = 1;
             this.checkBoxCreateInvoice.Text = "Lập hóa đơn";
             this.checkBoxCreateInvoice.UseVisualStyleBackColor = true;
@@ -569,15 +605,14 @@
             this.name,
             this.colum3,
             this.Column1});
-            this.dgvRoleUser.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvRoleUser.EnableHeadersVisualStyles = false;
-            this.dgvRoleUser.Location = new System.Drawing.Point(0, 331);
+            this.dgvRoleUser.Location = new System.Drawing.Point(96, 324);
             this.dgvRoleUser.Name = "dgvRoleUser";
             this.dgvRoleUser.ReadOnly = true;
             this.dgvRoleUser.RowHeadersVisible = false;
             this.dgvRoleUser.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvRoleUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRoleUser.Size = new System.Drawing.Size(1080, 329);
+            this.dgvRoleUser.Size = new System.Drawing.Size(879, 320);
             this.dgvRoleUser.TabIndex = 85;
             this.dgvRoleUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoleUser_CellClick);
             this.dgvRoleUser.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvRoleUser_RowsAdded);
@@ -587,7 +622,7 @@
             this.username.HeaderText = "STT";
             this.username.Name = "username";
             this.username.ReadOnly = true;
-            this.username.Width = 55;
+            this.username.Width = 35;
             // 
             // type
             // 
@@ -595,7 +630,7 @@
             this.type.HeaderText = "Tên nhóm người dùng";
             this.type.Name = "type";
             this.type.ReadOnly = true;
-            this.type.Width = 350;
+            this.type.Width = 250;
             // 
             // name
             // 
@@ -603,7 +638,7 @@
             this.name.HeaderText = "Mô tả";
             this.name.Name = "name";
             this.name.ReadOnly = true;
-            this.name.Width = 350;
+            this.name.Width = 300;
             // 
             // colum3
             // 
@@ -620,7 +655,257 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.Width = 140;
+            this.Column1.Width = 130;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.checkBoxImportInventory);
+            this.panel4.Controls.Add(this.checkBoxInventory);
+            this.panel4.Controls.Add(this.checkBoxImportFromSupplier);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 60);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(215, 57);
+            this.panel4.TabIndex = 109;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(26, 57);
+            this.panel5.TabIndex = 109;
+            // 
+            // checkBoxImportInventory
+            // 
+            this.checkBoxImportInventory.AutoSize = true;
+            this.checkBoxImportInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxImportInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxImportInventory.Location = new System.Drawing.Point(26, 40);
+            this.checkBoxImportInventory.Name = "checkBoxImportInventory";
+            this.checkBoxImportInventory.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxImportInventory.TabIndex = 115;
+            this.checkBoxImportInventory.Text = "Nhập tồn";
+            this.checkBoxImportInventory.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxInventory
+            // 
+            this.checkBoxInventory.AutoSize = true;
+            this.checkBoxInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxInventory.Location = new System.Drawing.Point(26, 20);
+            this.checkBoxInventory.Name = "checkBoxInventory";
+            this.checkBoxInventory.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxInventory.TabIndex = 114;
+            this.checkBoxInventory.Text = "Tồn kho";
+            this.checkBoxInventory.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxImportFromSupplier
+            // 
+            this.checkBoxImportFromSupplier.AutoSize = true;
+            this.checkBoxImportFromSupplier.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxImportFromSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxImportFromSupplier.Location = new System.Drawing.Point(26, 0);
+            this.checkBoxImportFromSupplier.Name = "checkBoxImportFromSupplier";
+            this.checkBoxImportFromSupplier.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxImportFromSupplier.TabIndex = 113;
+            this.checkBoxImportFromSupplier.Text = "Nhập từ nhà cung cấp";
+            this.checkBoxImportFromSupplier.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.checkBoxProduct);
+            this.panel2.Controls.Add(this.checkBoxSupplier);
+            this.panel2.Controls.Add(this.checkBoxCustomer);
+            this.panel2.Controls.Add(this.checkBoxCategorySupplier);
+            this.panel2.Controls.Add(this.checkBoxCategoryProduct);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 137);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(215, 103);
+            this.panel2.TabIndex = 111;
+            // 
+            // checkBoxProduct
+            // 
+            this.checkBoxProduct.AutoSize = true;
+            this.checkBoxProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxProduct.Location = new System.Drawing.Point(26, 80);
+            this.checkBoxProduct.Name = "checkBoxProduct";
+            this.checkBoxProduct.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxProduct.TabIndex = 117;
+            this.checkBoxProduct.Text = "Sản phẩm";
+            this.checkBoxProduct.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSupplier
+            // 
+            this.checkBoxSupplier.AutoSize = true;
+            this.checkBoxSupplier.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSupplier.Location = new System.Drawing.Point(26, 60);
+            this.checkBoxSupplier.Name = "checkBoxSupplier";
+            this.checkBoxSupplier.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxSupplier.TabIndex = 116;
+            this.checkBoxSupplier.Text = "Nhà cung cấp";
+            this.checkBoxSupplier.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxCustomer
+            // 
+            this.checkBoxCustomer.AutoSize = true;
+            this.checkBoxCustomer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxCustomer.Location = new System.Drawing.Point(26, 40);
+            this.checkBoxCustomer.Name = "checkBoxCustomer";
+            this.checkBoxCustomer.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxCustomer.TabIndex = 115;
+            this.checkBoxCustomer.Text = "Khách hàng";
+            this.checkBoxCustomer.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxCategorySupplier
+            // 
+            this.checkBoxCategorySupplier.AutoSize = true;
+            this.checkBoxCategorySupplier.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxCategorySupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxCategorySupplier.Location = new System.Drawing.Point(26, 20);
+            this.checkBoxCategorySupplier.Name = "checkBoxCategorySupplier";
+            this.checkBoxCategorySupplier.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxCategorySupplier.TabIndex = 114;
+            this.checkBoxCategorySupplier.Text = "Nhóm nhà cung cấp";
+            this.checkBoxCategorySupplier.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxCategoryProduct
+            // 
+            this.checkBoxCategoryProduct.AutoSize = true;
+            this.checkBoxCategoryProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxCategoryProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxCategoryProduct.Location = new System.Drawing.Point(26, 0);
+            this.checkBoxCategoryProduct.Name = "checkBoxCategoryProduct";
+            this.checkBoxCategoryProduct.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxCategoryProduct.TabIndex = 113;
+            this.checkBoxCategoryProduct.Text = "Nhóm sản phẩm";
+            this.checkBoxCategoryProduct.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(26, 103);
+            this.panel3.TabIndex = 109;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.checkBoxReportSendMail);
+            this.panel6.Controls.Add(this.checkBoxReportImportInventory);
+            this.panel6.Controls.Add(this.checkBoxReportBuy);
+            this.panel6.Controls.Add(this.checkBoxReportSell);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 340);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(215, 80);
+            this.panel6.TabIndex = 112;
+            // 
+            // checkBoxReportSendMail
+            // 
+            this.checkBoxReportSendMail.AutoSize = true;
+            this.checkBoxReportSendMail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxReportSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxReportSendMail.Location = new System.Drawing.Point(26, 60);
+            this.checkBoxReportSendMail.Name = "checkBoxReportSendMail";
+            this.checkBoxReportSendMail.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxReportSendMail.TabIndex = 116;
+            this.checkBoxReportSendMail.Text = "Báo cáo gửi mail";
+            this.checkBoxReportSendMail.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReportImportInventory
+            // 
+            this.checkBoxReportImportInventory.AutoSize = true;
+            this.checkBoxReportImportInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxReportImportInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxReportImportInventory.Location = new System.Drawing.Point(26, 40);
+            this.checkBoxReportImportInventory.Name = "checkBoxReportImportInventory";
+            this.checkBoxReportImportInventory.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxReportImportInventory.TabIndex = 115;
+            this.checkBoxReportImportInventory.Text = "Báo cáo nhập tồn";
+            this.checkBoxReportImportInventory.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReportBuy
+            // 
+            this.checkBoxReportBuy.AutoSize = true;
+            this.checkBoxReportBuy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxReportBuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxReportBuy.Location = new System.Drawing.Point(26, 20);
+            this.checkBoxReportBuy.Name = "checkBoxReportBuy";
+            this.checkBoxReportBuy.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxReportBuy.TabIndex = 114;
+            this.checkBoxReportBuy.Text = "Báo cáo nhập hàng";
+            this.checkBoxReportBuy.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReportSell
+            // 
+            this.checkBoxReportSell.AutoSize = true;
+            this.checkBoxReportSell.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxReportSell.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxReportSell.Location = new System.Drawing.Point(26, 0);
+            this.checkBoxReportSell.Name = "checkBoxReportSell";
+            this.checkBoxReportSell.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxReportSell.TabIndex = 113;
+            this.checkBoxReportSell.Text = "Báo cáo bán hàng";
+            this.checkBoxReportSell.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(26, 80);
+            this.panel7.TabIndex = 109;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.checkBoxRoleUser);
+            this.panel8.Controls.Add(this.checkBoxUsers);
+            this.panel8.Controls.Add(this.panel9);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 280);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(215, 40);
+            this.panel8.TabIndex = 113;
+            // 
+            // checkBoxRoleUser
+            // 
+            this.checkBoxRoleUser.AutoSize = true;
+            this.checkBoxRoleUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxRoleUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRoleUser.Location = new System.Drawing.Point(26, 20);
+            this.checkBoxRoleUser.Name = "checkBoxRoleUser";
+            this.checkBoxRoleUser.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxRoleUser.TabIndex = 114;
+            this.checkBoxRoleUser.Text = "Nhóm người dùng";
+            this.checkBoxRoleUser.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxUsers
+            // 
+            this.checkBoxUsers.AutoSize = true;
+            this.checkBoxUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxUsers.Location = new System.Drawing.Point(26, 0);
+            this.checkBoxUsers.Name = "checkBoxUsers";
+            this.checkBoxUsers.Size = new System.Drawing.Size(189, 20);
+            this.checkBoxUsers.TabIndex = 113;
+            this.checkBoxUsers.Text = "Người dùng";
+            this.checkBoxUsers.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(26, 40);
+            this.panel9.TabIndex = 109;
             // 
             // UserCrtRoleUserManager
             // 
@@ -635,6 +920,14 @@
             this.panelCheckBox.ResumeLayout(false);
             this.panelCheckBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoleUser)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -666,11 +959,33 @@
         private Bunifu.Framework.UI.BunifuFlatButton btEdit;
         private Bunifu.Framework.UI.BunifuMaterialTextbox tbStatus;
         private Bunifu.Framework.UI.BunifuTextbox tbSearch;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn colum3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.CheckBox checkBoxReportSendMail;
+        private System.Windows.Forms.CheckBox checkBoxReportImportInventory;
+        private System.Windows.Forms.CheckBox checkBoxReportBuy;
+        private System.Windows.Forms.CheckBox checkBoxReportSell;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.CheckBox checkBoxRoleUser;
+        private System.Windows.Forms.CheckBox checkBoxUsers;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox checkBoxProduct;
+        private System.Windows.Forms.CheckBox checkBoxSupplier;
+        private System.Windows.Forms.CheckBox checkBoxCustomer;
+        private System.Windows.Forms.CheckBox checkBoxCategorySupplier;
+        private System.Windows.Forms.CheckBox checkBoxCategoryProduct;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckBox checkBoxImportInventory;
+        private System.Windows.Forms.CheckBox checkBoxInventory;
+        private System.Windows.Forms.CheckBox checkBoxImportFromSupplier;
+        private System.Windows.Forms.Panel panel5;
     }
 }

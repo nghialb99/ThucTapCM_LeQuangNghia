@@ -30,9 +30,10 @@
         {
             this.panelLoad = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btReportMailDelivery = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btReportBuy = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btReportSell = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btReportMailDelivery = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btReportImportInventory = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btReportImportInventory);
             this.panel1.Controls.Add(this.btReportMailDelivery);
             this.panel1.Controls.Add(this.btReportBuy);
             this.panel1.Controls.Add(this.btReportSell);
@@ -56,6 +58,44 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1080, 46);
             this.panel1.TabIndex = 3;
+            // 
+            // btReportMailDelivery
+            // 
+            this.btReportMailDelivery.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btReportMailDelivery.BackColor = System.Drawing.SystemColors.Control;
+            this.btReportMailDelivery.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btReportMailDelivery.BorderRadius = 7;
+            this.btReportMailDelivery.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.btReportMailDelivery.ButtonText = "Báo cáo gửi mail";
+            this.btReportMailDelivery.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btReportMailDelivery.DisabledColor = System.Drawing.Color.Gray;
+            this.btReportMailDelivery.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btReportMailDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btReportMailDelivery.Iconcolor = System.Drawing.Color.Transparent;
+            this.btReportMailDelivery.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_buy_100;
+            this.btReportMailDelivery.Iconimage_right = null;
+            this.btReportMailDelivery.Iconimage_right_Selected = null;
+            this.btReportMailDelivery.Iconimage_Selected = null;
+            this.btReportMailDelivery.IconMarginLeft = 0;
+            this.btReportMailDelivery.IconMarginRight = 0;
+            this.btReportMailDelivery.IconRightVisible = true;
+            this.btReportMailDelivery.IconRightZoom = 0D;
+            this.btReportMailDelivery.IconVisible = true;
+            this.btReportMailDelivery.IconZoom = 90D;
+            this.btReportMailDelivery.IsTab = false;
+            this.btReportMailDelivery.Location = new System.Drawing.Point(330, 0);
+            this.btReportMailDelivery.Name = "btReportMailDelivery";
+            this.btReportMailDelivery.Normalcolor = System.Drawing.SystemColors.Control;
+            this.btReportMailDelivery.OnHovercolor = System.Drawing.Color.Gray;
+            this.btReportMailDelivery.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btReportMailDelivery.selected = false;
+            this.btReportMailDelivery.Size = new System.Drawing.Size(165, 46);
+            this.btReportMailDelivery.TabIndex = 11;
+            this.btReportMailDelivery.Text = "Báo cáo gửi mail";
+            this.btReportMailDelivery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btReportMailDelivery.Textcolor = System.Drawing.Color.Black;
+            this.btReportMailDelivery.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btReportMailDelivery.Click += new System.EventHandler(this.btReportMailDelivery_Click);
             // 
             // btReportBuy
             // 
@@ -133,43 +173,43 @@
             this.btReportSell.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btReportSell.Click += new System.EventHandler(this.btReportSell_Click);
             // 
-            // btReportMailDelivery
+            // btReportImportInventory
             // 
-            this.btReportMailDelivery.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btReportMailDelivery.BackColor = System.Drawing.SystemColors.Control;
-            this.btReportMailDelivery.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btReportMailDelivery.BorderRadius = 7;
-            this.btReportMailDelivery.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.btReportMailDelivery.ButtonText = "Báo cáo gửi mail";
-            this.btReportMailDelivery.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btReportMailDelivery.DisabledColor = System.Drawing.Color.Gray;
-            this.btReportMailDelivery.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btReportMailDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btReportMailDelivery.Iconcolor = System.Drawing.Color.Transparent;
-            this.btReportMailDelivery.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_buy_100;
-            this.btReportMailDelivery.Iconimage_right = null;
-            this.btReportMailDelivery.Iconimage_right_Selected = null;
-            this.btReportMailDelivery.Iconimage_Selected = null;
-            this.btReportMailDelivery.IconMarginLeft = 0;
-            this.btReportMailDelivery.IconMarginRight = 0;
-            this.btReportMailDelivery.IconRightVisible = true;
-            this.btReportMailDelivery.IconRightZoom = 0D;
-            this.btReportMailDelivery.IconVisible = true;
-            this.btReportMailDelivery.IconZoom = 90D;
-            this.btReportMailDelivery.IsTab = false;
-            this.btReportMailDelivery.Location = new System.Drawing.Point(330, 0);
-            this.btReportMailDelivery.Name = "btReportMailDelivery";
-            this.btReportMailDelivery.Normalcolor = System.Drawing.SystemColors.Control;
-            this.btReportMailDelivery.OnHovercolor = System.Drawing.Color.Gray;
-            this.btReportMailDelivery.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btReportMailDelivery.selected = false;
-            this.btReportMailDelivery.Size = new System.Drawing.Size(165, 46);
-            this.btReportMailDelivery.TabIndex = 11;
-            this.btReportMailDelivery.Text = "Báo cáo gửi mail";
-            this.btReportMailDelivery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btReportMailDelivery.Textcolor = System.Drawing.Color.Black;
-            this.btReportMailDelivery.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btReportMailDelivery.Click += new System.EventHandler(this.btReportMailDelivery_Click);
+            this.btReportImportInventory.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btReportImportInventory.BackColor = System.Drawing.SystemColors.Control;
+            this.btReportImportInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btReportImportInventory.BorderRadius = 7;
+            this.btReportImportInventory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.btReportImportInventory.ButtonText = "Báo cáo nhập tồn";
+            this.btReportImportInventory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btReportImportInventory.DisabledColor = System.Drawing.Color.Gray;
+            this.btReportImportInventory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btReportImportInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btReportImportInventory.Iconcolor = System.Drawing.Color.Transparent;
+            this.btReportImportInventory.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_buy_100;
+            this.btReportImportInventory.Iconimage_right = null;
+            this.btReportImportInventory.Iconimage_right_Selected = null;
+            this.btReportImportInventory.Iconimage_Selected = null;
+            this.btReportImportInventory.IconMarginLeft = 0;
+            this.btReportImportInventory.IconMarginRight = 0;
+            this.btReportImportInventory.IconRightVisible = true;
+            this.btReportImportInventory.IconRightZoom = 0D;
+            this.btReportImportInventory.IconVisible = true;
+            this.btReportImportInventory.IconZoom = 90D;
+            this.btReportImportInventory.IsTab = false;
+            this.btReportImportInventory.Location = new System.Drawing.Point(495, 0);
+            this.btReportImportInventory.Name = "btReportImportInventory";
+            this.btReportImportInventory.Normalcolor = System.Drawing.SystemColors.Control;
+            this.btReportImportInventory.OnHovercolor = System.Drawing.Color.Gray;
+            this.btReportImportInventory.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btReportImportInventory.selected = false;
+            this.btReportImportInventory.Size = new System.Drawing.Size(165, 46);
+            this.btReportImportInventory.TabIndex = 12;
+            this.btReportImportInventory.Text = "Báo cáo nhập tồn";
+            this.btReportImportInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btReportImportInventory.Textcolor = System.Drawing.Color.Black;
+            this.btReportImportInventory.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btReportImportInventory.Click += new System.EventHandler(this.btReportImportInventory_Click);
             // 
             // FrmReports
             // 
@@ -194,5 +234,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btReportBuy;
         private Bunifu.Framework.UI.BunifuFlatButton btReportSell;
         private Bunifu.Framework.UI.BunifuFlatButton btReportMailDelivery;
+        private Bunifu.Framework.UI.BunifuFlatButton btReportImportInventory;
     }
 }

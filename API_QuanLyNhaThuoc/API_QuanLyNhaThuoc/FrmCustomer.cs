@@ -165,9 +165,25 @@ namespace API_QuanLyNhaThuoc
                 }
                 else
                 {
-                    if (Email_DAO.Instance.isEmail(tbEmail.Text))
+                    if(tbEmail.Text != "")
                     {
-                        if (Buyer_DAO.Instance.InsertBuyer(roleName, tbName.Text,tbTaxCode.Text, tbPhone.Text, tbEmail.Text, tbAddress.Text))
+                        if (Email_DAO.Instance.isEmail(tbEmail.Text))
+                        {
+                            if (Buyer_DAO.Instance.InsertBuyer(roleName, tbName.Text, tbTaxCode.Text, tbPhone.Text, tbEmail.Text, tbAddress.Text))
+                            {
+                                LoadData();
+                                btNew.Enabled = true;
+                                dgvCustomer.Enabled = true;
+
+                                MessageBox.Show("Thêm khách hàng " + roleName + " thành công!", "Thông báo!");
+                            }
+                            else { MessageBox.Show("Thêm thất bại do mã khách hàng " + roleName + " đã tồn tại!", "Thông báo!"); }
+                        }
+                        else { MessageBox.Show("Email không đúng định dạng!", "Thông báo!"); }
+                    }
+                    else
+                    {
+                        if (Buyer_DAO.Instance.InsertBuyer(roleName, tbName.Text, tbTaxCode.Text, tbPhone.Text, tbEmail.Text, tbAddress.Text))
                         {
                             LoadData();
                             btNew.Enabled = true;
@@ -177,7 +193,7 @@ namespace API_QuanLyNhaThuoc
                         }
                         else { MessageBox.Show("Thêm thất bại do mã khách hàng " + roleName + " đã tồn tại!", "Thông báo!"); }
                     }
-                    else { MessageBox.Show("Email không đúng định dạng!", "Thông báo!"); }
+                    
                 }
             }
             else

@@ -28,16 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateTimeFrom = new System.Windows.Forms.DateTimePicker();
             this.dateTimeTo = new System.Windows.Forms.DateTimePicker();
             this.dgvListInvoice = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvButtonView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dgvButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tbSellerTaxcode = new System.Windows.Forms.TextBox();
             this.tbCreator = new System.Windows.Forms.TextBox();
@@ -57,24 +69,22 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.btSearch = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btSendMail = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btClear = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvButtonView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dgvButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btPrivousPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btNextPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btLastPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btFirstPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.lbPageNum = new System.Windows.Forms.Label();
+            this.cbPageNum = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListInvoice)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btPrivousPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btNextPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btLastPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btFirstPage)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimeFrom
@@ -105,14 +115,14 @@
             this.dgvListInvoice.BackgroundColor = System.Drawing.Color.White;
             this.dgvListInvoice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvListInvoice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvListInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -133,10 +143,135 @@
             this.dgvListInvoice.ReadOnly = true;
             this.dgvListInvoice.RowHeadersVisible = false;
             this.dgvListInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListInvoice.Size = new System.Drawing.Size(1056, 300);
+            this.dgvListInvoice.Size = new System.Drawing.Size(1056, 268);
             this.dgvListInvoice.TabIndex = 64;
             this.dgvListInvoice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListInvoice_CellClick);
             this.dgvListInvoice.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvListInvoice_RowsAdded);
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "STT";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 30;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "InvoiceNumber";
+            this.Column1.FillWeight = 60.9137F;
+            this.Column1.HeaderText = "Mã hóa đơn";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 90;
+            // 
+            // NL
+            // 
+            this.NL.DataPropertyName = "InvoiceIssuedDate";
+            dataGridViewCellStyle9.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle9.NullValue = null;
+            this.NL.DefaultCellStyle = dataGridViewCellStyle9;
+            this.NL.FillWeight = 113.0288F;
+            this.NL.HeaderText = "Ngày lập";
+            this.NL.Name = "NL";
+            this.NL.ReadOnly = true;
+            this.NL.Width = 85;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "UserName";
+            this.Column3.FillWeight = 113.0288F;
+            this.Column3.HeaderText = "Người lập";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 135;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "BuyerLegalName";
+            this.Column8.HeaderText = "Tên người mua";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 150;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Discount";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Column6.HeaderText = "Giảm giá (%)";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TotalAmountAfterDiscount";
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Column2.HeaderText = "Tông tiền";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Status";
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Column5.HeaderText = "Trạng thái";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 80;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "InvoiceNote";
+            this.Column4.FillWeight = 113.0288F;
+            this.Column4.HeaderText = "Ghi chú";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 245;
+            // 
+            // dgvButtonView
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.dgvButtonView.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvButtonView.HeaderText = "Xem";
+            this.dgvButtonView.Name = "dgvButtonView";
+            this.dgvButtonView.ReadOnly = true;
+            this.dgvButtonView.Text = "Xem";
+            this.dgvButtonView.UseColumnTextForButtonValue = true;
+            this.dgvButtonView.Width = 35;
+            // 
+            // dgvButtonDelete
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Red;
+            this.dgvButtonDelete.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvButtonDelete.HeaderText = "Xóa";
+            this.dgvButtonDelete.Name = "dgvButtonDelete";
+            this.dgvButtonDelete.ReadOnly = true;
+            this.dgvButtonDelete.Text = "Xóa";
+            this.dgvButtonDelete.UseColumnTextForButtonValue = true;
+            this.dgvButtonDelete.Width = 35;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "Id";
+            this.Column9.HeaderText = "invoiceId";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
             // 
             // groupBox2
             // 
@@ -230,6 +365,7 @@
             // cbInvoiceStatus
             // 
             this.cbInvoiceStatus.DisplayMember = "1";
+            this.cbInvoiceStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInvoiceStatus.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbInvoiceStatus.FormattingEnabled = true;
             this.cbInvoiceStatus.Location = new System.Drawing.Point(136, 69);
@@ -367,6 +503,18 @@
             this.label18.Text = "Người lập";
             this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Teal;
+            this.label6.Location = new System.Drawing.Point(7, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(135, 19);
+            this.label6.TabIndex = 113;
+            this.label6.Text = "Quản lý hóa đơn";
+            // 
             // btSearch
             // 
             this.btSearch.Activecolor = System.Drawing.Color.Gray;
@@ -477,149 +625,104 @@
             this.btClear.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
-            // label6
+            // btPrivousPage
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Teal;
-            this.label6.Location = new System.Drawing.Point(7, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(135, 19);
-            this.label6.TabIndex = 113;
-            this.label6.Text = "Quản lý hóa đơn";
+            this.btPrivousPage.BackColor = System.Drawing.Color.White;
+            this.btPrivousPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_chevron_left_100;
+            this.btPrivousPage.ImageActive = null;
+            this.btPrivousPage.Location = new System.Drawing.Point(395, 614);
+            this.btPrivousPage.Name = "btPrivousPage";
+            this.btPrivousPage.Size = new System.Drawing.Size(30, 23);
+            this.btPrivousPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btPrivousPage.TabIndex = 121;
+            this.btPrivousPage.TabStop = false;
+            this.btPrivousPage.Zoom = 10;
+            this.btPrivousPage.Click += new System.EventHandler(this.btPrivousPage_Click);
             // 
-            // Column7
+            // btNextPage
             // 
-            this.Column7.HeaderText = "STT";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 30;
+            this.btNextPage.BackColor = System.Drawing.Color.White;
+            this.btNextPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_chevron_right_100;
+            this.btNextPage.ImageActive = null;
+            this.btNextPage.Location = new System.Drawing.Point(657, 614);
+            this.btNextPage.Name = "btNextPage";
+            this.btNextPage.Size = new System.Drawing.Size(30, 23);
+            this.btNextPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btNextPage.TabIndex = 120;
+            this.btNextPage.TabStop = false;
+            this.btNextPage.Zoom = 10;
+            this.btNextPage.Click += new System.EventHandler(this.btNextPage_Click);
             // 
-            // Column1
+            // btLastPage
             // 
-            this.Column1.DataPropertyName = "InvoiceNumber";
-            this.Column1.FillWeight = 60.9137F;
-            this.Column1.HeaderText = "Mã hóa đơn";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
+            this.btLastPage.BackColor = System.Drawing.Color.White;
+            this.btLastPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_fast_forward_100;
+            this.btLastPage.ImageActive = null;
+            this.btLastPage.Location = new System.Drawing.Point(703, 614);
+            this.btLastPage.Name = "btLastPage";
+            this.btLastPage.Size = new System.Drawing.Size(30, 23);
+            this.btLastPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btLastPage.TabIndex = 119;
+            this.btLastPage.TabStop = false;
+            this.btLastPage.Zoom = 10;
+            this.btLastPage.Click += new System.EventHandler(this.btLastPage_Click);
             // 
-            // NL
+            // btFirstPage
             // 
-            this.NL.DataPropertyName = "InvoiceIssuedDate";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle2.NullValue = null;
-            this.NL.DefaultCellStyle = dataGridViewCellStyle2;
-            this.NL.FillWeight = 113.0288F;
-            this.NL.HeaderText = "Ngày lập";
-            this.NL.Name = "NL";
-            this.NL.ReadOnly = true;
-            this.NL.Width = 85;
+            this.btFirstPage.BackColor = System.Drawing.Color.White;
+            this.btFirstPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_rewind_100;
+            this.btFirstPage.ImageActive = null;
+            this.btFirstPage.Location = new System.Drawing.Point(349, 614);
+            this.btFirstPage.Name = "btFirstPage";
+            this.btFirstPage.Size = new System.Drawing.Size(30, 23);
+            this.btFirstPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btFirstPage.TabIndex = 118;
+            this.btFirstPage.TabStop = false;
+            this.btFirstPage.Zoom = 10;
+            this.btFirstPage.Click += new System.EventHandler(this.btFirstPage_Click);
             // 
-            // Column3
+            // lbPageNum
             // 
-            this.Column3.DataPropertyName = "UserName";
-            this.Column3.FillWeight = 113.0288F;
-            this.Column3.HeaderText = "Người lập";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 135;
+            this.lbPageNum.BackColor = System.Drawing.Color.Transparent;
+            this.lbPageNum.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPageNum.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbPageNum.Location = new System.Drawing.Point(431, 614);
+            this.lbPageNum.Name = "lbPageNum";
+            this.lbPageNum.Size = new System.Drawing.Size(220, 23);
+            this.lbPageNum.TabIndex = 122;
+            this.lbPageNum.Text = "0/0";
+            this.lbPageNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Column8
+            // cbPageNum
             // 
-            this.Column8.DataPropertyName = "BuyerLegalName";
-            this.Column8.HeaderText = "Tên người mua";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 150;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Discount";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column6.HeaderText = "Giảm giá (%)";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "TotalAmountAfterDiscount";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column2.HeaderText = "Tông tiền";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Status";
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column5.HeaderText = "Trạng thái";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 80;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "InvoiceNote";
-            this.Column4.FillWeight = 113.0288F;
-            this.Column4.HeaderText = "Ghi chú";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 245;
-            // 
-            // dgvButtonView
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.dgvButtonView.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvButtonView.HeaderText = "Xem";
-            this.dgvButtonView.Name = "dgvButtonView";
-            this.dgvButtonView.ReadOnly = true;
-            this.dgvButtonView.Text = "Xem";
-            this.dgvButtonView.UseColumnTextForButtonValue = true;
-            this.dgvButtonView.Width = 35;
-            // 
-            // dgvButtonDelete
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Red;
-            this.dgvButtonDelete.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvButtonDelete.HeaderText = "Xóa";
-            this.dgvButtonDelete.Name = "dgvButtonDelete";
-            this.dgvButtonDelete.ReadOnly = true;
-            this.dgvButtonDelete.Text = "Xóa";
-            this.dgvButtonDelete.UseColumnTextForButtonValue = true;
-            this.dgvButtonDelete.Width = 35;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "Id";
-            this.Column9.HeaderText = "invoiceId";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
+            this.cbPageNum.DisplayMember = "1";
+            this.cbPageNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPageNum.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPageNum.FormattingEnabled = true;
+            this.cbPageNum.Items.AddRange(new object[] {
+            "10",
+            "15",
+            "20",
+            "30",
+            "Tất cả"});
+            this.cbPageNum.Location = new System.Drawing.Point(977, 614);
+            this.cbPageNum.Name = "cbPageNum";
+            this.cbPageNum.Size = new System.Drawing.Size(70, 23);
+            this.cbPageNum.TabIndex = 123;
+            this.cbPageNum.SelectedIndexChanged += new System.EventHandler(this.cbPageNum_SelectedIndexChanged);
             // 
             // FrmInvoiceManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1080, 646);
+            this.ClientSize = new System.Drawing.Size(1080, 660);
+            this.Controls.Add(this.cbPageNum);
+            this.Controls.Add(this.lbPageNum);
+            this.Controls.Add(this.btPrivousPage);
+            this.Controls.Add(this.btNextPage);
+            this.Controls.Add(this.btLastPage);
+            this.Controls.Add(this.btFirstPage);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.btSendMail);
@@ -634,6 +737,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListInvoice)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btPrivousPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btNextPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btLastPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btFirstPage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -678,5 +785,11 @@
         private System.Windows.Forms.DataGridViewButtonColumn dgvButtonView;
         private System.Windows.Forms.DataGridViewButtonColumn dgvButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private Bunifu.Framework.UI.BunifuImageButton btPrivousPage;
+        private Bunifu.Framework.UI.BunifuImageButton btNextPage;
+        private Bunifu.Framework.UI.BunifuImageButton btLastPage;
+        private Bunifu.Framework.UI.BunifuImageButton btFirstPage;
+        private System.Windows.Forms.Label lbPageNum;
+        private System.Windows.Forms.ComboBox cbPageNum;
     }
 }

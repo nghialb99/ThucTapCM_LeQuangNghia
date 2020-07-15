@@ -110,7 +110,7 @@ namespace API_QuanLyNhaThuoc
                     f.ShowDialog();
                 }else
                 {
-                    if(e.ColumnIndex == dgvListInvoice.Columns["dgvButtonImport"].Index && row >= 0 && Supplier_DAO.Instance.CheckIsImportBillDone(idBill)==false)
+                    if(e.ColumnIndex == dgvListInvoice.Columns["dgvButtonImport"].Index && row >= 0 && Supplier_DAO.Instance.CheckIsImportBillDone(idBill)==false && ImportBill_DAO.Instance.CheckUserCreateImportBill(idBill, FrmLogin.username))
                     {
                         FrmImportDetailProduct f = new FrmImportDetailProduct(LoadData,idBill);
                         f.ShowDialog();
@@ -137,9 +137,9 @@ namespace API_QuanLyNhaThuoc
                     }
                 }
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
         }
 

@@ -212,13 +212,14 @@
             // btLogin
             // 
             this.btLogin.Activecolor = System.Drawing.Color.LightGray;
-            this.btLogin.BackColor = System.Drawing.Color.LightGray;
+            this.btLogin.BackColor = System.Drawing.Color.Transparent;
             this.btLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btLogin.BorderRadius = 7;
             this.btLogin.ButtonText = "Đăng nhập";
             this.btLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btLogin.DisabledColor = System.Drawing.Color.LightGray;
             this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogin.ForeColor = System.Drawing.Color.Black;
             this.btLogin.Iconcolor = System.Drawing.Color.Transparent;
             this.btLogin.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_login_100;
             this.btLogin.Iconimage_right = null;
@@ -233,7 +234,7 @@
             this.btLogin.IsTab = false;
             this.btLogin.Location = new System.Drawing.Point(40, 143);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Normalcolor = System.Drawing.Color.LightGray;
+            this.btLogin.Normalcolor = System.Drawing.Color.Transparent;
             this.btLogin.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btLogin.OnHoverTextColor = System.Drawing.Color.Black;
             this.btLogin.selected = false;
@@ -283,7 +284,7 @@
             // btExit
             // 
             this.btExit.Activecolor = System.Drawing.Color.Gray;
-            this.btExit.BackColor = System.Drawing.Color.LightGray;
+            this.btExit.BackColor = System.Drawing.Color.Transparent;
             this.btExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btExit.BorderRadius = 7;
             this.btExit.ButtonText = "Thoát";
@@ -304,7 +305,7 @@
             this.btExit.IsTab = false;
             this.btExit.Location = new System.Drawing.Point(269, 143);
             this.btExit.Name = "btExit";
-            this.btExit.Normalcolor = System.Drawing.Color.LightGray;
+            this.btExit.Normalcolor = System.Drawing.Color.Transparent;
             this.btExit.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btExit.OnHoverTextColor = System.Drawing.Color.Black;
             this.btExit.selected = false;

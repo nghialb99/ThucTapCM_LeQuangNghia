@@ -22,6 +22,10 @@ namespace API_QuanLyNhaThuoc
         {
             InitializeComponent();
         }
+        private string userInvoiceTemp()
+        {
+            return FrmLogin.username.Replace(".", "");
+        }
         private void FrmCreateInvoice_Load(object sender, EventArgs e)
         {
             LoadDataBuyer();
@@ -83,7 +87,7 @@ namespace API_QuanLyNhaThuoc
             rtbAmountInWord.Text = "";
             rtbNote.Text = "";
             PanelLoadItem.Controls.Clear();
-            Invoice_DAO.Instance.ResetTableItemInvoiceTemp();
+            Invoice_DAO.Instance.ResetTableItemInvoiceTemp(userInvoiceTemp());
             Invoice_DAO.Instance.DropTableInvoiceTemp();
             idItemTemp = 0;
             //while (dgvBillInfo.Rows.Count > 1)
@@ -116,7 +120,7 @@ namespace API_QuanLyNhaThuoc
         }
         private void btCreateInvoice_Click(object sender, EventArgs e)
         {
-            List<ItemTemp> itemTemps = Invoice_DAO.Instance.GetListItemTemp();
+            List<ItemTemp> itemTemps = Invoice_DAO.Instance.GetListItemTemp(userInvoiceTemp());
             if (itemTemps.Count == 0)
             {
                 lbNotification.Text = "Bảng hàng hóa không được để trống!";
@@ -135,16 +139,17 @@ namespace API_QuanLyNhaThuoc
                             string idproduct = itemTemps[j].IdItemCode;
                             float unitPrice = itemTemps[j].UnitPrice;
                             string unitName = itemTemps[j].UnitName;
+                            int exchangeValue = itemTemps[j].ExchangeValue;
                             float quantity = itemTemps[j].Quantity;
 
-                            if (Invoice_DAO.Instance.InsertDetailBill(idproduct, unitName, quantity, unitPrice))
+                            if (Invoice_DAO.Instance.InsertDetailBill(idproduct, unitName, exchangeValue, quantity, unitPrice))
                             {
                                 totalLineNumber += 1;
                             }
                         }
                         if (totalLineNumber == itemTemps.Count)
                         {
-                            string creator = lbCreator.Text;
+                            string creator = FrmLogin.username;
                             int discount = Convert.ToInt32(nbDisCount.Value);
                             float totalAmount = TotalAmount;
                             string note = rtbNote.Text;
@@ -194,15 +199,15 @@ namespace API_QuanLyNhaThuoc
                 }
                 catch /*(Exception ex)*/
                 {
-                    //lbNotification.Text = ex.Message;
-                    //i = 5;
-                    //timerResetNtf.Enabled = true;
+                    lbNotification.Text = "Có lỗi kết nối! Vui lòng thử lại!";
+                    i = 5;
+                    timerResetNtf.Enabled = true;
                 }
             }
         }
         private void btCreateAndPrintInvoice_Click(object sender, EventArgs e)
         {
-            List<ItemTemp> itemTemps = Invoice_DAO.Instance.GetListItemTemp();
+            List<ItemTemp> itemTemps = Invoice_DAO.Instance.GetListItemTemp(userInvoiceTemp());
             if (itemTemps.Count == 0)
             {
                 lbNotification.Text = "Bảng hàng hóa không được để trống!";
@@ -213,7 +218,7 @@ namespace API_QuanLyNhaThuoc
             {
                 try
                 {
-                    if(TotalAmount >= 0)
+                    if (TotalAmount >= 0)
                     {
                         int totalLineNumber = 0;
                         for (int j = 0; j < itemTemps.Count; j++)
@@ -221,16 +226,17 @@ namespace API_QuanLyNhaThuoc
                             string idproduct = itemTemps[j].IdItemCode;
                             float unitPrice = itemTemps[j].UnitPrice;
                             string unitName = itemTemps[j].UnitName;
+                            int exchangeValue = itemTemps[j].ExchangeValue;
                             float quantity = itemTemps[j].Quantity;
 
-                            if (Invoice_DAO.Instance.InsertDetailBill(idproduct, unitName, quantity, unitPrice))
+                            if (Invoice_DAO.Instance.InsertDetailBill(idproduct, unitName, exchangeValue, quantity, unitPrice))
                             {
                                 totalLineNumber += 1;
                             }
                         }
                         if (totalLineNumber == itemTemps.Count)
                         {
-                            string creator = lbCreator.Text;
+                            string creator = FrmLogin.username;
                             int discount = Convert.ToInt32(nbDisCount.Value);
                             float totalAmount = TotalAmount;
                             string note = rtbNote.Text;
@@ -242,7 +248,7 @@ namespace API_QuanLyNhaThuoc
                             {
                                 string invoiceNumber = lbIdBill.Text;
                                 //string mail = lbBuyerEmail.Text.Trim().ToLower().ToString();
-                                ResetValues();
+                                FrmCreateInvoice_Load(sender, e);
                                 lbNotification.Text = "Lập HĐ " + invoiceNumber + " thành công!";
                                 i = 5;
                                 timerResetNtf.Enabled = true;
@@ -280,9 +286,9 @@ namespace API_QuanLyNhaThuoc
                 }
                 catch /*(Exception ex)*/
                 {
-                    //lbNotification.Text = ex.Message;
-                    //i = 5;
-                    //timerResetNtf.Enabled = true;
+                    lbNotification.Text = "Có lỗi kết nối! Vui lòng thử lại!";
+                    i = 5;
+                    timerResetNtf.Enabled = true;
                 }
             }
         }
@@ -330,13 +336,15 @@ namespace API_QuanLyNhaThuoc
                 {
                     dgvSearchItem.Visible = false;
                     btAdd.Visible = false;
+                    btScan.Enabled = true;
                 }
                 else
                 {
                     dgvSearchItem.Visible = true;
                     btAdd.Visible = true;
                     if (idProduct == "") btAdd.Enabled = false;
-                    dgvSearchItem.DataSource = Product_DAO.Instance.GetListProductWhenCreateInvoice(tbSearch.text);
+                    dgvSearchItem.DataSource = Product_DAO.Instance.GetListProductWhenCreateInvoice(tbSearch.text, userInvoiceTemp());
+                    btScan.Enabled = false;
                 }
             }
             else
@@ -345,19 +353,21 @@ namespace API_QuanLyNhaThuoc
                 {
                     dgvCustomer.Visible = false;
                     btAdd.Visible = false;
+                    btScan.Enabled = true;
                 }
                 else
                 {
                     dgvCustomer.Visible = true;
                     //btAdd.Visible = true;
                     dgvCustomer.DataSource = Buyer_DAO.Instance.GetListBuyerWhenCreateInvoice(tbSearch.text);
+                    btScan.Enabled = false;
                 }
             }
         }
         private float ComputeTotalAmount()
         {
             float t = 0;
-            List<ItemTemp> listItem = Invoice_DAO.Instance.GetListItemTemp();
+            List<ItemTemp> listItem = Invoice_DAO.Instance.GetListItemTemp(userInvoiceTemp());
             
             for(int i = 0;i < listItem.Count; i++)
             {
@@ -386,7 +396,7 @@ namespace API_QuanLyNhaThuoc
         }
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (Invoice_DAO.Instance.InsertItemInvoiceTemp(idProduct))
+            if (Invoice_DAO.Instance.InsertItemInvoiceTemp(idProduct, userInvoiceTemp()))
             {
                 dgvSearchItem.Visible = false;
                 btAdd.Visible = false;
@@ -449,6 +459,28 @@ namespace API_QuanLyNhaThuoc
                 tbSearch.text = "";
             }
             catch {}
+        }
+
+        private void LoadItemInfoWhenScanQRCode()
+        {
+            if(FrmScanQR_Bar.idProduct != "")
+            {
+                if (Invoice_DAO.Instance.InsertItemInvoiceTemp(FrmScanQR_Bar.idProduct, userInvoiceTemp()))
+                {
+                    idItemTemp += 1;
+                    FrmItems f = new FrmItems(ComputeTotalAmountWhenUpdateItem, idItemTemp, FrmScanQR_Bar.idProduct);
+                    f.TopLevel = false;
+                    PanelLoadItem.Controls.Add(f);
+                    f.Dock = DockStyle.Top;
+                    //f.TopMost = true;
+                    f.Show();
+                }
+            }
+        }
+        private void btScan_Click(object sender, EventArgs e)
+        {
+            FrmScanQR_Bar f = new FrmScanQR_Bar(LoadItemInfoWhenScanQRCode);
+            f.ShowDialog();
         }
     }
 }

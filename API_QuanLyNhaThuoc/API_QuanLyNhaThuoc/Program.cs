@@ -17,7 +17,6 @@ namespace API_QuanLyNhaThuoc
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmLogin());
-            //try { Application.Run(new FrmPrintBill()); } catch { Application.Exit(); }
         }
     }
 }

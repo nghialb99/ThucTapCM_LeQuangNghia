@@ -1,4 +1,5 @@
 ﻿using API_QuanLyNhaThuoc.DAO;
+using API_QuanLyNhaThuoc.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,25 +25,26 @@ namespace API_QuanLyNhaThuoc
         private void FrmInvoiceManagement_Load(object sender, EventArgs e)
         {
             dgvListInvoice.AutoGenerateColumns = false;
-            LoadData();
-            //màu dòng chẵn
+            //LoadData();
             dgvListInvoice.AlternatingRowsDefaultCellStyle.BackColor = Color.LightCyan;
             dgvListInvoice.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            //Mau o khi click
             dgvListInvoice.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            //color chữ khi click
             dgvListInvoice.DefaultCellStyle.SelectionForeColor = Color.Black;
-        }
-        private void LoadData()
-        {
+
             DateTime date = DateTime.Now;
             dateTimeFrom.Value = new DateTime(date.Year, date.Month, 1);
             dateTimeTo.Value = dateTimeFrom.Value.AddMonths(1).AddDays(-1);
             tbSellerTaxcode.Text = Account_DAO.Instance.CheckUsername();
-            dgvListInvoice.DataSource = Invoice_DAO.Instance.GetListInvoice(tbBuyerEmail.Text, tbBuyerPhone.Text, Convert.ToBoolean(cbInvoiceStatus.SelectedValue), tbInvoiceId.Text, tbCreator.Text, tbBuyerCode.Text, tbBuyerName.Text, dateTimeFrom.Value, dateTimeTo.Value);
             cbInvoiceStatus.ValueMember = "ID";
             cbInvoiceStatus.DisplayMember = "MOTA";
             cbInvoiceStatus.DataSource = DataProvider.Instance.ExcuteQuery("select * from trangthai order by ID desc");
+
+            cbPageNum.SelectedItem = "10";
+        }
+        private void LoadData()
+        {
+            dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+            SetColorRowWhenBillStatusIsDelete();
         }
         private void ResetValue()
         {
@@ -102,10 +104,17 @@ namespace API_QuanLyNhaThuoc
             catch { }
             
         }
-
+        private List<Invoice> LoadRecord(int page, int recordNum)
+        {
+            List<Invoice> list = Invoice_DAO.Instance.GetListInvoice(tbBuyerEmail.Text, tbBuyerPhone.Text, Convert.ToBoolean(cbInvoiceStatus.SelectedValue), tbInvoiceId.Text, tbCreator.Text, tbBuyerCode.Text, tbBuyerName.Text, dateTimeFrom.Value, dateTimeTo.Value);
+            
+            lbPageNum.Text = page.ToString() + "/" + (list.Count / recordNum + 1).ToString();
+            return list.Skip((page - 1) * recordNum).Take(recordNum).ToList();
+        }
         private void btSearch_Click(object sender, EventArgs e)
         {
-            dgvListInvoice.DataSource = Invoice_DAO.Instance.GetListInvoice(tbBuyerEmail.Text, tbBuyerPhone.Text, Convert.ToBoolean(cbInvoiceStatus.SelectedValue), tbInvoiceId.Text, tbCreator.Text, tbBuyerCode.Text, tbBuyerName.Text, dateTimeFrom.Value, dateTimeTo.Value);
+            //dgvListInvoice.DataSource = Invoice_DAO.Instance.GetListInvoice(tbBuyerEmail.Text, tbBuyerPhone.Text, Convert.ToBoolean(cbInvoiceStatus.SelectedValue), tbInvoiceId.Text, tbCreator.Text, tbBuyerCode.Text, tbBuyerName.Text, dateTimeFrom.Value, dateTimeTo.Value).Skip(0).Take(10).ToList();
+            dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
             SetColorRowWhenBillStatusIsDelete();
         }
 
@@ -122,6 +131,95 @@ namespace API_QuanLyNhaThuoc
         private void btClear_Click(object sender, EventArgs e)
         {
             ResetValue();
+        }
+
+        private int pageNumber = 1;
+        private int recordNumber = 10;
+        private void btPrivousPage_Click(object sender, EventArgs e)
+        {
+            if (pageNumber > 1)
+            {
+                pageNumber--;
+                dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+                SetColorRowWhenBillStatusIsDelete();
+            }
+        }
+
+        private void btNextPage_Click(object sender, EventArgs e)
+        {
+            List<Invoice> list = Invoice_DAO.Instance.GetListInvoice(tbBuyerEmail.Text, tbBuyerPhone.Text, Convert.ToBoolean(cbInvoiceStatus.SelectedValue), tbInvoiceId.Text, tbCreator.Text, tbBuyerCode.Text, tbBuyerName.Text, dateTimeFrom.Value, dateTimeTo.Value);
+
+            if (pageNumber - 1 < list.Count/recordNumber)
+            {
+                pageNumber++;
+                dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+                SetColorRowWhenBillStatusIsDelete();
+            }
+        }
+
+        private void btFirstPage_Click(object sender, EventArgs e)
+        {
+            pageNumber=1;
+            dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+            SetColorRowWhenBillStatusIsDelete();
+        }
+
+        private void btLastPage_Click(object sender, EventArgs e)
+        {
+            pageNumber = Invoice_DAO.Instance.GetListInvoice(tbBuyerEmail.Text, tbBuyerPhone.Text, Convert.ToBoolean(cbInvoiceStatus.SelectedValue), tbInvoiceId.Text, tbCreator.Text, tbBuyerCode.Text, tbBuyerName.Text, dateTimeFrom.Value, dateTimeTo.Value).Count/recordNumber+1;
+            dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+            SetColorRowWhenBillStatusIsDelete();
+        }
+
+        private void cbPageNum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbPageNum.SelectedItem.ToString() == "10")
+            {
+                pageNumber = 1;
+                recordNumber = 10;
+                dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+                SetColorRowWhenBillStatusIsDelete();
+            }
+            else
+            {
+                if(cbPageNum.SelectedItem.ToString() == "15")
+                {
+                    pageNumber = 1;
+                    recordNumber = 15;
+                    dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+                    SetColorRowWhenBillStatusIsDelete();
+                }
+                else
+                {
+                    if (cbPageNum.SelectedItem.ToString() == "20")
+                    {
+                        pageNumber = 1;
+                        recordNumber = 20;
+                        dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+                        SetColorRowWhenBillStatusIsDelete();
+                    }
+                    else
+                    {
+                        if (cbPageNum.SelectedItem.ToString() == "30")
+                        {
+                            pageNumber = 1;
+                            recordNumber = 30;
+                            dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+                            SetColorRowWhenBillStatusIsDelete();
+                        }
+                        else
+                        {
+                            if (cbPageNum.SelectedItem.ToString() == "Tất cả")
+                            {
+                                pageNumber = 1;
+                                recordNumber = Invoice_DAO.Instance.GetListInvoice(tbBuyerEmail.Text, tbBuyerPhone.Text, Convert.ToBoolean(cbInvoiceStatus.SelectedValue), tbInvoiceId.Text, tbCreator.Text, tbBuyerCode.Text, tbBuyerName.Text, dateTimeFrom.Value, dateTimeTo.Value).Count+1;
+                                dgvListInvoice.DataSource = LoadRecord(pageNumber, recordNumber);
+                                SetColorRowWhenBillStatusIsDelete();
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

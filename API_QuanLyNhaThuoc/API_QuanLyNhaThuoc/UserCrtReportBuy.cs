@@ -34,8 +34,8 @@ namespace API_QuanLyNhaThuoc
             CultureInfo culture = new CultureInfo("vi-VN");
             lbPNThangNay.Text = "Tháng này: " + ImportBill_DAO.Instance.GetTotalImprtBillThisMonth().ToString();
             lbPNThangTruoc.Text = "Tháng trước: " + ImportBill_DAO.Instance.GetTotalImprtBillLastMonth().ToString();
-            lbTCThangNay.Text = "Tháng này: " + ImportBill_DAO.Instance.GetTotalSpendThisMonth().ToString("c", culture);
-            lbTCThangTruoc.Text = "Tháng trước: " + ImportBill_DAO.Instance.GetTotalSpendLastMonth().ToString("c", culture);
+            lbTCThangNay.Text = "Tháng này: " + ImportBill_DAO.Instance.GetTotalSpendThisMonth().ToString("c0", culture);
+            lbTCThangTruoc.Text = "Tháng trước: " + ImportBill_DAO.Instance.GetTotalSpendLastMonth().ToString("c0", culture);
         }
 
         private void btFilter_Click(object sender, EventArgs e)

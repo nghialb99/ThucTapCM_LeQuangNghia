@@ -366,7 +366,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -3679,7 +3678,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Họ tên người mua:</Value>
+                <Value>Tên người mua:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -3747,7 +3746,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Số điện thoại:</Value>
+                <Value>Mã số thuế:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -3781,7 +3780,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!buyerPhoneNumber.Value, "DataSet1")</Value>
+                <Value>=First(Fields!buyerTaxCode.Value, "DataSet1")</Value>
                 <Style>
                   <FontWeight>Normal</FontWeight>
                 </Style>
@@ -3796,7 +3795,7 @@
         <Top>3.56374in</Top>
         <Left>1.27997in</Left>
         <Height>0.25in</Height>
-        <Width>4.94445in</Width>
+        <Width>1.82443in</Width>
         <ZIndex>38</ZIndex>
         <Style>
           <Border>
@@ -4218,6 +4217,74 @@
         <Style>
           <Border>
             <Color>White</Color>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox95">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Số điện thoại:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox42</rd:DefaultName>
+        <Top>3.56374in</Top>
+        <Left>3.17384in</Left>
+        <Height>0.25in</Height>
+        <Width>1.00692in</Width>
+        <ZIndex>51</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox96">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!buyerPhoneNumber.Value, "DataSet1")</Value>
+                <Style>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox42</rd:DefaultName>
+        <Top>3.56374in</Top>
+        <Left>4.2502in</Left>
+        <Height>0.25in</Height>
+        <Width>1.97422in</Width>
+        <ZIndex>52</ZIndex>
+        <Style>
+          <Border>
             <Style>None</Style>
           </Border>
           <PaddingLeft>2pt</PaddingLeft>

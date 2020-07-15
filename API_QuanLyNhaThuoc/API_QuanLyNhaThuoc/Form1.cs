@@ -111,5 +111,23 @@ namespace API_QuanLyNhaThuoc
             //f.TopMost = true;
             f.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "(mp3,wav,mp4,mov,wmv,mpg)|*.mp3;*.wav;*.mp4;*.mov;*.wmv;*.mpg|all files|*.*";
+                
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                axWindowsMediaPlayer1.URL = openFileDialog1.FileName;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //textBox2.Text = Application.StartupPath + "\\DataProvider.txt";
+            FileStream fs = new FileStream(Application.StartupPath + "\\DataProvider.txt", FileMode.Open);
+            StreamReader rd = new StreamReader(fs, Encoding.UTF8);
+            textBox2.Text = rd.ReadToEnd();
+            rd.Close();
+        }
     }
 }

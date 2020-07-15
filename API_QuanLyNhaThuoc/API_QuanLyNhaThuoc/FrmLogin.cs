@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -19,30 +20,47 @@ namespace API_QuanLyNhaThuoc
         {
             InitializeComponent();
         }
+        public static string connectionSTR;
         private void FrmLogin_Load(object sender, EventArgs e)
         {
+            //FileStream fs = new FileStream(Application.StartupPath + "\\DataProvider.txt", FileMode.Open);
+            //StreamReader rd = new StreamReader(fs, Encoding.UTF8);
+            //connectionSTR = rd.ReadToEnd();
+            //rd.Close();
+
             LoadForm();
-            Product_DAO.Instance.AutoUpdateStatusProduct();
+            
             lbNotification.Text = "";
             lbNotification1.Text = "";
             lbNotification2.Text = "";
             panelTransparen.Visible = true;
             panelFogetPass.Visible = false;
             panelChangePass.Visible = false;
+
+            try
+            {
+                Product_DAO.Instance.AutoUpdateStatusProduct();
+            }
+            catch
+            {
+                lbNotification.Text = "Không thể kết nối với máy chủ. Vui lòng kiểm tra lại đường truyền";
+                i = 5;
+                timer1.Enabled = true;
+            }
             //label1.Text = Account_DAO.Instance.Decrypt(lbNotification.Text);
         }
         private void LoadForm()
         {
-            //tbUserName.ForeColor = Color.LightGray;
-            //tbUserName.Text = "Tài khoản";
-            //this.tbUserName.Leave += new System.EventHandler(this.tbUserName_Leave);
-            //this.tbUserName.Enter += new System.EventHandler(this.tbUserName_Enter);
+            tbUserName.ForeColor = Color.LightGray;
+            tbUserName.Text = "Tài khoản";
+            this.tbUserName.Leave += new System.EventHandler(this.tbUserName_Leave);
+            this.tbUserName.Enter += new System.EventHandler(this.tbUserName_Enter);
 
-            //tbPassWord.ForeColor = Color.LightGray;
-            //tbPassWord.UseSystemPasswordChar = false;
-            //tbPassWord.Text = "Mật khẩu";
-            //this.tbPassWord.Leave += new System.EventHandler(this.tbPassWord_Leave);
-            //this.tbPassWord.Enter += new System.EventHandler(this.tbPassWord_Enter);
+            tbPassWord.ForeColor = Color.LightGray;
+            tbPassWord.UseSystemPasswordChar = false;
+            tbPassWord.Text = "Mật khẩu";
+            this.tbPassWord.Leave += new System.EventHandler(this.tbPassWord_Leave);
+            this.tbPassWord.Enter += new System.EventHandler(this.tbPassWord_Enter);
 
             tbUserNameForget.ForeColor = Color.LightGray;
             tbUserNameForget.Text = "Tài khoản";
@@ -94,43 +112,49 @@ namespace API_QuanLyNhaThuoc
         {
             string user = tbUserName.Text.TrimEnd();
             string pass = tbPassWord.Text;
-
-            if (CheckLogin(user, pass))
+            if (user == "" || user == "Tài khoản" || pass == "" || pass == "Mật khẩu")
             {
-                username = user.ToLower();
+                lbNotification.Text = "Tên đăng nhập và mật khẩu không được để trống!.";
+                i = 3;
+                timer1.Enabled = true;
+            }
+            else
+            {
                 try
                 {
-                    List<RoleUserManager> ListRole = RoleUserManager_DAO.Instance.CheckRoleUserManager(username);
-                    if (ListRole[0].Status == "Hoạt động")
+                    if (CheckLogin(user, pass))
                     {
-                        btContinue.Enabled = false;
-                        FrmManager f = new FrmManager(LogOut);
-                        this.Hide();
-                        f.ShowDialog();
+                        username = user.ToLower();
+
+                        List<RoleUserManager> ListRole = RoleUserManager_DAO.Instance.CheckRoleUserManager(username);
+                        if (ListRole[0].Status == "Hoạt động")
+                        {
+                            btContinue.Enabled = false;
+                            FrmManager f = new FrmManager(LogOut);
+                            this.Hide();
+                            f.ShowDialog();
+                        }
+                        else
+                        {
+                            lbNotification.Text = "Tài khoản của bạn chưa được cấp quyền. Liên hệ với quản trị viên.";
+                            i = 3;
+                            timer1.Enabled = true;
+                        }
                     }
                     else
                     {
-                        lbNotification.Text = "Tài khoản của bạn chưa được cấp quyền. Liên hệ với quản trị viên.";
+                        lbNotification.Text = "Tên đăng nhập hoặc mật khẩu không đúng";
                         i = 3;
                         timer1.Enabled = true;
-                        //MessageBox.Show("Tài khoản của bạn chưa được cấp quyền", "Thông báo!");
                     }
                 }
                 catch
                 {
-                    lbNotification.Text = "Tài khoản của bạn chưa được cấp quyền. Liên hệ với quản trị viên.";
-                    i = 3;
+                    lbNotification.Text = "Không thể kết nối với máy chủ. Vui lòng kiểm tra lại.";
+                    i = 5;
                     timer1.Enabled = true;
-                    //MessageBox.Show("Tài khoản của bạn chưa được cấp quyền", "Thông báo!"); 
                 }
             }
-            else
-            {
-                lbNotification.Text = "Tên đăng nhập hoặc mật khẩu không đúng";
-                i = 3;
-                timer1.Enabled = true;
-            }
-
         }
         private void lbForgetPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -148,50 +172,59 @@ namespace API_QuanLyNhaThuoc
         {
             string user = tbUserNameForget.Text.TrimEnd().ToLower();
             string email = tbUserEmail.Text.Trim().ToLower();
-            if (Email_DAO.Instance.isEmail(email))
+            try
             {
-                if (Account_DAO.Instance.CheckForgetPass(user, email))
+                if (Email_DAO.Instance.isEmail(email))
                 {
-                    if (Account_DAO.Instance.CheckStatus(user))
+                    if (Account_DAO.Instance.CheckForgetPass(user, email))
                     {
-                        if (Email_DAO.Instance.SendMailResetPassword(email, Account_DAO.Instance.GetVerificationCode(user, email)))
+                        if (Account_DAO.Instance.CheckStatus(user))
                         {
-                            lbNotification2.Text = "Hệ thống đã thực hiện gửi mã xác nhận. Vui lòng kiểm tra mail.";
-                            i = 5;
-                            timer1.Enabled = true;
-                            username = user;
-                            panelFogetPass.Visible = false;
-                            panelChangePass.Visible = true;
-                            LoadForm();
+                            if (Email_DAO.Instance.SendMailResetPassword(email, Account_DAO.Instance.GetVerificationCode(user, email)))
+                            {
+                                lbNotification2.Text = "Hệ thống đã thực hiện gửi mã xác nhận. Vui lòng kiểm tra mail.";
+                                i = 5;
+                                timer1.Enabled = true;
+                                username = user;
+                                panelFogetPass.Visible = false;
+                                panelChangePass.Visible = true;
+                                LoadForm();
+                            }
+                            else
+                            {
+                                lbNotification1.Text = "Có lỗi gì đó xãy ra. Vui lòng thử lái sau.";
+                                i = 3;
+                                timer1.Enabled = true;
+                            }
                         }
                         else
                         {
-                            lbNotification1.Text = "Có lỗi gì đó xãy ra. Vui lòng thử lái sau.";
+                            lbNotification1.Text = "Tài khoản của bạn đã bị khóa. Liên hệ với quản trị viên";
                             i = 3;
                             timer1.Enabled = true;
                         }
                     }
                     else
                     {
-                        lbNotification1.Text = "Tài khoản của bạn đã bị khóa. Liên hệ với quản trị viên";
+                        tbUserNameForget.Text = "";
+                        tbUserEmail.Text = "";
+                        lbNotification1.Text = "Tên đăng nhập và email không đúng";
                         i = 3;
                         timer1.Enabled = true;
                     }
                 }
                 else
                 {
-                    tbUserNameForget.Text = "";
                     tbUserEmail.Text = "";
-                    lbNotification1.Text = "Tên đăng nhập và email không đúng";
+                    lbNotification1.Text = "Email không đúng định dạng";
                     i = 3;
                     timer1.Enabled = true;
                 }
             }
-            else
+            catch
             {
-                tbUserEmail.Text = "";
-                lbNotification1.Text = "Email không đúng định dạng";
-                i = 3;
+                lbNotification.Text = "Không thể kết nối với máy chủ. Vui lòng kiểm tra lại.";
+                i = 5;
                 timer1.Enabled = true;
             }
         }

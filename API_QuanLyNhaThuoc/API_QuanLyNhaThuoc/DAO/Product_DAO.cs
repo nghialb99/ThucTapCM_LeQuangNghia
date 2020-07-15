@@ -22,6 +22,11 @@ namespace API_QuanLyNhaThuoc.DAO
 
         private Product_DAO() { }
 
+        public bool CheckIsEXISTSProductWhenCreateInvoice(string id,string user)
+        {
+            string query = "select COUNT(*) from SANPHAM where EXISTS (SELECT * FROM GiaBanLe WHERE SANPHAM.MATHUOC = GiaBanLe.idSanPham) and status != 0 and statusDelete = 1 and MATHUOC =N'" + id + "' and not EXISTS (select * from ItemInvoiceTemp"+ user + " where IdItemCode =N'" + id+"') and SOLUONGTON >0";
+            return (int)DataProvider.Instance.ExcuteScalar(query) == 1;
+        }
         public List<Product> LoadListProduct(string text,int status)
         {
             List<Product> listproduct = new List<Product>();
@@ -44,10 +49,11 @@ namespace API_QuanLyNhaThuoc.DAO
             }
             return listproduct;
         }
-        public List<Product> GetListProductWhenCreateInvoice(string text)
+        public List<Product> GetListProductWhenCreateInvoice(string text,string user)
         {
             List<Product> listproduct = new List<Product>();
-            DataTable data = DataProvider.Instance.ExcuteQuery("EXEC GetListProductWhenCreateInvoice @text ", new object[]{text});
+            string query = "select * from SANPHAM where EXISTS (SELECT * FROM GiaBanLe WHERE SANPHAM.MATHUOC = GiaBanLe.idSanPham) and not EXISTS (SELECT * FROM ItemInvoiceTemp"+user+ " WHERE SANPHAM.MATHUOC = ItemInvoiceTemp"+user+".IdItemCode) and status != 0 and CONCAT(MATHUOC,TEN,MALOAI,solo) like '%'+N'" + text+"'+'%' and statusDelete = 1 and SOLUONGTON > 0";
+            DataTable data = DataProvider.Instance.ExcuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
                 Product list = new Product(item);

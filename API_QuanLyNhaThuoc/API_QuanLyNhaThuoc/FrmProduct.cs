@@ -35,6 +35,8 @@ namespace API_QuanLyNhaThuoc
             btSave.Enabled = false;
             btChooseImage.Enabled = false;
             btUnitPrice.Enabled = false;
+
+            cbPageNum.SelectedItem = "10";
         }
         private void dgvListProduct_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -56,16 +58,6 @@ namespace API_QuanLyNhaThuoc
                     dgvListProduct.Rows[i].DefaultCellStyle.ForeColor = Color.Orange;
                 }
             }
-        }
-        private void tbSearch_OnTextChange(object sender, EventArgs e)
-        {
-            dgvListProduct.DataSource = Product_DAO.Instance.GetListProduct(tbSearch.text);
-            SetColorRowWhenBillStatusIsDelete();
-        }
-        private void tbSearch_Enter(object sender, EventArgs e)
-        {
-            dgvListProduct.DataSource = Product_DAO.Instance.GetListProduct(tbSearch.text);
-            SetColorRowWhenBillStatusIsDelete();
         }
 
         private string id;
@@ -176,6 +168,103 @@ namespace API_QuanLyNhaThuoc
                 dgvListProduct.Enabled = true;
                 dgvListProduct.DataSource = Product_DAO.Instance.GetListProduct(tbSearch.text);
                 SetColorRowWhenBillStatusIsDelete();
+            }
+        }
+
+        private void tbSearch_OnTextChange(object sender, EventArgs e)
+        {
+            LoadRecord(pageNumber, recordNumber);
+        }
+        private void tbSearch_Enter(object sender, EventArgs e)
+        {
+            LoadRecord(pageNumber, recordNumber);
+        }
+        private void LoadRecord(int page, int recordNum)
+        {
+            List<Product> list = Product_DAO.Instance.GetListProduct(tbSearch.text);
+
+            lbPageNum.Text = page.ToString() + "/" + (list.Count / recordNum + 1).ToString();
+            dgvListProduct.DataSource = list.Skip((page - 1) * recordNum).Take(recordNum).ToList();
+            SetColorRowWhenBillStatusIsDelete();
+        }
+
+        private int pageNumber = 1;
+        private int recordNumber = 10;
+        private void btPrivousPage_Click(object sender, EventArgs e)
+        {
+            if (pageNumber > 1)
+            {
+                pageNumber--;
+                LoadRecord(pageNumber, recordNumber);
+            }
+        }
+
+        private void btNextPage_Click(object sender, EventArgs e)
+        {
+            List<Product> list = Product_DAO.Instance.GetListProduct(tbSearch.text);
+
+            if (pageNumber - 1 < list.Count / recordNumber)
+            {
+                pageNumber++;
+                LoadRecord(pageNumber, recordNumber);
+            }
+        }
+
+        private void btFirstPage_Click(object sender, EventArgs e)
+        {
+            pageNumber = 1;
+            LoadRecord(pageNumber, recordNumber);
+        }
+
+        private void btLastPage_Click(object sender, EventArgs e)
+        {
+            pageNumber = Product_DAO.Instance.GetListProduct(tbSearch.text).Count / recordNumber + 1;
+            LoadRecord(pageNumber, recordNumber);
+        }
+
+        private void cbPageNum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPageNum.SelectedItem.ToString() == "10")
+            {
+                pageNumber = 1;
+                recordNumber = 10;
+                LoadRecord(pageNumber, recordNumber);
+            }
+            else
+            {
+                if (cbPageNum.SelectedItem.ToString() == "15")
+                {
+                    pageNumber = 1;
+                    recordNumber = 15;
+                    LoadRecord(pageNumber, recordNumber);
+                }
+                else
+                {
+                    if (cbPageNum.SelectedItem.ToString() == "20")
+                    {
+                        pageNumber = 1;
+                        recordNumber = 20;
+                        LoadRecord(pageNumber, recordNumber);
+                    }
+                    else
+                    {
+                        if (cbPageNum.SelectedItem.ToString() == "30")
+                        {
+                            pageNumber = 1;
+                            recordNumber = 30;
+                            LoadRecord(pageNumber, recordNumber);
+                        }
+                        else
+                        {
+                            if (cbPageNum.SelectedItem.ToString() == "Tất cả")
+                            {
+                                pageNumber = 1;
+                                recordNumber = Product_DAO.Instance.GetListProduct(tbSearch.text).Count + 1;
+                                LoadRecord(pageNumber, recordNumber);
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -186,10 +186,10 @@
             // 
             this.rtbProductInfo.BackColor = System.Drawing.Color.White;
             this.rtbProductInfo.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbProductInfo.Location = new System.Drawing.Point(119, 52);
+            this.rtbProductInfo.Location = new System.Drawing.Point(30, 52);
             this.rtbProductInfo.Name = "rtbProductInfo";
             this.rtbProductInfo.ReadOnly = true;
-            this.rtbProductInfo.Size = new System.Drawing.Size(300, 100);
+            this.rtbProductInfo.Size = new System.Drawing.Size(389, 100);
             this.rtbProductInfo.TabIndex = 166;
             this.rtbProductInfo.Text = "";
             // 

@@ -1,4 +1,5 @@
 ﻿using API_QuanLyNhaThuoc.DAO;
+using API_QuanLyNhaThuoc.DTO;
 using Microsoft.Office.Interop.Word;
 using Microsoft.Reporting.WinForms;
 using System;
@@ -35,6 +36,28 @@ namespace API_QuanLyNhaThuoc
             timer1.Enabled = true;
             AutoExit = lg;
         }
+        public static int temp = 0;
+        public FrmPrintBill(Logout lg,List<Invoice> list,string filePaths)
+        {
+            InitializeComponent();
+            //timer2.Enabled = true;
+            try
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    this.reportViewer1.RefreshReport();
+                    if (GetFileInvoices(list[i].Id, list[i].InvoiceNumber, filePaths))
+                        temp++;
+                }
+                if (temp == list.Count)
+                {
+                    lg();
+                    this.Close();
+                }
+            }
+            catch { }
+            
+        }
         private int IdBill;
         private string InvoiceNumber;
         private string ToMail;
@@ -50,6 +73,7 @@ namespace API_QuanLyNhaThuoc
         }
         public ReportViewer GetReport(int id)
         {
+            this.reportViewer1.RefreshReport();
             this.PrintBillTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.PrintBill,id);
             this.SelectItemsTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.SelectItems,id);
             return reportViewer1;
@@ -62,6 +86,15 @@ namespace API_QuanLyNhaThuoc
             File.WriteAllBytes(@"C:\Users\Public\" + invoiceNumber + ".docx", temp);
             ConvretWordToPDF(@"C:\Users\Public\" + invoiceNumber + ".docx");
             return @"C:\Users\Public\" + invoiceNumber + ".pdf";
+        }
+        public bool GetFileInvoices(int id, string invoiceNumber,string link)
+        {
+            this.PrintBillTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.PrintBill, id);
+            this.SelectItemsTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.SelectItems, id);
+            byte[] temp = reportViewer1.LocalReport.Render("WORDOPENXML");
+            File.WriteAllBytes(link + @"\HD" + invoiceNumber + ".docx", temp);
+            ConvretWordToPDF(link + @"\HD" + invoiceNumber + ".docx");
+            return File.Exists(link + @"\HD" + invoiceNumber + ".pdf");
         }
         private void ConvretListWordToPDF()
         {
@@ -161,6 +194,11 @@ namespace API_QuanLyNhaThuoc
                 catch { }
                 this.Close();
             }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

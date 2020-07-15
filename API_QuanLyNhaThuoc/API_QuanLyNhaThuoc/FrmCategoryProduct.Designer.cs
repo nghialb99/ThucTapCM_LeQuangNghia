@@ -48,13 +48,13 @@
             this.tbRoleCode = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvCategory = new System.Windows.Forms.DataGridView();
+            this.label15 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colum3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label15 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).BeginInit();
             this.SuspendLayout();
@@ -474,6 +474,18 @@
             this.dgvCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoleUser_CellClick);
             this.dgvCategory.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvRoleUser_RowsAdded);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Teal;
+            this.label15.Location = new System.Drawing.Point(7, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(134, 19);
+            this.label15.TabIndex = 96;
+            this.label15.Text = "Nhóm sản phẩm";
+            // 
             // username
             // 
             this.username.HeaderText = "STT";
@@ -512,7 +524,7 @@
             this.Column2.HeaderText = "Ghi chú";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 250;
+            this.Column2.Width = 350;
             // 
             // Column1
             // 
@@ -521,18 +533,7 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Teal;
-            this.label15.Location = new System.Drawing.Point(7, 17);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(134, 19);
-            this.label15.TabIndex = 96;
-            this.label15.Text = "Nhóm sản phẩm";
+            this.Column1.Visible = false;
             // 
             // FrmCategoryProduct
             // 
@@ -570,12 +571,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvCategory;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn colum3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.Label label4;
     }
 }

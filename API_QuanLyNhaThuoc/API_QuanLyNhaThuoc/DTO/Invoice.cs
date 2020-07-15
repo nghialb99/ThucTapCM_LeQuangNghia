@@ -37,8 +37,9 @@ namespace API_QuanLyNhaThuoc.DTO
         private string invoiceNote;
         private string status;
         private string reasonDelete;
+        private string xml;
 
-        public Invoice(int id, string invoiceNumber, DateTime invoiceIssuedDate, string userName, string sellerLegalName, string sellerTaxCode, string sellerAddressLine, string sellerPhoneNumber, string sellerEmail, string sellerBankName, string sellerBankAccount, string sellerWebsite, string buyerCode, string buyerDisplayName, string buyerLegalName, string buyerTaxCode, string buyerAddressLine, string buyerPhoneNumber, string buyerEmail, string paymentMethodName, float totalAmount, int discount, float discountAmount, Double totalAmountAfterDiscount, string totalAmountInWords, string invoiceNote, string status, string reasonDelete)
+        public Invoice(int id, string invoiceNumber, DateTime invoiceIssuedDate, string userName, string sellerLegalName, string sellerTaxCode, string sellerAddressLine, string sellerPhoneNumber, string sellerEmail, string sellerBankName, string sellerBankAccount, string sellerWebsite, string buyerCode, string buyerDisplayName, string buyerLegalName, string buyerTaxCode, string buyerAddressLine, string buyerPhoneNumber, string buyerEmail, string paymentMethodName, float totalAmount, int discount, float discountAmount, Double totalAmountAfterDiscount, string totalAmountInWords, string invoiceNote, string status, string reasonDelete, string xml)
         {
             this.Id = id;
             this.InvoiceNumber = invoiceNumber;
@@ -68,6 +69,7 @@ namespace API_QuanLyNhaThuoc.DTO
             this.InvoiceNote = invoiceNote;
             this.Status = status;
             this.ReasonDelete = reasonDelete;
+            this.Xml = xml;
         }
         public Invoice(DataRow row)
         {
@@ -101,7 +103,7 @@ namespace API_QuanLyNhaThuoc.DTO
             bool d = Convert.ToBoolean(row["status"]);
             if (d) this.Status = "Hoàn thành";
             else this.Status = "Xóa bỏ";
-
+            this.Xml = row["InvoiceInfo"].ToString();
         }
 
         public int Id { get => id; set => id = value; }
@@ -132,5 +134,6 @@ namespace API_QuanLyNhaThuoc.DTO
         public string Status { get => status; set => status = value; }
         public string ReasonDelete { get => reasonDelete; set => reasonDelete = value; }
         public string BuyerCode { get => buyerCode; set => buyerCode = value; }
+        public string Xml { get => xml; set => xml = value; }
     }
 }

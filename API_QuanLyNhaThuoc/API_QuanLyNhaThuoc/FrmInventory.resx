@@ -135,7 +135,7 @@
         RU5ErkJggg==
 </value>
   </data>
-  <data name="btSearch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tbSearch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAwAAAAB/CAYAAABYHaUHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATjSURBVHhe7dbLjhuHEgVB/f9P++IujkDTqZHGngcLiABy
@@ -162,7 +162,7 @@
         9DV9q/pDkiRJkj62/+rHj/8BWLUOKpPC+34AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btSearch.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tbSearch.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJDSURBVHhe7dBLbuRAEANR3//S9iqBRCGyfy5JpJoPiNV4

@@ -32,17 +32,33 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrintBill));
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PrintBillBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Api_QuanLyNhaThuocDataSet = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSet();
             this.SelectItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PrintBillTableAdapter = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSetTableAdapters.PrintBillTableAdapter();
             this.SelectItemsTableAdapter = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSetTableAdapters.SelectItemsTableAdapter();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PrintBillBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Api_QuanLyNhaThuocDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectItemsBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // PrintBillBindingSource
+            // 
+            this.PrintBillBindingSource.DataMember = "PrintBill";
+            this.PrintBillBindingSource.DataSource = this.Api_QuanLyNhaThuocDataSet;
+            // 
+            // Api_QuanLyNhaThuocDataSet
+            // 
+            this.Api_QuanLyNhaThuocDataSet.DataSetName = "Api_QuanLyNhaThuocDataSet";
+            this.Api_QuanLyNhaThuocDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // SelectItemsBindingSource
+            // 
+            this.SelectItemsBindingSource.DataMember = "SelectItems";
+            this.SelectItemsBindingSource.DataSource = this.Api_QuanLyNhaThuocDataSet;
             // 
             // reportViewer1
             // 
@@ -64,21 +80,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // PrintBillBindingSource
-            // 
-            this.PrintBillBindingSource.DataMember = "PrintBill";
-            this.PrintBillBindingSource.DataSource = this.Api_QuanLyNhaThuocDataSet;
-            // 
-            // Api_QuanLyNhaThuocDataSet
-            // 
-            this.Api_QuanLyNhaThuocDataSet.DataSetName = "Api_QuanLyNhaThuocDataSet";
-            this.Api_QuanLyNhaThuocDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // SelectItemsBindingSource
-            // 
-            this.SelectItemsBindingSource.DataMember = "SelectItems";
-            this.SelectItemsBindingSource.DataSource = this.Api_QuanLyNhaThuocDataSet;
-            // 
             // PrintBillTableAdapter
             // 
             this.PrintBillTableAdapter.ClearBeforeFill = true;
@@ -86,6 +87,10 @@
             // SelectItemsTableAdapter
             // 
             this.SelectItemsTableAdapter.ClearBeforeFill = true;
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // FrmPrintBill
             // 
@@ -114,5 +119,6 @@
         private Api_QuanLyNhaThuocDataSetTableAdapters.PrintBillTableAdapter PrintBillTableAdapter;
         private Api_QuanLyNhaThuocDataSetTableAdapters.SelectItemsTableAdapter SelectItemsTableAdapter;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

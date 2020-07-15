@@ -39,5 +39,10 @@ namespace API_QuanLyNhaThuoc
         {
             AddUserCrt(new UserCrtReportMailDelivery());
         }
+
+        private void btReportImportInventory_Click(object sender, EventArgs e)
+        {
+            AddUserCrt(new UserCrtReportImportInventory());
+        }
     }
 }

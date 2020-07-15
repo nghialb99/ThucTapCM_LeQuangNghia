@@ -40,6 +40,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.cbPageNum = new System.Windows.Forms.ComboBox();
+            this.lbPageNum = new System.Windows.Forms.Label();
+            this.btPrivousPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btNextPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btLastPage = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btFirstPage = new Bunifu.Framework.UI.BunifuImageButton();
             this.btSave = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btCancle = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btChooseImage = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -53,6 +59,14 @@
             this.tbUnitName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvListProduct = new System.Windows.Forms.DataGridView();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbSearch = new Bunifu.Framework.UI.BunifuTextbox();
             this.btNewUnitName = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tbBatchNo = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -74,15 +88,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btPrivousPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btNextPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btLastPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btFirstPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListProduct)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +101,12 @@
             // 
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.cbPageNum);
+            this.bunifuGradientPanel1.Controls.Add(this.lbPageNum);
+            this.bunifuGradientPanel1.Controls.Add(this.btPrivousPage);
+            this.bunifuGradientPanel1.Controls.Add(this.btNextPage);
+            this.bunifuGradientPanel1.Controls.Add(this.btLastPage);
+            this.bunifuGradientPanel1.Controls.Add(this.btFirstPage);
             this.bunifuGradientPanel1.Controls.Add(this.btSave);
             this.bunifuGradientPanel1.Controls.Add(this.btCancle);
             this.bunifuGradientPanel1.Controls.Add(this.btChooseImage);
@@ -135,6 +151,92 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1080, 660);
             this.bunifuGradientPanel1.TabIndex = 3;
+            // 
+            // cbPageNum
+            // 
+            this.cbPageNum.DisplayMember = "1";
+            this.cbPageNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPageNum.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPageNum.FormattingEnabled = true;
+            this.cbPageNum.Items.AddRange(new object[] {
+            "10",
+            "15",
+            "20",
+            "30",
+            "Tất cả"});
+            this.cbPageNum.Location = new System.Drawing.Point(978, 631);
+            this.cbPageNum.Name = "cbPageNum";
+            this.cbPageNum.Size = new System.Drawing.Size(70, 23);
+            this.cbPageNum.TabIndex = 182;
+            this.cbPageNum.SelectedIndexChanged += new System.EventHandler(this.cbPageNum_SelectedIndexChanged);
+            // 
+            // lbPageNum
+            // 
+            this.lbPageNum.BackColor = System.Drawing.Color.Transparent;
+            this.lbPageNum.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPageNum.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbPageNum.Location = new System.Drawing.Point(431, 631);
+            this.lbPageNum.Name = "lbPageNum";
+            this.lbPageNum.Size = new System.Drawing.Size(220, 23);
+            this.lbPageNum.TabIndex = 181;
+            this.lbPageNum.Text = "0/0";
+            this.lbPageNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btPrivousPage
+            // 
+            this.btPrivousPage.BackColor = System.Drawing.Color.Transparent;
+            this.btPrivousPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_chevron_left_100;
+            this.btPrivousPage.ImageActive = null;
+            this.btPrivousPage.Location = new System.Drawing.Point(395, 631);
+            this.btPrivousPage.Name = "btPrivousPage";
+            this.btPrivousPage.Size = new System.Drawing.Size(30, 23);
+            this.btPrivousPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btPrivousPage.TabIndex = 180;
+            this.btPrivousPage.TabStop = false;
+            this.btPrivousPage.Zoom = 10;
+            this.btPrivousPage.Click += new System.EventHandler(this.btPrivousPage_Click);
+            // 
+            // btNextPage
+            // 
+            this.btNextPage.BackColor = System.Drawing.Color.Transparent;
+            this.btNextPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_chevron_right_100;
+            this.btNextPage.ImageActive = null;
+            this.btNextPage.Location = new System.Drawing.Point(657, 631);
+            this.btNextPage.Name = "btNextPage";
+            this.btNextPage.Size = new System.Drawing.Size(30, 23);
+            this.btNextPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btNextPage.TabIndex = 179;
+            this.btNextPage.TabStop = false;
+            this.btNextPage.Zoom = 10;
+            this.btNextPage.Click += new System.EventHandler(this.btNextPage_Click);
+            // 
+            // btLastPage
+            // 
+            this.btLastPage.BackColor = System.Drawing.Color.Transparent;
+            this.btLastPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_fast_forward_100;
+            this.btLastPage.ImageActive = null;
+            this.btLastPage.Location = new System.Drawing.Point(703, 631);
+            this.btLastPage.Name = "btLastPage";
+            this.btLastPage.Size = new System.Drawing.Size(30, 23);
+            this.btLastPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btLastPage.TabIndex = 178;
+            this.btLastPage.TabStop = false;
+            this.btLastPage.Zoom = 10;
+            this.btLastPage.Click += new System.EventHandler(this.btLastPage_Click);
+            // 
+            // btFirstPage
+            // 
+            this.btFirstPage.BackColor = System.Drawing.Color.Transparent;
+            this.btFirstPage.Image = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_rewind_100;
+            this.btFirstPage.ImageActive = null;
+            this.btFirstPage.Location = new System.Drawing.Point(349, 631);
+            this.btFirstPage.Name = "btFirstPage";
+            this.btFirstPage.Size = new System.Drawing.Size(30, 23);
+            this.btFirstPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btFirstPage.TabIndex = 177;
+            this.btFirstPage.TabStop = false;
+            this.btFirstPage.Zoom = 10;
+            this.btFirstPage.Click += new System.EventHandler(this.btFirstPage_Click);
             // 
             // btSave
             // 
@@ -452,10 +554,86 @@
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListProduct.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvListProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListProduct.Size = new System.Drawing.Size(1018, 291);
+            this.dgvListProduct.Size = new System.Drawing.Size(1018, 312);
             this.dgvListProduct.TabIndex = 162;
             this.dgvListProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListProduct_CellClick);
             this.dgvListProduct.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvListProduct_RowsAdded);
+            // 
+            // Column8
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column8.HeaderText = "Stt";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 30;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Id";
+            this.Column6.HeaderText = "Mã sản phẩm";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 80;
+            // 
+            // gg
+            // 
+            this.gg.DataPropertyName = "SyntheticName";
+            this.gg.HeaderText = "Thông tin sản phẩm";
+            this.gg.Name = "gg";
+            this.gg.ReadOnly = true;
+            this.gg.Width = 370;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "Image";
+            this.Column7.HeaderText = "Hình ảnh";
+            this.Column7.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "UnitName";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column1.HeaderText = "Đơn vị cơ bản";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ExpDate";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column2.HeaderText = "Hạn sử dụng";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 120;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "InventoryNumber";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Column4.HeaderText = "Số lượng tồn";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Status";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Green;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Column5.HeaderText = "Trạng thái";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // tbSearch
             // 
@@ -470,7 +648,6 @@
             this.tbSearch.TabIndex = 139;
             this.tbSearch.text = "";
             this.tbSearch.OnTextChange += new System.EventHandler(this.tbSearch_OnTextChange);
-            this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
             // 
             // btNewUnitName
             // 
@@ -817,82 +994,6 @@
             this.label15.TabIndex = 138;
             this.label15.Text = "Sản phẩm";
             // 
-            // Column8
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column8.HeaderText = "Stt";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 30;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Id";
-            this.Column6.HeaderText = "Mã sản phẩm";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 80;
-            // 
-            // gg
-            // 
-            this.gg.DataPropertyName = "SyntheticName";
-            this.gg.HeaderText = "Thông tin sản phẩm";
-            this.gg.Name = "gg";
-            this.gg.ReadOnly = true;
-            this.gg.Width = 370;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "Image";
-            this.Column7.HeaderText = "Hình ảnh";
-            this.Column7.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "UnitName";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column1.HeaderText = "Đơn vị cơ bản";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ExpDate";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column2.HeaderText = "Hạn sử dụng";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 120;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "InventoryNumber";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Column4.HeaderText = "Số lượng tồn";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Status";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Green;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column5.HeaderText = "Trạng thái";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
             // FrmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -905,6 +1006,10 @@
             this.Load += new System.EventHandler(this.FrmProduct_Load);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btPrivousPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btNextPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btLastPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btFirstPage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListProduct)).EndInit();
             this.ResumeLayout(false);
@@ -956,5 +1061,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.ComboBox cbPageNum;
+        private System.Windows.Forms.Label lbPageNum;
+        private Bunifu.Framework.UI.BunifuImageButton btPrivousPage;
+        private Bunifu.Framework.UI.BunifuImageButton btNextPage;
+        private Bunifu.Framework.UI.BunifuImageButton btLastPage;
+        private Bunifu.Framework.UI.BunifuImageButton btFirstPage;
     }
 }

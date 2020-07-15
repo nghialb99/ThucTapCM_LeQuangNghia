@@ -27,7 +27,7 @@ namespace API_QuanLyNhaThuoc
             dgvCategory.AlternatingRowsDefaultCellStyle.BackColor = Color.LightCyan;
             dgvCategory.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvCategory.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            dgvCategory.DefaultCellStyle.SelectionForeColor = Color.Red;
+            dgvCategory.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
         private void LoadData()
         {
@@ -105,7 +105,7 @@ namespace API_QuanLyNhaThuoc
                 }
                 SetColorRowWhenBillStatusIsDelete();
             }
-            catch { }
+            catch { DisableItem(); }
         }
         private void btNew_Click(object sender, EventArgs e)
         {

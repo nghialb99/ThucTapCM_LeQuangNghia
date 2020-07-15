@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using API_QuanLyNhaThuoc.DAO;
+using API_QuanLyNhaThuoc.DTO;
+using System.IO;
 
 namespace API_QuanLyNhaThuoc
 {
@@ -33,11 +35,11 @@ namespace API_QuanLyNhaThuoc
 
             CultureInfo culture = new CultureInfo("vi-VN");
 
-            lbDSThangNay.Text = "Tháng này: " + Invoice_DAO.Instance.GetTotalThisMonth().ToString("c", culture);
-            lbDSThangTruoc.Text = "Tháng trước: " + Invoice_DAO.Instance.GetTotalLastMonth().ToString("c", culture);
+            lbDSThangNay.Text = "Tháng này: " + Invoice_DAO.Instance.GetTotalThisMonth().ToString("c0", culture);
+            lbDSThangTruoc.Text = "Tháng trước: " + Invoice_DAO.Instance.GetTotalLastMonth().ToString("c0", culture);
             tbHDThangNay.Text = "Tháng này: " + Invoice_DAO.Instance.GetTotalBillThisMonth().ToString();
             lbHDThangTruoc.Text = "Tháng trước: " + Invoice_DAO.Instance.GetTotalBillLastMonth().ToString();
-            lbDSHomNay.Text = "Doanh số: " + Invoice_DAO.Instance.GetTotalAmountThisDay().ToString("c", culture);
+            lbDSHomNay.Text = "Doanh số: " + Invoice_DAO.Instance.GetTotalAmountThisDay().ToString("c0", culture);
             lbHDHomNay.Text = "Hóa đơn: " + Invoice_DAO.Instance.GetTotalBillThisDay().ToString();
             lbSPHetHanThangToi.Text = "Tháng tới: " + Invoice_DAO.Instance.SoThuocSapHetHanThangSau().ToString();
             lbSPHetHanThangNay.Text = "Tháng này: " + Invoice_DAO.Instance.SoThuocSapHetHanThangNay().ToString();
@@ -161,13 +163,45 @@ namespace API_QuanLyNhaThuoc
 
         private void btFilter_Click(object sender, EventArgs e)
         {
-            dgvListInvoice.DataSource = Invoice_DAO.Instance.GetListInvoiceWithTime(dateTimeFrom.Value, dateTimeTo.Value);
+            dgvListInvoice.DataSource = Invoice_DAO.Instance.GetListInvoiceWithTime(dateTimeFrom.Value, dateTimeTo.Value); 
             SetColorRowWhenBillStatusIsDelete();
         }
 
         private void btExportToXml_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog dl = new FolderBrowserDialog();
+            
+            if (dl.ShowDialog(this) == DialogResult.OK)
+            {
+                string filePath = dl.SelectedPath;
+                int temp = 0;
+                for(int i = 0; i < dgvListInvoice.Rows.Count; i++)
+                {
+                    string id = dgvListInvoice.Rows[i].Cells[1].Value.ToString();
+                    Invoice iv = Invoice_DAO.Instance.GetListInvoiceByInvoiceNumber(id);
+                    var directory_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    string filename = "HD" + iv.InvoiceNumber + ".xml";
+                    var fullpath = Path.Combine(directory_mydoc, filename);
+                    File.WriteAllText(fullpath, iv.Xml.ToString());
+                    temp++;
+                }
+                if (temp == dgvListInvoice.Rows.Count) MessageBox.Show("Tải hoàn tất ","Thông báo");
+            }
+        }
+        private void Notification()
+        {
+            MessageBox.Show("Tải xuống hoàn tất", "Thông báo");
+        }
+        private void btExportToPDF_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dl = new FolderBrowserDialog();
 
+            if (dl.ShowDialog(this) == DialogResult.OK)
+            {
+                string filePath = dl.SelectedPath;
+                List<Invoice> list = Invoice_DAO.Instance.GetListInvoiceWithTime(dateTimeFrom.Value, dateTimeTo.Value);
+                FrmPrintBill f = new FrmPrintBill(Notification,list,filePath);
+            }
         }
     }
 }

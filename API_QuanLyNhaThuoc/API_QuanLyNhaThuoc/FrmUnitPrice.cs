@@ -109,6 +109,7 @@ namespace API_QuanLyNhaThuoc
         {
             EnableItem();
             btNew.Enabled = false;
+            btEdit.Enabled = false;
             dgvCategory.Enabled = false;
             temp = true;
         }

@@ -1,4 +1,5 @@
 ﻿using API_QuanLyNhaThuoc.DAO;
+using API_QuanLyNhaThuoc.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,9 +31,9 @@ namespace API_QuanLyNhaThuoc
             dgvListProduct.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             radioButton1.Checked = true;
-            dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct("ggggggggggggggggggggggggggggggg", status);
+            cbPageNum.SelectedItem = "10";
 
-            
+
         }
 
         private void dgvListProduct_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -45,8 +46,7 @@ namespace API_QuanLyNhaThuoc
         private int status = 1;
         private void btSearch_OnTextChange(object sender, EventArgs e)
         {
-            dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(btSearch.text,status);
-            SetColorRowWhenBillStatusIsDelete();
+            LoadRecord(pageNumber, recordNumber);
         }
         private void SetColorRowWhenBillStatusIsDelete()
         {
@@ -72,7 +72,7 @@ namespace API_QuanLyNhaThuoc
                 radioButton2.Checked = false;
                 radioButton3.Checked = false;
                 status = 1;
-                dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(btSearch.text, status);
+                dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(tbSearch.text, status);
                 SetColorRowWhenBillStatusIsDelete();
             }
         }
@@ -84,7 +84,7 @@ namespace API_QuanLyNhaThuoc
                 radioButton1.Checked = false;
                 radioButton3.Checked = false;
                 status = 2;
-                dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(btSearch.text, status);
+                dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(tbSearch.text, status);
                 SetColorRowWhenBillStatusIsDelete();
             }
         }
@@ -96,15 +96,98 @@ namespace API_QuanLyNhaThuoc
                 radioButton2.Checked = false;
                 radioButton1.Checked = false;
                 status = 0;
-                dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(btSearch.text, status);
+                dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(tbSearch.text, status);
                 SetColorRowWhenBillStatusIsDelete();
             }
         }
 
-        private void btSearch_Enter(object sender, EventArgs e)
+        private void LoadRecord(int page, int recordNum)
         {
-            dgvListProduct.DataSource = Product_DAO.Instance.LoadListProduct(btSearch.text, status);
+            List<Product> list = Product_DAO.Instance.LoadListProduct(tbSearch.text, status);
+
+            lbPageNum.Text = page.ToString() + "/" + (list.Count / recordNum + 1).ToString();
+            dgvListProduct.DataSource = list.Skip((page - 1) * recordNum).Take(recordNum).ToList();
             SetColorRowWhenBillStatusIsDelete();
+        }
+
+        private int pageNumber = 1;
+        private int recordNumber = 10;
+        private void btPrivousPage_Click(object sender, EventArgs e)
+        {
+            if (pageNumber > 1)
+            {
+                pageNumber--;
+                LoadRecord(pageNumber, recordNumber);
+            }
+        }
+
+        private void btNextPage_Click(object sender, EventArgs e)
+        {
+            List<Product> list = Product_DAO.Instance.LoadListProduct(tbSearch.text, status);
+
+            if (pageNumber - 1 < list.Count / recordNumber)
+            {
+                pageNumber++;
+                LoadRecord(pageNumber, recordNumber);
+            }
+        }
+
+        private void btFirstPage_Click(object sender, EventArgs e)
+        {
+            pageNumber = 1;
+            LoadRecord(pageNumber, recordNumber);
+        }
+
+        private void btLastPage_Click(object sender, EventArgs e)
+        {
+            pageNumber = Product_DAO.Instance.LoadListProduct(tbSearch.text, status).Count / recordNumber + 1;
+            LoadRecord(pageNumber, recordNumber);
+        }
+
+        private void cbPageNum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPageNum.SelectedItem.ToString() == "10")
+            {
+                pageNumber = 1;
+                recordNumber = 10;
+                LoadRecord(pageNumber, recordNumber);
+            }
+            else
+            {
+                if (cbPageNum.SelectedItem.ToString() == "15")
+                {
+                    pageNumber = 1;
+                    recordNumber = 15;
+                    LoadRecord(pageNumber, recordNumber);
+                }
+                else
+                {
+                    if (cbPageNum.SelectedItem.ToString() == "20")
+                    {
+                        pageNumber = 1;
+                        recordNumber = 20;
+                        LoadRecord(pageNumber, recordNumber);
+                    }
+                    else
+                    {
+                        if (cbPageNum.SelectedItem.ToString() == "30")
+                        {
+                            pageNumber = 1;
+                            recordNumber = 30;
+                            LoadRecord(pageNumber, recordNumber);
+                        }
+                        else
+                        {
+                            if (cbPageNum.SelectedItem.ToString() == "Tất cả")
+                            {
+                                pageNumber = 1;
+                                recordNumber = Product_DAO.Instance.GetListProduct(tbSearch.text).Count + 1;
+                                LoadRecord(pageNumber, recordNumber);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

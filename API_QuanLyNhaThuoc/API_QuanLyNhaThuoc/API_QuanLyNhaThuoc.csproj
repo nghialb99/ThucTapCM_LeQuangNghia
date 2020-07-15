@@ -207,6 +207,7 @@
     <Compile Include="DAO\Email_DAO.cs" />
     <Compile Include="DAO\EnterpriseInfo_DAO.cs" />
     <Compile Include="DAO\ImportBill_DAO.cs" />
+    <Compile Include="DAO\ImportInventory_DAO.cs" />
     <Compile Include="DAO\Invoice_DAO.cs" />
     <Compile Include="DAO\MD5Crypt.cs" />
     <Compile Include="DAO\Product_DAO.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="DTO\ConfigurationEmail.cs" />
     <Compile Include="DTO\EnterpriseInfo.cs" />
     <Compile Include="DTO\ImportBill.cs" />
+    <Compile Include="DTO\ImportInventory.cs" />
     <Compile Include="DTO\Invoice.cs" />
     <Compile Include="DTO\ItemTemp.cs" />
     <Compile Include="DTO\MailDeliveryHistory.cs" />
@@ -298,6 +300,12 @@
     <Compile Include="FrmImportFromSupplier.Designer.cs">
       <DependentUpon>FrmImportFromSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmImportInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmImportInventory.Designer.cs">
+      <DependentUpon>FrmImportInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInventory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +323,12 @@
     </Compile>
     <Compile Include="FrmItems.Designer.cs">
       <DependentUpon>FrmItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLoad.Designer.cs">
+      <DependentUpon>FrmLoad.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -438,6 +452,12 @@
     <Compile Include="UserCrtReportBuy.Designer.cs">
       <DependentUpon>UserCrtReportBuy.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserCrtReportImportInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCrtReportImportInventory.Designer.cs">
+      <DependentUpon>UserCrtReportImportInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserCrtReportMailDelivery.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -498,6 +518,9 @@
     <EmbeddedResource Include="FrmImportFromSupplier.resx">
       <DependentUpon>FrmImportFromSupplier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmImportInventory.resx">
+      <DependentUpon>FrmImportInventory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInventory.resx">
       <DependentUpon>FrmInventory.cs</DependentUpon>
     </EmbeddedResource>
@@ -506,6 +529,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmItems.resx">
       <DependentUpon>FrmItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLoad.resx">
+      <DependentUpon>FrmLoad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -571,6 +597,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserCrtReportBuy.resx">
       <DependentUpon>UserCrtReportBuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCrtReportImportInventory.resx">
+      <DependentUpon>UserCrtReportImportInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserCrtReportMailDelivery.resx">
       <DependentUpon>UserCrtReportMailDelivery.cs</DependentUpon>
@@ -642,6 +671,22 @@
     <None Include="Resources\icons8-xml-100.png" />
     <None Include="Resources\icons8-minus-100.png" />
     <None Include="Resources\icons8-plus-1001.png" />
+    <None Include="Resources\icons8-export-pdf-100.png" />
+    <None Include="Resources\icons8-barcode-reader-100.png" />
+    <None Include="Resources\icons8-connect-100.png" />
+    <None Include="Resources\icons8-supplier-100.png" />
+    <None Include="Resources\icons8-product-100.png" />
+    <None Include="Resources\icons8-product-documents-100.png" />
+    <None Include="Resources\icons8-team-100.png" />
+    <None Include="Resources\icons8-product-management-100.png" />
+    <None Include="Resources\icons8-customer-100.png" />
+    <None Include="Resources\icons8-group-message-100.png" />
+    <None Include="Resources\icons8-new-product-100.png" />
+    <None Include="Resources\icons8-trolley-100.png" />
+    <None Include="Resources\icons8-rewind-100.png" />
+    <None Include="Resources\icons8-fast-forward-100.png" />
+    <None Include="Resources\icons8-chevron-right-100.png" />
+    <None Include="Resources\icons8-chevron-left-100.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -737,6 +782,24 @@
   <ItemGroup>
     <None Include="Resources\icons8-shutdown-100.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,7 +20,7 @@ namespace API_QuanLyNhaThuoc
         }
         private DataProvider() { }
 
-        private string connectionSTR = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Api_QuanLyNhaThuoc.mdf;Integrated Security=True";
+        private string connectionSTR = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|database\Api_QuanLyNhaThuoc.mdf;Integrated Security=True";
         //private string connectionSTR = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+ Application.StartupPath + @"\database\Api_QuanLyNhaThuoc.mdf;Integrated Security=True";
         public DataTable ExcuteQuery(string query, object[] a = null)
         {

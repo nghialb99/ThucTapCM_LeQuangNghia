@@ -37,8 +37,19 @@ namespace API_QuanLyNhaThuoc.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-9BJ3RKQ\\SQLEXPRESS;Initial Catalog=Api_QuanLyNhaThuoc;Persist" +
-            " Security Info=True;User ID=nghiale;Password=Nghia$98")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Api_QuanLyNha" +
+            "Thuoc.mdf;Integrated Security=True")]
+        public string Api_QuanLyNhaThuocConnectionString1 {
+            get {
+                return ((string)(this["Api_QuanLyNhaThuocConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Api_QuanLyNha" +
+            "Thuoc.mdf;Integrated Security=True")]
         public string Api_QuanLyNhaThuocConnectionString {
             get {
                 return ((string)(this["Api_QuanLyNhaThuocConnectionString"]));
@@ -48,11 +59,11 @@ namespace API_QuanLyNhaThuoc.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Api_QuanLyNha" +
-            "Thuoc.mdf;Integrated Security=True")]
-        public string Api_QuanLyNhaThuocConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\bin\\Debug\\dat" +
+            "abase\\Api_QuanLyNhaThuoc.mdf;Integrated Security=True;Connect Timeout=30")]
+        public string Api_QuanLyNhaThuocConnectionString2 {
             get {
-                return ((string)(this["Api_QuanLyNhaThuocConnectionString1"]));
+                return ((string)(this["Api_QuanLyNhaThuocConnectionString2"]));
             }
         }
     }

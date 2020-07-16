@@ -20,8 +20,8 @@ namespace API_QuanLyNhaThuoc
         }
         private DataProvider() { }
 
-        private string connectionSTR = "Data Source=DESKTOP-9BJ3RKQ\\SQLEXPRESS;Initial Catalog = Api_QuanLyNhaThuoc; Persist Security Info=True;User ID = nghiale; Password=Nghia$98";//= "Data Source=DESKTOP-9BJ3RKQ\\SQLEXPRESS;Initial Catalog=Api_QuanLyNhaThuoc;Integrated Security=True";
-        //private string connectionSTR = "Data Source=DESKTOP-9BJ3RKQ\\SQLEXPRESS;Initial Catalog=Api_TEMP;Integrated Security=True";
+        private string connectionSTR = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Api_QuanLyNhaThuoc.mdf;Integrated Security=True";
+        //private string connectionSTR = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+ Application.StartupPath + @"\database\Api_QuanLyNhaThuoc.mdf;Integrated Security=True";
         public DataTable ExcuteQuery(string query, object[] a = null)
         {
             DataTable data = new DataTable();

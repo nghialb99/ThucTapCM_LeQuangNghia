@@ -64,6 +64,8 @@
             this.btCategory = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelInventory = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btImportInventory = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btInventory = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btImportFromSupplier = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btWarehouseManager = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -80,8 +82,6 @@
             this.toolStripStatusLabelUserName = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.btExit = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btInventory = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btImportInventory = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PanelRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelMenu.SuspendLayout();
@@ -906,6 +906,80 @@
             this.panel2.Size = new System.Drawing.Size(154, 0);
             this.panel2.TabIndex = 3;
             // 
+            // btImportInventory
+            // 
+            this.btImportInventory.Activecolor = System.Drawing.Color.Transparent;
+            this.btImportInventory.BackColor = System.Drawing.Color.Transparent;
+            this.btImportInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btImportInventory.BorderRadius = 0;
+            this.btImportInventory.ButtonText = "Nhập tồn";
+            this.btImportInventory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btImportInventory.DisabledColor = System.Drawing.Color.Gray;
+            this.btImportInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btImportInventory.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btImportInventory.Iconcolor = System.Drawing.Color.Transparent;
+            this.btImportInventory.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_product_100;
+            this.btImportInventory.Iconimage_right = null;
+            this.btImportInventory.Iconimage_right_Selected = null;
+            this.btImportInventory.Iconimage_Selected = null;
+            this.btImportInventory.IconMarginLeft = 0;
+            this.btImportInventory.IconMarginRight = 0;
+            this.btImportInventory.IconRightVisible = true;
+            this.btImportInventory.IconRightZoom = 0D;
+            this.btImportInventory.IconVisible = true;
+            this.btImportInventory.IconZoom = 80D;
+            this.btImportInventory.IsTab = false;
+            this.btImportInventory.Location = new System.Drawing.Point(0, 94);
+            this.btImportInventory.Name = "btImportInventory";
+            this.btImportInventory.Normalcolor = System.Drawing.Color.Transparent;
+            this.btImportInventory.OnHovercolor = System.Drawing.SystemColors.Control;
+            this.btImportInventory.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btImportInventory.selected = false;
+            this.btImportInventory.Size = new System.Drawing.Size(154, 47);
+            this.btImportInventory.TabIndex = 11;
+            this.btImportInventory.Text = "Nhập tồn";
+            this.btImportInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btImportInventory.Textcolor = System.Drawing.Color.Black;
+            this.btImportInventory.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btImportInventory.Click += new System.EventHandler(this.btImportInventory_Click);
+            // 
+            // btInventory
+            // 
+            this.btInventory.Activecolor = System.Drawing.Color.Transparent;
+            this.btInventory.BackColor = System.Drawing.Color.Transparent;
+            this.btInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btInventory.BorderRadius = 0;
+            this.btInventory.ButtonText = "Tồn kho";
+            this.btInventory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btInventory.DisabledColor = System.Drawing.Color.Gray;
+            this.btInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btInventory.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btInventory.Iconcolor = System.Drawing.Color.Transparent;
+            this.btInventory.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_product_100;
+            this.btInventory.Iconimage_right = null;
+            this.btInventory.Iconimage_right_Selected = null;
+            this.btInventory.Iconimage_Selected = null;
+            this.btInventory.IconMarginLeft = 0;
+            this.btInventory.IconMarginRight = 0;
+            this.btInventory.IconRightVisible = true;
+            this.btInventory.IconRightZoom = 0D;
+            this.btInventory.IconVisible = true;
+            this.btInventory.IconZoom = 80D;
+            this.btInventory.IsTab = false;
+            this.btInventory.Location = new System.Drawing.Point(0, 47);
+            this.btInventory.Name = "btInventory";
+            this.btInventory.Normalcolor = System.Drawing.Color.Transparent;
+            this.btInventory.OnHovercolor = System.Drawing.SystemColors.Control;
+            this.btInventory.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btInventory.selected = false;
+            this.btInventory.Size = new System.Drawing.Size(154, 47);
+            this.btInventory.TabIndex = 10;
+            this.btInventory.Text = "Tồn kho";
+            this.btInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btInventory.Textcolor = System.Drawing.Color.Black;
+            this.btInventory.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btInventory.Click += new System.EventHandler(this.btInventory_Click);
+            // 
             // btImportFromSupplier
             // 
             this.btImportFromSupplier.Activecolor = System.Drawing.Color.Transparent;
@@ -1220,80 +1294,6 @@
             this.btExit.TabStop = false;
             this.btExit.Zoom = 10;
             this.btExit.Click += new System.EventHandler(this.btExit_Click);
-            // 
-            // btInventory
-            // 
-            this.btInventory.Activecolor = System.Drawing.Color.Transparent;
-            this.btInventory.BackColor = System.Drawing.Color.Transparent;
-            this.btInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btInventory.BorderRadius = 0;
-            this.btInventory.ButtonText = "Tồn kho";
-            this.btInventory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btInventory.DisabledColor = System.Drawing.Color.Gray;
-            this.btInventory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btInventory.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btInventory.Iconcolor = System.Drawing.Color.Transparent;
-            this.btInventory.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_product_100;
-            this.btInventory.Iconimage_right = null;
-            this.btInventory.Iconimage_right_Selected = null;
-            this.btInventory.Iconimage_Selected = null;
-            this.btInventory.IconMarginLeft = 0;
-            this.btInventory.IconMarginRight = 0;
-            this.btInventory.IconRightVisible = true;
-            this.btInventory.IconRightZoom = 0D;
-            this.btInventory.IconVisible = true;
-            this.btInventory.IconZoom = 80D;
-            this.btInventory.IsTab = false;
-            this.btInventory.Location = new System.Drawing.Point(0, 47);
-            this.btInventory.Name = "btInventory";
-            this.btInventory.Normalcolor = System.Drawing.Color.Transparent;
-            this.btInventory.OnHovercolor = System.Drawing.SystemColors.Control;
-            this.btInventory.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btInventory.selected = false;
-            this.btInventory.Size = new System.Drawing.Size(154, 47);
-            this.btInventory.TabIndex = 10;
-            this.btInventory.Text = "Tồn kho";
-            this.btInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btInventory.Textcolor = System.Drawing.Color.Black;
-            this.btInventory.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btInventory.Click += new System.EventHandler(this.btInventory_Click);
-            // 
-            // btImportInventory
-            // 
-            this.btImportInventory.Activecolor = System.Drawing.Color.Transparent;
-            this.btImportInventory.BackColor = System.Drawing.Color.Transparent;
-            this.btImportInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btImportInventory.BorderRadius = 0;
-            this.btImportInventory.ButtonText = "Nhập tồn";
-            this.btImportInventory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btImportInventory.DisabledColor = System.Drawing.Color.Gray;
-            this.btImportInventory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btImportInventory.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btImportInventory.Iconcolor = System.Drawing.Color.Transparent;
-            this.btImportInventory.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_product_100;
-            this.btImportInventory.Iconimage_right = null;
-            this.btImportInventory.Iconimage_right_Selected = null;
-            this.btImportInventory.Iconimage_Selected = null;
-            this.btImportInventory.IconMarginLeft = 0;
-            this.btImportInventory.IconMarginRight = 0;
-            this.btImportInventory.IconRightVisible = true;
-            this.btImportInventory.IconRightZoom = 0D;
-            this.btImportInventory.IconVisible = true;
-            this.btImportInventory.IconZoom = 80D;
-            this.btImportInventory.IsTab = false;
-            this.btImportInventory.Location = new System.Drawing.Point(0, 94);
-            this.btImportInventory.Name = "btImportInventory";
-            this.btImportInventory.Normalcolor = System.Drawing.Color.Transparent;
-            this.btImportInventory.OnHovercolor = System.Drawing.SystemColors.Control;
-            this.btImportInventory.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btImportInventory.selected = false;
-            this.btImportInventory.Size = new System.Drawing.Size(154, 47);
-            this.btImportInventory.TabIndex = 11;
-            this.btImportInventory.Text = "Nhập tồn";
-            this.btImportInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btImportInventory.Textcolor = System.Drawing.Color.Black;
-            this.btImportInventory.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btImportInventory.Click += new System.EventHandler(this.btImportInventory_Click);
             // 
             // FrmManager
             // 

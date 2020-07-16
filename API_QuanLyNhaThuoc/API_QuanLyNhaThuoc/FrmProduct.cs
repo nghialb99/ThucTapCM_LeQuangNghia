@@ -37,6 +37,8 @@ namespace API_QuanLyNhaThuoc
             btUnitPrice.Enabled = false;
 
             cbPageNum.SelectedItem = "10";
+            lbPageNum.Text = "0/0";
+            dgvListProduct.DataSource = Product_DAO.Instance.GetListProduct("dgvListProduct.DataSource");
         }
         private void dgvListProduct_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -166,8 +168,7 @@ namespace API_QuanLyNhaThuoc
                 btNewUnitName.Enabled = true;
                 btUnitPrice.Enabled = true;
                 dgvListProduct.Enabled = true;
-                dgvListProduct.DataSource = Product_DAO.Instance.GetListProduct(tbSearch.text);
-                SetColorRowWhenBillStatusIsDelete();
+                LoadRecord(pageNumber, recordNumber);
             }
         }
 

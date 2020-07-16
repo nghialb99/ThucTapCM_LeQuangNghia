@@ -44,5 +44,16 @@ namespace API_QuanLyNhaThuoc.Properties {
                 return ((string)(this["Api_QuanLyNhaThuocConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Api_QuanLyNha" +
+            "Thuoc.mdf;Integrated Security=True")]
+        public string Api_QuanLyNhaThuocConnectionString1 {
+            get {
+                return ((string)(this["Api_QuanLyNhaThuocConnectionString1"]));
+            }
+        }
     }
 }

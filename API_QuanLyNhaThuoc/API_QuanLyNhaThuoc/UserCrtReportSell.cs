@@ -179,9 +179,9 @@ namespace API_QuanLyNhaThuoc
                 {
                     string id = dgvListInvoice.Rows[i].Cells[1].Value.ToString();
                     Invoice iv = Invoice_DAO.Instance.GetListInvoiceByInvoiceNumber(id);
-                    var directory_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    //var directory_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     string filename = "HD" + iv.InvoiceNumber + ".xml";
-                    var fullpath = Path.Combine(directory_mydoc, filename);
+                    var fullpath = Path.Combine(filePath, filename);
                     File.WriteAllText(fullpath, iv.Xml.ToString());
                     temp++;
                 }

@@ -4354,7 +4354,7 @@
         </Field>
         <Field Name="status">
           <DataField>status</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="StatusInWord">
           <DataField>StatusInWord</DataField>
@@ -4471,7 +4471,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Api_QuanLyNhaThuocDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\nghia\Documents\Lập trình API\BTL\API_QuanLyNhaThuoc\API_QuanLyNhaThuoc\Api_QuanLyNhaThuocDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\nghia\Downloads\API_QuanLyNhaThuoc\API_QuanLyNhaThuoc\Api_QuanLyNhaThuocDataSet.xsd</rd:SchemaPath>
         <rd:TableName>PrintBill</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -4523,11 +4523,11 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Api_QuanLyNhaThuocDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\nghia\Documents\Lập trình API\BTL\API_QuanLyNhaThuoc\API_QuanLyNhaThuoc\Api_QuanLyNhaThuocDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>SelectItems</rd:TableName>
+        <rd:SchemaPath>C:\Users\nghia\Downloads\API_QuanLyNhaThuoc\API_QuanLyNhaThuoc\Api_QuanLyNhaThuocDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>GetInvoiceItemsInfo</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>SelectItemsTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>GetInvoiceItemsInfoTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

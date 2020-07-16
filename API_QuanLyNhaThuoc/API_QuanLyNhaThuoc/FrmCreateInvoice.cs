@@ -295,9 +295,10 @@ namespace API_QuanLyNhaThuoc
 
         private void cbBuyerCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Buyer buyer = Buyer_DAO.Instance.GetListBuyerById(cbBuyerCode.SelectedValue.ToString());
+            
             try
             {
+                Buyer buyer = Buyer_DAO.Instance.GetListBuyerById(cbBuyerCode.SelectedValue.ToString());
                 lbBuyerName.Text = buyer.BuyerName;
                 lbBuyerTaxCode.Text = buyer.BuyerTaxCode;
                 lbBuyerAddress.Text = buyer.BuyerAddress;

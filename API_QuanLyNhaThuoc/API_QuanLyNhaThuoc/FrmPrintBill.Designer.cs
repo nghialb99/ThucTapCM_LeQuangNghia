@@ -32,41 +32,26 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrintBill));
-            this.PrintBillBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Api_QuanLyNhaThuocDataSet = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSet();
-            this.SelectItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.PrintBillTableAdapter = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSetTableAdapters.PrintBillTableAdapter();
-            this.SelectItemsTableAdapter = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSetTableAdapters.SelectItemsTableAdapter();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.PrintBillBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Api_QuanLyNhaThuocDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SelectItemsBindingSource)).BeginInit();
+            this.api_QuanLyNhaThuocDataSet = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSet();
+            this.printBillBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.printBillTableAdapter = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSetTableAdapters.PrintBillTableAdapter();
+            this.GetInvoiceItemsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.GetInvoiceItemsInfoTableAdapter = new API_QuanLyNhaThuoc.Api_QuanLyNhaThuocDataSetTableAdapters.GetInvoiceItemsInfoTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.api_QuanLyNhaThuocDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printBillBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetInvoiceItemsInfoBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PrintBillBindingSource
-            // 
-            this.PrintBillBindingSource.DataMember = "PrintBill";
-            this.PrintBillBindingSource.DataSource = this.Api_QuanLyNhaThuocDataSet;
-            // 
-            // Api_QuanLyNhaThuocDataSet
-            // 
-            this.Api_QuanLyNhaThuocDataSet.DataSetName = "Api_QuanLyNhaThuocDataSet";
-            this.Api_QuanLyNhaThuocDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // SelectItemsBindingSource
-            // 
-            this.SelectItemsBindingSource.DataMember = "SelectItems";
-            this.SelectItemsBindingSource.DataSource = this.Api_QuanLyNhaThuocDataSet;
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.PrintBillBindingSource;
+            reportDataSource1.Value = this.printBillBindingSource;
             reportDataSource2.Name = "DataSet2";
-            reportDataSource2.Value = this.SelectItemsBindingSource;
+            reportDataSource2.Value = this.GetInvoiceItemsInfoBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "API_QuanLyNhaThuoc.ReportPrintBill.rdlc";
@@ -80,17 +65,32 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // PrintBillTableAdapter
-            // 
-            this.PrintBillTableAdapter.ClearBeforeFill = true;
-            // 
-            // SelectItemsTableAdapter
-            // 
-            this.SelectItemsTableAdapter.ClearBeforeFill = true;
-            // 
             // timer2
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // api_QuanLyNhaThuocDataSet
+            // 
+            this.api_QuanLyNhaThuocDataSet.DataSetName = "Api_QuanLyNhaThuocDataSet";
+            this.api_QuanLyNhaThuocDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // printBillBindingSource
+            // 
+            this.printBillBindingSource.DataMember = "PrintBill";
+            this.printBillBindingSource.DataSource = this.api_QuanLyNhaThuocDataSet;
+            // 
+            // printBillTableAdapter
+            // 
+            this.printBillTableAdapter.ClearBeforeFill = true;
+            // 
+            // GetInvoiceItemsInfoBindingSource
+            // 
+            this.GetInvoiceItemsInfoBindingSource.DataMember = "GetInvoiceItemsInfo";
+            this.GetInvoiceItemsInfoBindingSource.DataSource = this.api_QuanLyNhaThuocDataSet;
+            // 
+            // GetInvoiceItemsInfoTableAdapter
+            // 
+            this.GetInvoiceItemsInfoTableAdapter.ClearBeforeFill = true;
             // 
             // FrmPrintBill
             // 
@@ -103,9 +103,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hóa đơn";
             this.Load += new System.EventHandler(this.FrmPrintBill_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.PrintBillBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Api_QuanLyNhaThuocDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SelectItemsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.api_QuanLyNhaThuocDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printBillBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetInvoiceItemsInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -113,12 +113,13 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource PrintBillBindingSource;
-        private Api_QuanLyNhaThuocDataSet Api_QuanLyNhaThuocDataSet;
-        private System.Windows.Forms.BindingSource SelectItemsBindingSource;
-        private Api_QuanLyNhaThuocDataSetTableAdapters.PrintBillTableAdapter PrintBillTableAdapter;
-        private Api_QuanLyNhaThuocDataSetTableAdapters.SelectItemsTableAdapter SelectItemsTableAdapter;
+        
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.BindingSource printBillBindingSource;
+        private Api_QuanLyNhaThuocDataSet api_QuanLyNhaThuocDataSet;
+        private System.Windows.Forms.BindingSource GetInvoiceItemsInfoBindingSource;
+        private Api_QuanLyNhaThuocDataSetTableAdapters.PrintBillTableAdapter printBillTableAdapter;
+        private Api_QuanLyNhaThuocDataSetTableAdapters.GetInvoiceItemsInfoTableAdapter GetInvoiceItemsInfoTableAdapter;
     }
 }

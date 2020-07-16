@@ -648,6 +648,7 @@
             this.tbSearch.TabIndex = 139;
             this.tbSearch.text = "";
             this.tbSearch.OnTextChange += new System.EventHandler(this.tbSearch_OnTextChange);
+            this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
             // 
             // btNewUnitName
             // 

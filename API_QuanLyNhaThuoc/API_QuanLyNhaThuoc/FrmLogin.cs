@@ -44,8 +44,8 @@ namespace API_QuanLyNhaThuoc
             catch
             {
                 lbNotification.Text = "Không thể kết nối với máy chủ. Vui lòng kiểm tra lại đường truyền";
-                i = 5;
-                timer1.Enabled = true;
+                //i = 5;
+                //timer1.Enabled = true;
             }
             //label1.Text = Account_DAO.Instance.Decrypt(lbNotification.Text);
         }

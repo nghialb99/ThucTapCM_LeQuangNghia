@@ -26,7 +26,7 @@ namespace API_QuanLyNhaThuoc
 
         private void FrmPrintBill_Load(object sender, EventArgs e)
         {
-            this.reportViewer1.RefreshReport();
+            //this.reportViewer1.RefreshReport();
         }
         private Logout AutoExit;
 
@@ -74,14 +74,16 @@ namespace API_QuanLyNhaThuoc
         public ReportViewer GetReport(int id)
         {
             this.reportViewer1.RefreshReport();
-            this.PrintBillTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.PrintBill,id);
-            this.SelectItemsTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.SelectItems,id);
+            this.printBillTableAdapter.Fill(this.api_QuanLyNhaThuocDataSet.PrintBill,id);
+            this.GetInvoiceItemsInfoTableAdapter.Fill(this.api_QuanLyNhaThuocDataSet.GetInvoiceItemsInfo,id);
+            //this.SelectItemsTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.SelectItems,id);
             return reportViewer1;
         }
         public string GetFileInvoice(int id,string invoiceNumber)
         {
-            this.PrintBillTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.PrintBill, id);
-            this.SelectItemsTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.SelectItems, id);
+            this.printBillTableAdapter.Fill(this.api_QuanLyNhaThuocDataSet.PrintBill, id);
+            this.GetInvoiceItemsInfoTableAdapter.Fill(this.api_QuanLyNhaThuocDataSet.GetInvoiceItemsInfo, id);
+            //this.SelectItemsTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.SelectItems, id);
             byte[] temp = reportViewer1.LocalReport.Render("WORDOPENXML");
             File.WriteAllBytes(@"C:\Users\Public\" + invoiceNumber + ".docx", temp);
             ConvretWordToPDF(@"C:\Users\Public\" + invoiceNumber + ".docx");
@@ -89,8 +91,9 @@ namespace API_QuanLyNhaThuoc
         }
         public bool GetFileInvoices(int id, string invoiceNumber,string link)
         {
-            this.PrintBillTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.PrintBill, id);
-            this.SelectItemsTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.SelectItems, id);
+            this.printBillTableAdapter.Fill(this.api_QuanLyNhaThuocDataSet.PrintBill, id);
+            this.GetInvoiceItemsInfoTableAdapter.Fill(this.api_QuanLyNhaThuocDataSet.GetInvoiceItemsInfo, id);
+            //this.SelectItemsTableAdapter.Fill(this.Api_QuanLyNhaThuocDataSet.SelectItems, id);
             byte[] temp = reportViewer1.LocalReport.Render("WORDOPENXML");
             File.WriteAllBytes(link + @"\HD" + invoiceNumber + ".docx", temp);
             ConvretWordToPDF(link + @"\HD" + invoiceNumber + ".docx");

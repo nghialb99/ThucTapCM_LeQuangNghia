@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserCrtEmail));
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.btRestore = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btBackupData = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label11 = new System.Windows.Forms.Label();
             this.btUpdate = new Bunifu.Framework.UI.BunifuFlatButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -62,6 +64,8 @@
             // 
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.btRestore);
+            this.bunifuGradientPanel1.Controls.Add(this.btBackupData);
             this.bunifuGradientPanel1.Controls.Add(this.label11);
             this.bunifuGradientPanel1.Controls.Add(this.btUpdate);
             this.bunifuGradientPanel1.Controls.Add(this.groupBox2);
@@ -75,6 +79,78 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1080, 660);
             this.bunifuGradientPanel1.TabIndex = 0;
+            // 
+            // btRestore
+            // 
+            this.btRestore.Activecolor = System.Drawing.Color.Gray;
+            this.btRestore.BackColor = System.Drawing.Color.Transparent;
+            this.btRestore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btRestore.BorderRadius = 7;
+            this.btRestore.ButtonText = "Khôi phục";
+            this.btRestore.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btRestore.DisabledColor = System.Drawing.Color.Gray;
+            this.btRestore.Iconcolor = System.Drawing.Color.Transparent;
+            this.btRestore.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_cloud_backup_restore_100;
+            this.btRestore.Iconimage_right = null;
+            this.btRestore.Iconimage_right_Selected = null;
+            this.btRestore.Iconimage_Selected = null;
+            this.btRestore.IconMarginLeft = 0;
+            this.btRestore.IconMarginRight = 0;
+            this.btRestore.IconRightVisible = true;
+            this.btRestore.IconRightZoom = 0D;
+            this.btRestore.IconVisible = true;
+            this.btRestore.IconZoom = 80D;
+            this.btRestore.IsTab = false;
+            this.btRestore.Location = new System.Drawing.Point(942, 17);
+            this.btRestore.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btRestore.Name = "btRestore";
+            this.btRestore.Normalcolor = System.Drawing.Color.Transparent;
+            this.btRestore.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.btRestore.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btRestore.selected = false;
+            this.btRestore.Size = new System.Drawing.Size(120, 43);
+            this.btRestore.TabIndex = 99;
+            this.btRestore.Text = "Khôi phục";
+            this.btRestore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btRestore.Textcolor = System.Drawing.Color.Black;
+            this.btRestore.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRestore.Click += new System.EventHandler(this.btRestore_Click);
+            // 
+            // btBackupData
+            // 
+            this.btBackupData.Activecolor = System.Drawing.Color.Gray;
+            this.btBackupData.BackColor = System.Drawing.Color.Transparent;
+            this.btBackupData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btBackupData.BorderRadius = 7;
+            this.btBackupData.ButtonText = "Sao lưu";
+            this.btBackupData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btBackupData.DisabledColor = System.Drawing.Color.Gray;
+            this.btBackupData.Iconcolor = System.Drawing.Color.Transparent;
+            this.btBackupData.Iconimage = global::API_QuanLyNhaThuoc.Properties.Resources.icons8_data_backup_100;
+            this.btBackupData.Iconimage_right = null;
+            this.btBackupData.Iconimage_right_Selected = null;
+            this.btBackupData.Iconimage_Selected = null;
+            this.btBackupData.IconMarginLeft = 0;
+            this.btBackupData.IconMarginRight = 0;
+            this.btBackupData.IconRightVisible = true;
+            this.btBackupData.IconRightZoom = 0D;
+            this.btBackupData.IconVisible = true;
+            this.btBackupData.IconZoom = 80D;
+            this.btBackupData.IsTab = false;
+            this.btBackupData.Location = new System.Drawing.Point(798, 17);
+            this.btBackupData.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btBackupData.Name = "btBackupData";
+            this.btBackupData.Normalcolor = System.Drawing.Color.Transparent;
+            this.btBackupData.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.btBackupData.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btBackupData.selected = false;
+            this.btBackupData.Size = new System.Drawing.Size(120, 43);
+            this.btBackupData.TabIndex = 98;
+            this.btBackupData.Text = "Sao lưu";
+            this.btBackupData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btBackupData.Textcolor = System.Drawing.Color.Black;
+            this.btBackupData.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btBackupData.Click += new System.EventHandler(this.btBackupData_Click);
             // 
             // label11
             // 
@@ -454,5 +530,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label18;
+        private Bunifu.Framework.UI.BunifuFlatButton btRestore;
+        private Bunifu.Framework.UI.BunifuFlatButton btBackupData;
     }
 }

@@ -210,9 +210,9 @@ namespace API_QuanLyNhaThuoc
             ClearData();
             DisableItem();
             btNew.Enabled = true;
-            btEdit.Enabled = true;
-            btLock.Enabled = true;
-            btRestore.Enabled = true;
+            btEdit.Enabled = false;
+            btLock.Enabled = false;
+            btRestore.Enabled = false;
             dgvCustomer.Enabled = true;
         }
         private void btLock_Click(object sender, EventArgs e)

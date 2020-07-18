@@ -223,6 +223,16 @@ namespace API_QuanLyNhaThuoc.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_cloud_backup_restore_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cloud-backup-restore-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_connect_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-connect-100", resourceCulture);
@@ -266,6 +276,16 @@ namespace API_QuanLyNhaThuoc.Properties {
         internal static System.Drawing.Bitmap icons8_customer_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-customer-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_data_backup_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-data-backup-100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

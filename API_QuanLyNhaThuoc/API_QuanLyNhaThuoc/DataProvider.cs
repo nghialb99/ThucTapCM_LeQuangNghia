@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -20,7 +21,8 @@ namespace API_QuanLyNhaThuoc
         }
         private DataProvider() { }
 
-        private string connectionSTR = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|database\Api_QuanLyNhaThuoc.mdf;Integrated Security=True";
+        private string connectionSTR = ConfigurationManager.ConnectionStrings["API_QuanLyNhaThuoc.Properties.Settings.Api_QuanLyNhaThuocConnectionString"].ConnectionString;
+        //private string connectionSTR = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Api_QuanLyNhaThuoc.mdf;Integrated Security=True";
         //private string connectionSTR = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+ Application.StartupPath + @"\database\Api_QuanLyNhaThuoc.mdf;Integrated Security=True";
         public DataTable ExcuteQuery(string query, object[] a = null)
         {

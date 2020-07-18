@@ -79,5 +79,31 @@ namespace API_QuanLyNhaThuoc
             if (cbStatus.SelectedItem.ToString() == "Hoạt động") status = 1;
             else if (cbStatus.SelectedItem.ToString() == "Không hoạt động") status = 0;
         }
+
+        private void btBackupData_Click(object sender, EventArgs e)
+        {
+            //FolderBrowserDialog dl = new FolderBrowserDialog();
+
+            //if (dl.ShowDialog(this) == DialogResult.OK)
+            //{
+            //    string filePath = dl.SelectedPath;
+
+            //    string query = @"backup database Api_QuanLyNhaThuoc to disk = '" + filePath+ @"\Api_QLNT.bak' with differential";
+
+            //    if (DataProvider.Instance.ExcuteNunQuery(query)>0) MessageBox.Show("Sao lưu hoàn tất ", "Thông báo");
+            //}
+        }
+
+        private void btRestore_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dl = new OpenFileDialog();
+            dl.Filter = "Image Files(*.bak,) | *.bak";
+            if (dl.ShowDialog(this) == DialogResult.OK)
+            {
+                string filePath = dl.FileName;
+
+                //if (temp == dgvListInvoice.Rows.Count) MessageBox.Show("Tải hoàn tất ", "Thông báo");
+            }
+        }
     }
 }

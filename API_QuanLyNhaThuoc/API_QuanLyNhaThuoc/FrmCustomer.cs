@@ -198,7 +198,7 @@ namespace API_QuanLyNhaThuoc
             }
             else
             {
-                if (Email_DAO.Instance.isEmail(tbEmail.Text))
+                if(tbEmail.Text == "")
                 {
                     if (Buyer_DAO.Instance.UpdateBuyer(roleName, tbName.Text, tbTaxCode.Text, tbPhone.Text, tbEmail.Text, tbAddress.Text))
                     {
@@ -210,7 +210,22 @@ namespace API_QuanLyNhaThuoc
                     }
                     else { MessageBox.Show("Có lỗi gì đó xãy ra. Vui lòng thử lại sau ít phút.", "Thông báo!"); }
                 }
-                else { MessageBox.Show("Email không đúng định dạng!", "Thông báo!"); }
+                else
+                {
+                    if (Email_DAO.Instance.isEmail(tbEmail.Text))
+                    {
+                        if (Buyer_DAO.Instance.UpdateBuyer(roleName, tbName.Text, tbTaxCode.Text, tbPhone.Text, tbEmail.Text, tbAddress.Text))
+                        {
+                            LoadData();
+                            btEdit.Enabled = true;
+                            btNew.Enabled = true;
+                            dgvCustomer.Enabled = true;
+                            MessageBox.Show("Cập nhật " + roleName + " thành công!", "Thông báo!");
+                        }
+                        else { MessageBox.Show("Có lỗi gì đó xãy ra. Vui lòng thử lại sau ít phút.", "Thông báo!"); }
+                    }
+                    else { MessageBox.Show("Email không đúng định dạng!", "Thông báo!"); }
+                }
             }
         }
         private void btCancle_Click(object sender, EventArgs e)
@@ -218,9 +233,9 @@ namespace API_QuanLyNhaThuoc
             ClearData();
             DisableItem();
             btNew.Enabled = true;
-            btEdit.Enabled = true;
-            btLock.Enabled = true;
-            btRestore.Enabled = true;
+            btEdit.Enabled = false;
+            btLock.Enabled = false;
+            btRestore.Enabled = false;
             dgvCustomer.Enabled = true;
         }
         private void btLock_Click(object sender, EventArgs e)
